@@ -12,6 +12,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
+        ./hardware-configuration.nix
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
           {

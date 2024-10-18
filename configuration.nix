@@ -183,6 +183,10 @@
       alpine
       rstudio
       gh
+      cargo
+      rustc
+      clippy
+      rustfmt
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
