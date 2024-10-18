@@ -1,0 +1,188 @@
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+#waybar {
+	background: rgb(17, 17, 27);
+	color: #cad3f5;
+	font-family: JetBrains Mono, "Font Awesome 6 Free";
+	font-size: 11pt;
+}
+
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#backlight,
+#idle_inhibitor,
+#disk,
+#user,
+#mpris {
+	padding-left: 8pt;
+	padding-right: 8pt;
+}
+
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+	color: #1e1e2e;
+}
+
+#mode {
+	color: #cad3f5;
+	background: #1e1e2e;
+}
+
+#workspaces button {
+	padding-left: 2pt;
+	padding-right: 2pt;
+	color: #cad3f5;
+	background: #313244;
+}
+
+#workspaces button.visible {
+	color: #cad3f5;
+	background: #24273a;
+}
+
+#workspaces button.focused {
+	color: #1e1e2e;
+	background: #24273a;
+}
+
+#workspaces button.urgent {
+	color: #1e1e2e;
+	background: #c6a0f6;
+}
+
+#workspaces button:hover {
+	background: #1e1e2e;
+	color: #cad3f5;
+}
+
+#window {
+	margin-right: 35pt;
+	margin-left: 35pt;
+}
+
+#idle_inhibitor {
+	background: #458588;
+	color: #cad3f5;
+}
+
+#pulseaudio {
+	background: #9043EF;
+	color: #1e1e2e;
+}
+
+#network {
+	background: #9C56F1;
+	color: #1e1e2e;
+}
+
+#memory {
+	background: #A769F2;
+	color: #1e1e2e;
+}
+
+#cpu {
+	background: #AD73F3;
+	color: #1e1e2e;
+}
+
+#temperature {
+	background: #B27CF4;
+	color: #1e1e2e;
+}
+
+#language {
+	background: #fabd2f;
+	color: #1e1e2e;
+}
+
+#battery {
+	background: #BD8EF5;
+	color: #1e1e2e;
+}
+
+#tray {
+	background: #CBA6F7;
+}
+
+#clock.date {
+	background: #CBA6F7;
+	color: #1e1e2e;
+}
+
+#clock.time {
+	background: #D5B6F9;
+	color: #1e1e2e;
+}
+
+#custom-arrow1 {
+	font-size: 11pt;
+	color: #D5B6F9;
+	background: #CBA6F7;
+}
+
+#custom-arrow2 {
+	font-size: 11pt;
+	color: #CBA6F7;
+	background: #BD8EF5;
+}
+
+#custom-arrow4 {
+	font-size: 11pt;
+	color: #BD8EF5;
+	background: #B27CF4;
+}
+
+#custom-arrow5 {
+	font-size: 11pt;
+	color: #B27CF4;
+	background: #AD73F3;
+}
+
+#custom-arrow6 {
+	font-size: 11pt;
+	color: #AD73F3;
+	background: #A769F2;
+}
+
+#custom-arrow7 {
+	font-size: 11pt;
+	color: #A769F2;
+	background: #9C56F1;
+}
+
+#custom-arrow8 {
+	font-size: 11pt;
+	color: #9C56F1;
+	background: #9043EF;
+}
+
+#custom-arrow9 {
+	font-size: 11pt;
+	color: #9043EF;
+	background: #11111B;
+}
+
+#custom-arrow11 {
+	font-size: 11pt;
+	color: #313244;
+	background: #11111B;
+}
