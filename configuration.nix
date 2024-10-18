@@ -182,6 +182,7 @@
       haskellPackages.stylish-haskell
       alpine
       rstudio
+      gh
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
