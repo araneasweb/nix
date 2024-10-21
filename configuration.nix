@@ -187,6 +187,31 @@
       rustc
       clippy
       rustfmt
+      haskellPackages.hoauth2
+      zlib
+      hpack
+      pkg-config
+      glib
+      gobject-introspection
+      pcre2
+      cairo
+      freetype
+      expat
+      fontconfig
+      util-linux
+      harfbuzz
+      libselinux
+      libsepol
+      xorg.libXdmcp
+      gtk3
+      lerc
+      libthai
+      libdatrie
+      libxkbcommon
+      libepoxy
+      xorg.libXtst
+      at-spi2-core
+      vte
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
