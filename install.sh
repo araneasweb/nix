@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 sudo -i
 (ls /etc/nixos/hardware-configuration.nix >> /dev/null 2>&1) || nixos-generate-config
 hardwareconfig=$(mktemp)
