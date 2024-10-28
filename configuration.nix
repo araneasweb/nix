@@ -169,7 +169,6 @@
       onefetch
       R
       rPackages.languageserver
-      vimPlugins.nvchad
       python3
       ripgrep
       fd
@@ -223,6 +222,7 @@
       HYPRCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       HYPRCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
+      XDG_TERMINAL = "kitty";
     };
   };
 
