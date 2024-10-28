@@ -211,6 +211,7 @@
       xorg.libXtst
       at-spi2-core
       vte
+      fzf
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
