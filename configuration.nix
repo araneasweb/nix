@@ -11,6 +11,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking = {
@@ -22,6 +24,7 @@
   i18n.defaultLocale = "en_CA.UTF-8";
 
   hardware.pulseaudio.enable = false;
+  hardware.graphics.enable = true;
 
   programs = {
     hyprland.enable = true;
@@ -36,7 +39,10 @@
         fastfetch
       '';
     };
-    starship.enable = true;
+    starship = {
+      enable = true;
+    };
+
     ssh.askPassword = "";
   };
 
@@ -84,7 +90,7 @@
   users.users.aranea = {
     isNormalUser = true;
     description = "aranea";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
   };
 
@@ -132,7 +138,7 @@
       hunspellDicts.en_CA
       cabal-install 
       ghc
-      swiProlog
+      swi-prolog-gui
       gprolog
       github-desktop
       p11-kit
@@ -212,6 +218,19 @@
       at-spi2-core
       vte
       fzf
+      neo-cowsay
+      cheese
+      logisim
+      postman
+      bloop
+      obs-studio
+      lynx
+      browsh
+      haskellPackages.gloss
+      libGL
+      libGLU
+      freeglut
+      libglvnd
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
