@@ -12,14 +12,12 @@
     home-manager.enable = true;
     kitty = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         confirm_os_window_close = 0;
       };
     };
     neovim = {
       enable = true;
-      catppuccin.enable = true;
       viAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-polyglot
@@ -86,8 +84,9 @@
   };
   
   catppuccin.enable = true;
-  qt.style.catppuccin.enable = true;
-
+  catppuccin.kvantum.enable = true;
+  catppuccin.nvim.enable = true;
+  catppuccin.kitty.enable = true;
 }
 
 

@@ -23,7 +23,6 @@
   time.timeZone = "America/Vancouver";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  hardware.pulseaudio.enable = false;
   hardware.graphics.enable = true;
 
   programs = {
@@ -36,6 +35,7 @@
       enable = true;
       shellInit = ''
         set -g fish_greeting ""
+        alias ":q"=exit
         fastfetch
       '';
     };
@@ -63,6 +63,8 @@
     };
     printing.enable = true;
     libinput.enable = true;
+    kmscon.enable = true;
+    pulseaudio.enable = false;
     tlp.enable = true;
     udisks2.enable = true;
     gvfs.enable = true;
@@ -77,7 +79,7 @@
   };
 
   fonts = {
-    packages = with pkgs; [ nerdfonts ];
+    packages = with pkgs; [ pkgs.nerd-fonts._0xproto pkgs.nerd-fonts.droid-sans-mono nerd-fonts.hack nerd-fonts.dejavu-sans-mono ];
     fontconfig = {
       defaultFonts = {
         serif = [ "DejaVu Nerd Font" ];
@@ -169,13 +171,19 @@
       gdu
       baobab
       udiskie
-      haskellPackages.stack
+      stack
       haskellPackages.hoogle
       haskellPackages.hakyll
       onefetch
       R
       rPackages.languageserver
-      python3
+      (pkgs.python3.withPackages (ps: with ps; [
+        jupyterlab
+        ipykernel
+        numpy
+        pandas
+        matplotlib
+      ]))
       ripgrep
       fd
       scala
@@ -185,7 +193,7 @@
       mitscheme
       miranda
       haskellPackages.stylish-haskell
-      alpine
+      # alpine -- currently broken in unstable
       rstudio
       gh
       cargo
@@ -194,6 +202,7 @@
       rustfmt
       haskellPackages.hoauth2
       zlib
+      haskellPackages.zlib
       hpack
       pkg-config
       glib
@@ -231,6 +240,27 @@
       libGLU
       freeglut
       libglvnd
+      coq
+      haskellPackages.OpenGLRaw
+      upower
+      ocaml
+      glfw
+      xorg.libXxf86vm
+      mesa
+      floorp-unwrapped
+      stylish-haskell
+      # haskell.compiler.ghcjs -- currently broken in unstable
+      haskellPackages.regex-tdfa
+      libdrm
+      (dyalog.override { acceptLicense = true; })
+      # ride -- currently broken in unstable
+      zlib.dev
+      zlib.out
+      haskellPackages.zlib-clib
+      haskellPackages.zlib-bindings
+      guile-zlib
+      libz
+      nasm
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -278,10 +308,6 @@
   };
 
   virtualisation = {
-    virtualbox.host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
     docker.enable = true;
   };
 
