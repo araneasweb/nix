@@ -16,6 +16,12 @@
         confirm_os_window_close = 0;
       };
     };
+    nushell = { 
+      enable = true;
+    };
+    # carapace = {
+    #   enable = true;
+    # };
     neovim = {
       enable = true;
       viAlias = true;

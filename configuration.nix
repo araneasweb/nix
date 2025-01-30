@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -97,170 +97,186 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      wget
-      vim
-      neovim
-      vscode
-      emacs29-pgtk
-      fastfetch
-      thunderbird
-      curl
-      git
-      htop
-      gimp
-      blender
-      kitty
-      kitty-themes
-      which
-      npins
-      pkgs.gnome-tweaks
-      catppuccin-gtk
-      networkmanagerapplet
-      wofi
-      waybar
-      hyprpaper
-      brightnessctl
-      hyprcursor
-      catppuccin-cursors.mochaMauve
-      catppuccin-kvantum
-      nwg-look
-      catppuccin-papirus-folders
-      killall
-      nix-index
-      macchina
-      cliphist
-      wl-clipboard
-      go
-      racket
-      zoom-us
-      unzip
-      libreoffice-qt
-      hunspell
-      hunspellDicts.en_CA
-      cabal-install 
-      ghc
-      swi-prolog-gui
-      gprolog
-      github-desktop
-      p11-kit
-      nodejs_18
-      (yarn.override { nodejs = null; })
-      jetbrains.idea-ultimate
-      typescript
-      jetbrains.clion
-      jetbrains.rust-rover
-      discord
-      xarchiver
-      zip
-      nnn
-      hyprshot
-      hlint
-      acct
-      haskellPackages.haskell-language-server
-      appimage-run
-      electron
-      gnome-multi-writer
-      feh
-      gcc
-      gnumake
-      clang
-      glibc.static
-      glibc
-      zed-editor
-      gdu
-      baobab
-      udiskie
-      stack
-      haskellPackages.hoogle
-      haskellPackages.hakyll
-      onefetch
-      R
-      rPackages.languageserver
-      (pkgs.python3.withPackages (ps: with ps; [
-        jupyterlab
-        ipykernel
-        numpy
-        pandas
-        matplotlib
-      ]))
-      ripgrep
-      fd
-      scala
-      sbt
-      gradle
-      openjdk
-      mitscheme
-      miranda
-      haskellPackages.stylish-haskell
-      # alpine -- currently broken in unstable
-      rstudio
-      gh
-      cargo
-      rustc
-      clippy
-      rustfmt
-      haskellPackages.hoauth2
-      zlib
-      haskellPackages.zlib
-      hpack
-      pkg-config
-      glib
-      gobject-introspection
-      pcre2
-      cairo
-      freetype
-      expat
-      fontconfig
-      util-linux
-      harfbuzz
-      libselinux
-      libsepol
-      xorg.libXdmcp
-      gtk3
-      lerc
-      libthai
-      libdatrie
-      libxkbcommon
-      libepoxy
-      xorg.libXtst
-      at-spi2-core
-      vte
-      fzf
-      neo-cowsay
-      cheese
-      logisim
-      postman
-      bloop
-      obs-studio
-      lynx
-      browsh
-      haskellPackages.gloss
-      libGL
-      libGLU
-      freeglut
-      libglvnd
-      coq
-      haskellPackages.OpenGLRaw
-      upower
-      ocaml
-      glfw
-      xorg.libXxf86vm
-      mesa
-      floorp-unwrapped
-      stylish-haskell
-      # haskell.compiler.ghcjs -- currently broken in unstable
-      haskellPackages.regex-tdfa
-      libdrm
-      (dyalog.override { acceptLicense = true; })
-      # ride -- currently broken in unstable
-      zlib.dev
-      zlib.out
-      haskellPackages.zlib-clib
-      haskellPackages.zlib-bindings
-      guile-zlib
-      libz
-      nasm
+    systemPackages = [
+     inputs.zen-browser.packages.x86_64-linux.default
+     pkgs.dig
+     pkgs.SDL2
+     pkgs.wget
+     pkgs.vim
+     pkgs.neovim
+     pkgs.vscode
+     pkgs.emacs29-pgtk
+     pkgs.fastfetch
+     pkgs.thunderbird
+     pkgs.curl
+     pkgs.git
+     pkgs.htop
+     pkgs.gimp
+     pkgs.blender
+     pkgs.kitty
+     pkgs.kitty-themes
+     pkgs.which
+     pkgs.npins
+     pkgs.pkgs.gnome-tweaks
+     pkgs.catppuccin-gtk
+     pkgs.networkmanagerapplet
+     pkgs.wofi
+     pkgs.waybar
+     pkgs.hyprpaper
+     pkgs.brightnessctl
+     pkgs.hyprcursor
+     pkgs.catppuccin-cursors.mochaMauve
+     pkgs.catppuccin-kvantum
+     pkgs.nwg-look
+     pkgs.catppuccin-papirus-folders
+     pkgs.killall
+     pkgs.nix-index
+     pkgs.macchina
+     pkgs.cliphist
+     pkgs.wl-clipboard
+     pkgs.go
+     pkgs.racket
+     pkgs.zoom-us
+     pkgs.unzip
+     pkgs.libreoffice-qt
+     pkgs.hunspell
+     pkgs.hunspellDicts.en_CA
+     pkgs.cabal-install 
+     pkgs.ghc
+     pkgs.swi-prolog-gui
+     pkgs.gprolog
+     pkgs.github-desktop
+     pkgs.p11-kit
+     pkgs.nodejs_18
+     (pkgs.yarn.override { nodejs = null; })
+     pkgs.jetbrains.idea-ultimate
+     pkgs.typescript
+     pkgs.jetbrains.clion
+     pkgs.jetbrains.rust-rover
+     (pkgs.discord.override { withVencord = true; })
+     pkgs.xarchiver
+     pkgs.zip
+     pkgs.nnn
+     pkgs.hyprshot
+     pkgs.hlint
+     pkgs.acct
+     pkgs.haskellPackages.haskell-language-server
+     pkgs.appimage-run
+     pkgs.electron
+     pkgs.gnome-multi-writer
+     pkgs.feh
+     pkgs.gcc
+     pkgs.gnumake
+     pkgs.clang
+     pkgs.glibc.static
+     pkgs.glibc
+     pkgs.zed-editor
+     pkgs.gdu
+     pkgs.baobab
+     pkgs.udiskie
+     pkgs.stack
+     pkgs.haskellPackages.hoogle
+     pkgs.haskellPackages.hakyll
+     pkgs.onefetch
+     pkgs.R
+     pkgs.rPackages.languageserver
+     (pkgs.python3.withPackages (ps: with ps; [
+            jupyterlab
+            ipykernel
+            numpy
+            pandas
+            matplotlib
+            conda
+          ]))
+     pkgs.ripgrep
+     pkgs.fd
+     pkgs.scala
+     pkgs.sbt
+     pkgs.gradle
+     pkgs.openjdk
+     pkgs.mitscheme
+     pkgs.miranda
+     pkgs.haskellPackages.stylish-haskell
+     #pkgs.rstudio
+     pkgs.gh
+     pkgs.cargo
+     pkgs.rustc
+     pkgs.clippy
+     pkgs.rustfmt
+     pkgs.haskellPackages.hoauth2
+     pkgs.zlib
+     pkgs.haskellPackages.zlib
+     pkgs.hpack
+     pkgs.pkg-config
+     pkgs.glib
+     pkgs.gobject-introspection
+     pkgs.pcre2
+     pkgs.cairo
+     pkgs.freetype
+     pkgs.expat
+     pkgs.fontconfig
+     pkgs.util-linux
+     pkgs.harfbuzz
+     pkgs.libselinux
+     pkgs.libsepol
+     pkgs.xorg.libXdmcp
+     pkgs.gtk3
+     pkgs.lerc
+     pkgs.libthai
+     pkgs.libdatrie
+     pkgs.libxkbcommon
+     pkgs.libepoxy
+     pkgs.xorg.libXtst
+     pkgs.at-spi2-core
+     pkgs.vte
+     pkgs.fzf
+     pkgs.neo-cowsay
+     pkgs.cheese
+     pkgs.logisim
+     pkgs.postman
+     pkgs.bloop
+     pkgs.obs-studio
+     pkgs.lynx
+     pkgs.browsh
+     pkgs.haskellPackages.gloss
+     pkgs.libGL
+     pkgs.libGLU
+     pkgs.freeglut
+     pkgs.libglvnd
+     pkgs.coq
+     pkgs.haskellPackages.OpenGLRaw
+     pkgs.upower
+     pkgs.ocaml
+     pkgs.glfw
+     pkgs.xorg.libXxf86vm
+     pkgs.mesa
+     pkgs.floorp-unwrapped
+     pkgs.stylish-haskell
+     # haskell.compiler.ghcjs -- currently broken in unstable
+     pkgs.haskellPackages.regex-tdfa
+     pkgs.libdrm
+     (pkgs.dyalog.override { acceptLicense = true; })
+     # ride -- currently broken in unstable
+     pkgs.zlib.dev
+     pkgs.zlib.out
+     pkgs.haskellPackages.zlib-clib
+     pkgs.haskellPackages.zlib-bindings
+     pkgs.guile-zlib
+     pkgs.libz
+     pkgs.nasm
+     pkgs.inetutils
+     pkgs.gnupg
+     pkgs.pinentry-all
+     pkgs.gdb
+     pkgs.nushell
+     pkgs.deluge
+     pkgs.jdk11
+     pkgs.wireshark
+     pkgs.valgrind
+     pkgs.micromamba
+     pkgs.krita
+     pkgs.carapace
+     pkgs.coqPackages.coqide
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -273,7 +289,9 @@
       HYPRCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
       XDG_TERMINAL = "kitty";
+      XDG_PICTURES_DIR = "~/Pictures";
     };
+    #shells = [ pkgs.nushell ];
   };
 
   swapDevices = [{
