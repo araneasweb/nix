@@ -10,9 +10,13 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, lix-module, catppuccin, home-manager, zen-browser, ... }@inputs: {
+  outputs = { self, nixpkgs, lix-module, catppuccin, home-manager, zen-browser, nvf, ... }@inputs: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -22,6 +26,7 @@
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         lix-module.nixosModules.default
+        nvf.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

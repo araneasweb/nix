@@ -22,35 +22,35 @@
     # carapace = {
     #   enable = true;
     # };
-    neovim = {
-      enable = true;
-      viAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        vim-polyglot
-        vim-nix              
-        nvim-treesitter.withAllGrammars        
-        catppuccin-nvim    
-        gitsigns-nvim
-        nvim-tree-lua
-        nvim-autopairs
-        lualine-nvim
-        bufferline-nvim
-        comment-nvim
-      ];
-      extraConfig = ''
-        lua << EOF
-          require('nvim-tree').setup{}
-          require('nvim-autopairs').setup{}
-          require('lualine').setup{ options = { theme = 'catppuccin' } }
-          require('bufferline').setup{}
-          require('gitsigns').setup{}
-          require('Comment').setup{}
-        EOF
-        set number
-        set title
-        set encoding=utf-8
-      '';
-    };
+    # neovim = {
+    #   enable = true;
+    #   viAlias = true;
+    #   plugins = with pkgs.vimPlugins; [
+    #     vim-polyglot
+    #     vim-nix              
+    #     nvim-treesitter.withAllGrammars        
+    #     catppuccin-nvim    
+    #     gitsigns-nvim
+    #     nvim-tree-lua
+    #     nvim-autopairs
+    #     lualine-nvim
+    #     bufferline-nvim
+    #     comment-nvim
+    #   ];
+    #   extraConfig = ''
+    #     lua << EOF
+    #       require('nvim-tree').setup{}
+    #       require('nvim-autopairs').setup{}
+    #       require('lualine').setup{ options = { theme = 'catppuccin' } }
+    #       require('bufferline').setup{}
+    #       require('gitsigns').setup{}
+    #       require('Comment').setup{}
+    #     EOF
+    #     set number
+    #     set title
+    #     set encoding=utf-8
+    #   '';
+    # };
     waybar = import ./waybar.nix { inherit config pkgs; };
   };
 
