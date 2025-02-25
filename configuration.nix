@@ -255,9 +255,12 @@
   environment = {
     systemPackages = [
       inputs.zen-browser.packages.x86_64-linux.default
+      pkgs.ghostty
+      pkgs.hyfetch
       pkgs.links2
       pkgs.lean4
       pkgs.ranger
+      pkgs.tree
       pkgs.dig
       pkgs.SDL2
       pkgs.wget

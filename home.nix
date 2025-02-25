@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     username = "aranea";
     homeDirectory = "/home/aranea";
@@ -16,7 +17,7 @@
         confirm_os_window_close = 0;
       };
     };
-    nushell = { 
+    nushell = {
       enable = true;
     };
     # carapace = {
@@ -27,9 +28,9 @@
     #   viAlias = true;
     #   plugins = with pkgs.vimPlugins; [
     #     vim-polyglot
-    #     vim-nix              
-    #     nvim-treesitter.withAllGrammars        
-    #     catppuccin-nvim    
+    #     vim-nix
+    #     nvim-treesitter.withAllGrammars
+    #     catppuccin-nvim
     #     gitsigns-nvim
     #     nvim-tree-lua
     #     nvim-autopairs
@@ -51,7 +52,7 @@
     #     set encoding=utf-8
     #   '';
     # };
-    waybar = import ./waybar.nix { inherit config pkgs; };
+    waybar = import ./waybar.nix {inherit config pkgs;};
   };
 
   dconf.settings = {
@@ -64,7 +65,6 @@
     "org/gnome/desktop/interface" = {
       icon-theme = "Papirus-Dark";
     };
-      
   };
 
   wayland = {
@@ -88,13 +88,9 @@
       };
     };
   };
-  
+
   catppuccin.enable = true;
   catppuccin.kvantum.enable = true;
   catppuccin.nvim.enable = true;
   catppuccin.kitty.enable = true;
 }
-
-
-
-   
