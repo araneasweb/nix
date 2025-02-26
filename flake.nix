@@ -16,10 +16,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, lix-module, catppuccin, home-manager, zen-browser, nvf, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    lix-module,
+    catppuccin,
+    home-manager,
+    nvf,
+    ...
+  } @ inputs: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
@@ -27,17 +34,20 @@
         home-manager.nixosModules.home-manager
         lix-module.nixosModules.default
         nvf.nixosModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.aranea = {
-                imports = [
-                    ./home.nix
-                    catppuccin.homeManagerModules.catppuccin
-                ];
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.aranea = {
+              imports = [
+                ./home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
             };
-          }
+          };
+        }
       ];
     };
   };
 }
+
