@@ -8,7 +8,6 @@
     homeDirectory = "/home/aranea";
     stateVersion = "25.05";
   };
-
   programs = {
     home-manager.enable = true;
     kitty = {
@@ -17,7 +16,6 @@
         confirm_os_window_close = 0;
       };
     };
-    #ghostty.enable = true;
     nushell = {
       enable = true;
     };

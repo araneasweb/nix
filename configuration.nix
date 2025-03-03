@@ -37,9 +37,9 @@
       shellInit = ''
         set -g fish_greeting ""
         alias ":q"=exit
-        alias "cls"="clear && fastfetch"
+        alias "cls"="clear && hyfetch"
         # alias "heval"="read i | awk -v var="$i" 'BEGIN { print "print $ " var}' | xargs -d \n -I {} ghc -e {}"
-        fastfetch
+        hyfetch
       '';
     };
     nvf = {
@@ -205,11 +205,6 @@
   };
 
   services = {
-    xserver = {
-      enable = true;
-      xkb.layout = "us";
-      xkb.variant = "";
-    };
     greetd = {
       enable = true;
       settings = {
@@ -447,8 +442,6 @@
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
-    };
-    variables = {
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
       HYPRCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
