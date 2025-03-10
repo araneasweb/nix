@@ -14,7 +14,13 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      trusted-public-keys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="];
+      substituters = ["https://cache.iog.io"];
+    };
+  };
 
   networking = {
     hostName = "t480";
@@ -97,7 +103,10 @@
             dart.enable = true;
             ocaml.enable = true;
             elixir.enable = true;
-            haskell.enable = true;
+            haskell = {
+              enable = true;
+              treesitter.enable = true;
+            };
             ruby.enable = true;
             tailwind.enable = true;
             svelte.enable = true;
@@ -189,7 +198,10 @@
             fastaction.enable = true;
           };
           presence = {
-            neocord.enable = false;
+            neocord = {
+              enable = true;
+              logo_tooltip = "fangirling";
+            };
           };
           comments = {
             comment-nvim.enable = true;
@@ -254,6 +266,7 @@
       inputs.zen-browser.packages.x86_64-linux.default
       pkgs.ghostty
       pkgs.hyfetch
+      pkgs.libqalculate
       pkgs.links2
       pkgs.lean4
       pkgs.ranger
@@ -264,7 +277,6 @@
       pkgs.vim
       #  pkgs.neovim
       pkgs.vscode
-      pkgs.emacs29-pgtk
       pkgs.fastfetch
       pkgs.thunderbird
       pkgs.curl
