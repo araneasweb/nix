@@ -57,7 +57,7 @@
   };
 
   catppuccin = {
-    enable = true;
+    # enable = true;
     kvantum.enable = true;
     nvim.enable = true;
     kitty.enable = true;
