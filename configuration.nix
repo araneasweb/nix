@@ -47,10 +47,6 @@
         hyfetch
       '';
     };
-    # nvf = {
-    #   enable = true;
-    #   settings = import ./nvf-config.nix;
-    # };
     starship = {
       enable = true;
     };
@@ -264,11 +260,11 @@
       pkgs.mesa
       pkgs.floorp-unwrapped
       pkgs.stylish-haskell
-      # haskell.compiler.ghcjs -- currently broken in unstable 
+      # pkgs.haskell.compiler.ghcjs
       pkgs.haskellPackages.regex-tdfa
       pkgs.libdrm
       (pkgs.dyalog.override {acceptLicense = true;})
-      # ride -- currently broken in unstable
+      pkgs.ride
       pkgs.zlib.dev
       pkgs.zlib.out
       pkgs.haskellPackages.zlib-clib
@@ -285,7 +281,6 @@
       pkgs.jdk11
       pkgs.wireshark
       pkgs.valgrind
-      pkgs.micromamba
       pkgs.krita
       pkgs.carapace
       pkgs.coqPackages.coqide
