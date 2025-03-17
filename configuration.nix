@@ -104,7 +104,7 @@
       inputs.zen-browser.packages.x86_64-linux.default
       pkgs.ghostty
       pkgs.hyfetch
-      pkgs.libqalculate
+      #pkgs.libqalculate
       pkgs.links2
       pkgs.lean4
       pkgs.ranger
@@ -135,7 +135,6 @@
       pkgs.hyprcursor
       pkgs.catppuccin-cursors.mochaMauve
       pkgs.catppuccin-kvantum
-      pkgs.nwg-look
       pkgs.catppuccin-papirus-folders
       pkgs.killall
       pkgs.nix-index
@@ -159,8 +158,6 @@
       (pkgs.yarn.override {nodejs = null;})
       pkgs.jetbrains.idea-ultimate
       pkgs.typescript
-      pkgs.jetbrains.clion
-      pkgs.jetbrains.rust-rover
       (pkgs.discord.override {withVencord = true;})
       pkgs.xarchiver
       pkgs.zip
@@ -169,7 +166,6 @@
       pkgs.hlint
       pkgs.acct
       pkgs.haskellPackages.haskell-language-server
-      pkgs.appimage-run
       pkgs.electron
       pkgs.gnome-multi-writer
       pkgs.feh
@@ -217,7 +213,6 @@
       pkgs.hpack
       pkgs.pkg-config
       pkgs.glib
-      pkgs.gobject-introspection
       pkgs.pcre2
       pkgs.cairo
       pkgs.freetype
@@ -227,27 +222,14 @@
       pkgs.harfbuzz
       pkgs.libselinux
       pkgs.libsepol
-      pkgs.xorg.libXdmcp
       pkgs.gtk3
-      pkgs.lerc
-      pkgs.libthai
-      pkgs.libdatrie
-      pkgs.libxkbcommon
-      pkgs.libepoxy
-      pkgs.xorg.libXtst
-      pkgs.at-spi2-core
-      pkgs.vte
       pkgs.fzf
       pkgs.neo-cowsay
       pkgs.cheese
       pkgs.logisim
       pkgs.postman
-      pkgs.bloop
       pkgs.obs-studio
-      pkgs.lynx
-      pkgs.browsh
       pkgs.haskellPackages.gloss
-      pkgs.libGL
       pkgs.libGLU
       pkgs.freeglut
       pkgs.libglvnd
@@ -260,25 +242,14 @@
       pkgs.mesa
       pkgs.floorp-unwrapped
       pkgs.stylish-haskell
-      # pkgs.haskell.compiler.ghcjs
       pkgs.haskellPackages.regex-tdfa
       pkgs.libdrm
       (pkgs.dyalog.override {acceptLicense = true;})
-      pkgs.ride
-      pkgs.zlib.dev
-      pkgs.zlib.out
-      pkgs.haskellPackages.zlib-clib
-      pkgs.haskellPackages.zlib-bindings
-      pkgs.guile-zlib
-      pkgs.libz
       pkgs.nasm
       pkgs.inetutils
-      pkgs.gnupg
-      pkgs.pinentry-all
       pkgs.gdb
       pkgs.nushell
       pkgs.deluge
-      pkgs.jdk11
       pkgs.wireshark
       pkgs.valgrind
       pkgs.krita

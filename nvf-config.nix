@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -161,3 +165,4 @@
     };
   };
 }
+
