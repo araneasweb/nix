@@ -55,7 +55,6 @@
           scala.enable = true;
           r.enable = true;
           gleam.enable = true;
-          dart.enable = true;
           ocaml.enable = true;
           elixir.enable = true;
           haskell = {

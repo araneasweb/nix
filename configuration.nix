@@ -18,6 +18,7 @@
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
+      auto-optimise-store = true;
     };
   };
 
@@ -41,9 +42,20 @@
       enable = true;
       shellInit = ''
         set -g fish_greeting ""
+        function rungcc
+            if test (count $argv) -eq 0
+                echo "Usage: rungcc filename"
+                return 1
+            end
+
+            set file $argv[1]
+            set exe_name ".tmp_gcc"
+
+            gcc $file -o $exe_name && ./$exe_name && rm $exe_name
+        end
         alias ":q"=exit
         alias "cls"="clear && hyfetch"
-        # alias "heval"="read i | awk -v var="$i" 'BEGIN { print "print $ " var}' | xargs -d \n -I {} ghc -e {}"
+        # alias "heval"="read i | awk -v var="$i" 'BEGIN { print "print $ " var}' | xargs -d \n -I {} ghc -e {}" -- broken fix later
         hyfetch
       '';
     };
@@ -102,12 +114,14 @@
   environment = {
     systemPackages = [
       inputs.zen-browser.packages.x86_64-linux.default
+      pkgs.tmux
+      pkgs.xorg.xlsclients
       pkgs.ghostty
       pkgs.hyfetch
-      #pkgs.libqalculate
       pkgs.links2
       pkgs.lean4
       pkgs.ranger
+      pkgs.st
       pkgs.tree
       pkgs.dig
       pkgs.SDL2
@@ -174,7 +188,6 @@
       pkgs.clang
       pkgs.glibc.static
       pkgs.glibc
-      pkgs.zed-editor
       pkgs.gdu
       pkgs.baobab
       pkgs.udiskie
@@ -184,15 +197,7 @@
       pkgs.onefetch
       pkgs.R
       pkgs.rPackages.languageserver
-      (pkgs.python3.withPackages (ps:
-        with ps; [
-          jupyterlab
-          ipykernel
-          numpy
-          pandas
-          matplotlib
-          conda
-        ]))
+      pkgs.python313
       pkgs.ripgrep
       pkgs.fd
       pkgs.scala
@@ -214,6 +219,7 @@
       pkgs.pkg-config
       pkgs.glib
       pkgs.pcre2
+      pkgs.haskellPackages.QuickCheck
       pkgs.cairo
       pkgs.freetype
       pkgs.expat
@@ -254,7 +260,6 @@
       pkgs.valgrind
       pkgs.krita
       pkgs.carapace
-      pkgs.coqPackages.coqide
       pkgs.prismlauncher
     ];
     sessionVariables = {
