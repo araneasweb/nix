@@ -53,6 +53,8 @@
 
             gcc $file -o $exe_name && ./$exe_name && rm $exe_name
         end
+        alias "nfu"="sudo nix flake update --flake /etc/nixos/"
+        alias "nrs"="sudo nixos-rebuild switch"
         alias ":q"=exit
         alias "cls"="clear && hyfetch"
         # alias "heval"="read i | awk -v var="$i" 'BEGIN { print "print $ " var}' | xargs -d \n -I {} ghc -e {}" -- broken fix later
@@ -61,6 +63,12 @@
     };
     starship = {
       enable = true;
+      settings = {
+        character = {
+          success_symbol = "[λ](bold green)";
+          error_symbol = "[λ](bold red)";
+        };
+      };
     };
 
     ssh.askPassword = "";
@@ -109,6 +117,7 @@
     description = "aranea";
     extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
+    hashedPasswordFile = "./aranea.pass";
   };
 
   environment = {
@@ -117,6 +126,7 @@
       pkgs.tmux
       pkgs.xorg.xlsclients
       pkgs.ghostty
+      pkgs.graphviz
       pkgs.hyfetch
       pkgs.links2
       pkgs.lean4
@@ -170,7 +180,7 @@
       pkgs.p11-kit
       pkgs.nodejs_18
       (pkgs.yarn.override {nodejs = null;})
-      pkgs.jetbrains.idea-ultimate
+      #pkgs.jetbrains.idea-ultimate
       pkgs.typescript
       (pkgs.discord.override {withVencord = true;})
       pkgs.xarchiver
