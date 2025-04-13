@@ -14,6 +14,10 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -22,6 +26,7 @@
     catppuccin,
     home-manager,
     nvf,
+    sops-nix,
     ...
   } @ inputs: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
@@ -34,6 +39,7 @@
         home-manager.nixosModules.home-manager
         #lix-module.nixosModules.default
         nvf.nixosModules.default
+        sops-nix.nixosModules.sops
         {
           home-manager = {
             useGlobalPkgs = true;

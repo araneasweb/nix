@@ -47,17 +47,17 @@
                 echo "Usage: rungcc filename"
                 return 1
             end
-
             set file $argv[1]
             set exe_name ".tmp_gcc"
-
             gcc $file -o $exe_name && ./$exe_name && rm $exe_name
+        end
+        function heval
+          echo $argv | awk -v var="$argv" 'BEGIN {print "print $ " var}' | xargs -I {} ghc -e {}
         end
         alias "nfu"="sudo nix flake update --flake /etc/nixos/"
         alias "nrs"="sudo nixos-rebuild switch"
         alias ":q"=exit
         alias "cls"="clear && hyfetch"
-        # alias "heval"="read i | awk -v var="$i" 'BEGIN { print "print $ " var}' | xargs -d \n -I {} ghc -e {}" -- broken fix later
         hyfetch
       '';
     };
@@ -117,13 +117,15 @@
     description = "aranea";
     extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
-    hashedPasswordFile = "./aranea.pass";
+    hashedPasswordFile = builtins.toString ./aranea.pass;
   };
 
   environment = {
     systemPackages = [
       inputs.zen-browser.packages.x86_64-linux.default
       pkgs.tmux
+      pkgs.ghidra
+      pkgs.scanmem
       pkgs.xorg.xlsclients
       pkgs.ghostty
       pkgs.graphviz
@@ -153,6 +155,8 @@
       pkgs.catppuccin-gtk
       pkgs.networkmanagerapplet
       pkgs.wofi
+      pkgs.gnupg
+      pkgs.pinentry-all
       pkgs.waybar
       pkgs.hyprpaper
       pkgs.brightnessctl
