@@ -18,6 +18,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = {
@@ -27,6 +28,7 @@
     home-manager,
     nvf,
     sops-nix,
+    #impermanence,
     ...
   } @ inputs: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
@@ -40,14 +42,16 @@
         #lix-module.nixosModules.default
         nvf.nixosModules.default
         sops-nix.nixosModules.sops
+        #impermanence.nixosModules.impermanence
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             users.aranea = {
               imports = [
-                ./home.nix
+                ./home/home.nix
                 catppuccin.homeModules.catppuccin
+                #impermanence.homeModules.impermanence
               ];
             };
           };

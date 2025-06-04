@@ -1,11 +1,12 @@
 {
+  config,
   pkgs,
   inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./nvf-config.nix
+    ./modules/nvf-config.nix
   ];
 
   boot.loader = {
@@ -32,9 +33,19 @@
 
   hardware.graphics.enable = true;
 
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/aranea/.config/sops/age/keys.txt";
+    secrets = {
+      aranea_password = {
+        neededForUsers = true;
+      };
+    };
+  };
+
   programs = {
     hyprland.enable = true;
-    firefox.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
     steam.enable = true;
@@ -59,6 +70,9 @@
         alias ":q"=exit
         alias "cls"="clear && hyfetch"
         hyfetch
+        alias "kimg"="kitty +kitten icat"
+        alias "kdiff"="kitty +kitten diff"
+        alias "kssh"="kitty +kitten ssh"
       '';
     };
     starship = {
@@ -70,7 +84,6 @@
         };
       };
     };
-
     ssh.askPassword = "";
   };
 
@@ -117,7 +130,7 @@
     description = "aranea";
     extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
-    hashedPasswordFile = builtins.toString ./aranea.pass;
+    hashedPasswordFile = config.sops.secrets.aranea_password.path;
   };
 
   environment = {
@@ -126,32 +139,24 @@
       pkgs.tmux
       pkgs.ghidra
       pkgs.scanmem
-      pkgs.xorg.xlsclients
-      pkgs.ghostty
       pkgs.graphviz
       pkgs.hyfetch
-      pkgs.links2
       pkgs.lean4
       pkgs.ranger
-      pkgs.st
-      pkgs.tree
-      pkgs.dig
-      pkgs.SDL2
       pkgs.wget
       pkgs.vim
       pkgs.vscode
       pkgs.fastfetch
-      pkgs.thunderbird
       pkgs.curl
       pkgs.git
       pkgs.htop
       pkgs.gimp
+      pkgs.gparted
+      pkgs.mgba
       pkgs.blender
       pkgs.kitty
       pkgs.kitty-themes
       pkgs.which
-      pkgs.npins
-      pkgs.pkgs.gnome-tweaks
       pkgs.catppuccin-gtk
       pkgs.networkmanagerapplet
       pkgs.wofi
@@ -166,7 +171,6 @@
       pkgs.catppuccin-papirus-folders
       pkgs.killall
       pkgs.nix-index
-      pkgs.macchina
       pkgs.cliphist
       pkgs.wl-clipboard
       pkgs.go
@@ -176,38 +180,40 @@
       pkgs.libreoffice-qt
       pkgs.hunspell
       pkgs.hunspellDicts.en_CA
-      pkgs.cabal-install
-      pkgs.ghc
       pkgs.swi-prolog-gui
       pkgs.gprolog
       pkgs.github-desktop
       pkgs.p11-kit
-      pkgs.nodejs_18
+      pkgs.nodejs_24
       (pkgs.yarn.override {nodejs = null;})
-      #pkgs.jetbrains.idea-ultimate
       pkgs.typescript
       (pkgs.discord.override {withVencord = true;})
       pkgs.xarchiver
       pkgs.zip
       pkgs.nnn
       pkgs.hyprshot
+      pkgs.ghc
       pkgs.hlint
-      pkgs.acct
+      pkgs.cabal-install
       pkgs.haskellPackages.haskell-language-server
+      pkgs.haskellPackages.tasty
+      pkgs.haskellPackages.hoogle
+      pkgs.haskellPackages.hakyll
+      pkgs.haskellPackages.QuickCheck
+      pkgs.haskellPackages.hoauth2
+      pkgs.haskellPackages.gloss
+      pkgs.haskellPackages.OpenGLRaw
+      pkgs.hpack
       pkgs.electron
-      pkgs.gnome-multi-writer
       pkgs.feh
       pkgs.gcc
       pkgs.gnumake
       pkgs.clang
-      pkgs.glibc.static
       pkgs.glibc
       pkgs.gdu
       pkgs.baobab
       pkgs.udiskie
       pkgs.stack
-      pkgs.haskellPackages.hoogle
-      pkgs.haskellPackages.hakyll
       pkgs.onefetch
       pkgs.R
       pkgs.rPackages.languageserver
@@ -220,60 +226,28 @@
       pkgs.openjdk
       pkgs.mitscheme
       pkgs.miranda
-      pkgs.haskellPackages.stylish-haskell
       pkgs.gh
       pkgs.cargo
       pkgs.rustc
       pkgs.clippy
       pkgs.rustfmt
-      pkgs.haskellPackages.hoauth2
-      pkgs.zlib
-      pkgs.haskellPackages.zlib
-      pkgs.hpack
       pkgs.pkg-config
-      pkgs.glib
-      pkgs.pcre2
-      pkgs.haskellPackages.QuickCheck
-      pkgs.cairo
-      pkgs.freetype
-      pkgs.expat
-      pkgs.fontconfig
       pkgs.util-linux
-      pkgs.harfbuzz
       pkgs.libselinux
-      pkgs.libsepol
-      pkgs.gtk3
       pkgs.fzf
-      pkgs.neo-cowsay
       pkgs.cheese
-      pkgs.logisim
-      pkgs.postman
-      pkgs.obs-studio
-      pkgs.haskellPackages.gloss
-      pkgs.libGLU
-      pkgs.freeglut
-      pkgs.libglvnd
       pkgs.coq
-      pkgs.haskellPackages.OpenGLRaw
       pkgs.upower
       pkgs.ocaml
-      pkgs.glfw
-      pkgs.xorg.libXxf86vm
-      pkgs.mesa
-      pkgs.floorp-unwrapped
       pkgs.stylish-haskell
-      pkgs.haskellPackages.regex-tdfa
-      pkgs.libdrm
       (pkgs.dyalog.override {acceptLicense = true;})
       pkgs.nasm
       pkgs.inetutils
       pkgs.gdb
       pkgs.nushell
-      pkgs.deluge
       pkgs.wireshark
       pkgs.valgrind
       pkgs.krita
-      pkgs.carapace
       pkgs.prismlauncher
     ];
     sessionVariables = {

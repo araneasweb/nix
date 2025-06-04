@@ -1,2 +1,2 @@
-ubc_cert.cer
-aranea.pass
+secrets/sops_keys.txt
+result
