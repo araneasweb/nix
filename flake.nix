@@ -7,8 +7,8 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     lix-module = {
-     url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-     inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf = {
       url = "github:notashelf/nvf";
@@ -30,12 +30,14 @@
     sops-nix,
     #impermanence,
     ...
-  } @ inputs: let 
+  } @ inputs: let
     useHyprland = true;
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {
+        inherit inputs useHyprland;
+      };
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
@@ -50,11 +52,17 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.aranea = {
-              imports = [
-                ./home/home.nix
-                catppuccin.homeModules.catppuccin
-                #impermanence.homeModules.impermanence
-              ];
+              imports =
+                [
+                  ./home/home.nix
+                  catppuccin.homeModules.catppuccin
+                  #impermanence.homeModules.impermanence
+                ]
+                ++ (
+                  if useHyprland
+                  then [./home/hyprland/hyprland_hm.nix]
+                  else []
+                );
             };
           };
         }

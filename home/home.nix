@@ -1,12 +1,7 @@
 {
-  config,
-  pkgs,
+  useHyprland,
   ...
 }: {
-
-  imports = [
-    ./hyprland_hm.nix
-  ];
 
   home = {
     username = "aranea";

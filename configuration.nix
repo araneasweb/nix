@@ -2,13 +2,19 @@
   config,
   pkgs,
   inputs,
+  useHyprland,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-    ./modules/nvf-config.nix
-    ./home/hyprland.nix
-  ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./modules/nvf-config.nix
+    ]
+    ++ (
+      if useHyprland
+      then [./home/hyprland/hyprland.nix]
+      else []
+    );
 
   boot.loader = {
     systemd-boot.enable = true;
