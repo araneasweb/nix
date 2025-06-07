@@ -7,6 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/nvf-config.nix
+    ./home/hyprland.nix
   ];
 
   boot.loader = {
@@ -45,7 +46,6 @@
   };
 
   programs = {
-    hyprland.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
     steam.enable = true;
@@ -92,7 +92,6 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
           user = "aranea";
         };
       };
@@ -159,20 +158,14 @@
       pkgs.which
       pkgs.catppuccin-gtk
       pkgs.networkmanagerapplet
-      pkgs.wofi
       pkgs.gnupg
       pkgs.pinentry-all
-      pkgs.waybar
-      pkgs.hyprpaper
       pkgs.brightnessctl
-      pkgs.hyprcursor
       pkgs.catppuccin-cursors.mochaMauve
       pkgs.catppuccin-kvantum
       pkgs.catppuccin-papirus-folders
       pkgs.killall
       pkgs.nix-index
-      pkgs.cliphist
-      pkgs.wl-clipboard
       pkgs.go
       pkgs.racket
       pkgs.zoom-us
@@ -191,7 +184,6 @@
       pkgs.xarchiver
       pkgs.zip
       pkgs.nnn
-      pkgs.hyprshot
       pkgs.ghc
       pkgs.hlint
       pkgs.cabal-install
@@ -249,18 +241,16 @@
       pkgs.valgrind
       pkgs.krita
       pkgs.prismlauncher
+      pkgs.xorg.libX11
     ];
     sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-      WLR_NO_HARDWARE_CURSORS = "1";
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
-      HYPRCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
-      HYPRCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
       XDG_TERMINAL = "kitty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
+      XCOMPOSEFILE = "${config.users.users.aranea.home}/.Xcompose";
     };
   };
 
