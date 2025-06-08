@@ -5,6 +5,17 @@
   ...
 }: {
   services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --remember";
+        };
+      };
+    };
+    clipmenu = {
+      enable = true;
+    };
     picom = {
       enable = true;
     };
@@ -37,8 +48,8 @@
       pkgs.xmobar
       pkgs.scrot
       pkgs.alsa-utils
-      pkgs.clipmenu
       pkgs.nitrogen
+      pkgs.dmenu
     ];
   };
 }

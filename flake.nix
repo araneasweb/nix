@@ -36,7 +36,7 @@
     #impermanence,
     ...
   } @ inputs: let
-    useHyprland = true;
+    useHyprland = false;
     useXmonad = true;
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {

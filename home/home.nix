@@ -11,6 +11,9 @@
       source = ./dotfiles/Xcompose;
       force = true;
     };
+    sessionVariables = {
+      TERMINAL = "kitty";
+    };
   };
   programs = {
     home-manager.enable = true;
@@ -35,5 +38,6 @@
     kvantum.enable = true;
     nvim.enable = true;
     kitty.enable = true;
+    rofi.enable = true;
   };
 }
