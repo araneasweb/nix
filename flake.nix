@@ -6,6 +6,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    xmonad-contexts = {
+      url = "github:Procrat/xmonad-contexts";
+      flake = false;
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,15 +32,17 @@
     home-manager,
     nvf,
     sops-nix,
+    xmonad-contexts,
     #impermanence,
     ...
   } @ inputs: let
     useHyprland = true;
+    useXmonad = true;
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs useHyprland;
+        inherit inputs useHyprland useXmonad;
       };
       modules = [
         ./configuration.nix

@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   useHyprland,
+  useXmonad,
   ...
 }: {
   imports =
@@ -13,6 +14,11 @@
     ++ (
       if useHyprland
       then [./home/hyprland/hyprland.nix]
+      else []
+    )
+    ++ (
+      if useXmonad
+      then [./home/xmonad/xmonad.nix]
       else []
     );
 
@@ -98,6 +104,7 @@
       enable = true;
       settings = {
         default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
           user = "aranea";
         };
       };
@@ -146,6 +153,7 @@
       pkgs.scanmem
       pkgs.graphviz
       pkgs.hyfetch
+      pkgs.dconf
       pkgs.lean4
       pkgs.ranger
       pkgs.wget

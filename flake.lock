@@ -300,6 +300,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
         "sops-nix": "sops-nix",
+        "xmonad-contexts": "xmonad-contexts",
         "zen-browser": "zen-browser"
       }
     },
@@ -387,6 +388,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "xmonad-contexts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656278379,
+        "narHash": "sha256-8mUFsKF/uW3+DkmK5vwTF+IfWzPupcms/C3EHSEAWnU=",
+        "owner": "Procrat",
+        "repo": "xmonad-contexts",
+        "rev": "d0de588e4d47e124cca788f0961821053fdbf646",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Procrat",
+        "repo": "xmonad-contexts",
         "type": "github"
       }
     },
