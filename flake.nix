@@ -68,6 +68,11 @@
                   if useHyprland
                   then [./home/hyprland/hyprland_hm.nix]
                   else []
+                )
+                ++ (
+                  if useXmonad
+                  then [./home/xmonad/xmonad_hm.nix]
+                  else []
                 );
             };
           };
