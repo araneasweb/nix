@@ -119,6 +119,7 @@
         };
       };
     };
+    tumbler.enable = true;
     printing.enable = true;
     libinput.enable = true;
     kmscon.enable = true;
@@ -180,7 +181,6 @@
       blender
       kitty
       kitty-themes
-      #which
       catppuccin-gtk
       networkmanagerapplet
       gnupg

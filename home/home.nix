@@ -34,6 +34,10 @@
     };
   };
 
+  xdg.configFile."xfce4/helpers.rc".text = ''
+    TerminalEmulator = kitty
+  '';
+
   catppuccin = {
     kvantum.enable = true;
     nvim.enable = true;
