@@ -96,6 +96,7 @@
         alias "kimg"="kitty +kitten icat"
         alias "kdiff"="kitty +kitten diff"
         alias "kssh"="kitty +kitten ssh"
+        alias "nixconf"="nvim /etc/nixos"
       '';
     };
     starship = {
@@ -268,6 +269,7 @@
       prismlauncher
       xorg.libX11
       nil
+      xdg-user-dirs
     ];
     sessionVariables = {
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";

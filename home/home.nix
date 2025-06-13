@@ -21,6 +21,8 @@
       enable = true;
       settings = {
         confirm_os_window_close = 0;
+        font = "Hack Nerd Font";
+        font_family = "Hack Nerd Font";
       };
     };
     nushell = {
