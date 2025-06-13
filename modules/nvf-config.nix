@@ -17,8 +17,12 @@
           trouble.enable = true;
           lspSignature.enable = true;
           otter-nvim.enable = true;
-          # lsplines.enable = true;
           nvim-docs-view.enable = true;
+        };
+        diagnostics = {
+          config = {
+            virtual_lines = true;
+          };
         };
         languages = {
           enableFormat = true;

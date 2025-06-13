@@ -27,7 +27,18 @@
     efi.canTouchEfiVariables = true;
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services = {
+    NetworkManager-wait-online.enable = false;
+    greetd.serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal";
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
+    };
+  };
 
   nix = {
     settings = {
@@ -145,116 +156,118 @@
   };
 
   environment = {
-    systemPackages = [
+    systemPackages = with pkgs; [
       inputs.zen-browser.packages.x86_64-linux.default
-      pkgs.tmux
-      pkgs.ghidra
-      pkgs.scanmem
-      pkgs.graphviz
-      pkgs.hyfetch
-      pkgs.dconf
-      pkgs.lean4
-      pkgs.ranger
-      pkgs.wget
-      pkgs.vim
-      pkgs.vscode
-      pkgs.fastfetch
-      pkgs.curl
-      pkgs.git
-      pkgs.htop
-      pkgs.gimp
-      pkgs.gparted
-      pkgs.mgba
-      pkgs.blender
-      pkgs.kitty
-      pkgs.kitty-themes
-      pkgs.which
-      pkgs.catppuccin-gtk
-      pkgs.networkmanagerapplet
-      pkgs.gnupg
-      pkgs.pinentry-all
-      pkgs.brightnessctl
-      pkgs.catppuccin-cursors.mochaMauve
-      pkgs.catppuccin-kvantum
-      pkgs.catppuccin-papirus-folders
-      pkgs.killall
-      pkgs.nix-index
-      pkgs.go
-      pkgs.racket
-      pkgs.zoom-us
-      pkgs.unzip
-      pkgs.libreoffice-qt
-      pkgs.hunspell
-      pkgs.hunspellDicts.en_CA
-      pkgs.swi-prolog-gui
-      pkgs.gprolog
-      pkgs.github-desktop
-      pkgs.p11-kit
-      pkgs.nodejs_24
-      (pkgs.yarn.override {nodejs = null;})
-      pkgs.typescript
-      (pkgs.discord.override {withVencord = true;})
-      pkgs.xarchiver
-      pkgs.zip
-      pkgs.nnn
-      pkgs.ghc
-      pkgs.hlint
-      pkgs.cabal-install
-      pkgs.haskellPackages.haskell-language-server
-      pkgs.haskellPackages.tasty
-      pkgs.haskellPackages.hoogle
-      pkgs.haskellPackages.hakyll
-      pkgs.haskellPackages.QuickCheck
-      pkgs.haskellPackages.hoauth2
-      pkgs.haskellPackages.gloss
-      pkgs.haskellPackages.OpenGLRaw
-      pkgs.hpack
-      pkgs.electron
-      pkgs.feh
-      pkgs.gcc
-      pkgs.gnumake
-      pkgs.clang
-      pkgs.glibc
-      pkgs.gdu
-      pkgs.baobab
-      pkgs.udiskie
-      pkgs.stack
-      pkgs.onefetch
-      pkgs.R
-      pkgs.rPackages.languageserver
-      pkgs.python313
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.scala
-      pkgs.sbt
-      pkgs.gradle
-      pkgs.openjdk
-      pkgs.mitscheme
-      pkgs.miranda
-      pkgs.gh
-      pkgs.cargo
-      pkgs.rustc
-      pkgs.clippy
-      pkgs.rustfmt
-      pkgs.pkg-config
-      pkgs.util-linux
-      pkgs.libselinux
-      pkgs.fzf
-      pkgs.cheese
-      pkgs.coq
-      pkgs.upower
-      pkgs.ocaml
-      pkgs.stylish-haskell
-      (pkgs.dyalog.override {acceptLicense = true;})
-      pkgs.nasm
-      pkgs.inetutils
-      pkgs.gdb
-      pkgs.nushell
-      pkgs.wireshark
-      pkgs.valgrind
-      pkgs.krita
-      pkgs.prismlauncher
-      pkgs.xorg.libX11
+      tmux
+      ghidra
+      scanmem
+      texlive.combined.scheme-full
+      graphviz
+      hyfetch
+      dconf
+      lean4
+      ranger
+      wget
+      vim
+      vscode
+      fastfetch
+      curl
+      git
+      htop
+      gimp
+      gparted
+      mgba
+      blender
+      kitty
+      kitty-themes
+      #which
+      catppuccin-gtk
+      networkmanagerapplet
+      gnupg
+      pinentry-all
+      brightnessctl
+      catppuccin-cursors.mochaMauve
+      catppuccin-kvantum
+      catppuccin-papirus-folders
+      killall
+      nix-index
+      go
+      racket
+      zoom-us
+      unzip
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_CA
+      swi-prolog-gui
+      gprolog
+      github-desktop
+      p11-kit
+      nodejs_24
+      (yarn.override {nodejs = null;})
+      typescript
+      (discord.override {withVencord = true;})
+      xarchiver
+      zip
+      nnn
+      ghc
+      hlint
+      cabal-install
+      haskellPackages.haskell-language-server
+      haskellPackages.tasty
+      haskellPackages.hoogle
+      haskellPackages.hakyll
+      haskellPackages.QuickCheck
+      haskellPackages.hoauth2
+      haskellPackages.gloss
+      haskellPackages.OpenGLRaw
+      hpack
+      electron
+      feh
+      gcc
+      gnumake
+      clang
+      glibc
+      gdu
+      baobab
+      udiskie
+      stack
+      onefetch
+      R
+      rPackages.languageserver
+      python313
+      ripgrep
+      fd
+      scala
+      sbt
+      gradle
+      openjdk
+      mitscheme
+      miranda
+      gh
+      cargo
+      rustc
+      clippy
+      rustfmt
+      pkg-config
+      util-linux
+      libselinux
+      fzf
+      cheese
+      coq
+      upower
+      ocaml
+      stylish-haskell
+      (dyalog.override {acceptLicense = true;})
+      nasm
+      inetutils
+      gdb
+      nushell
+      wireshark
+      valgrind
+      krita
+      prismlauncher
+      xorg.libX11
+      nil
     ];
     sessionVariables = {
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";

@@ -16,14 +16,14 @@
     hyprland.enable = true;
   };
   environment = {
-    systemPackages = [
-      pkgs.waybar
-      pkgs.wofi
-      pkgs.hyprpaper
-      pkgs.cliphist
-      pkgs.wl-clipboard
-      pkgs.hyprcursor
-      pkgs.hyprshot
+    systemPackages = with pkgs; [
+      waybar
+      wofi
+      hyprpaper
+      cliphist
+      wl-clipboard
+      hyprcursor
+      hyprshot
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";

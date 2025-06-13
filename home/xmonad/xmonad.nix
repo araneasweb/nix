@@ -29,6 +29,11 @@
           "-odir /tmp"
           "-i${inputs.xmonad-contexts}"
         ];
+        extraPackages = haskellPackages: [
+          haskellPackages.dbus
+          haskellPackages.List
+          haskellPackages.monad-logger
+        ];
       };
       displayManager = {
         startx = {
@@ -40,16 +45,29 @@
         options = "caps:swapescape,compose:ralt";
       };
     };
+    libinput = {
+      enable = true;
+      touchpad = {
+        sendEventsMode = "enabled";
+        scrollMethod = "twofinger";
+        naturalScrolling = false;
+        tapping = true;
+      };
+    };
   };
   environment = {
-    systemPackages = [
-      pkgs.xterm
-      pkgs.rofi
-      pkgs.xmobar
-      pkgs.scrot
-      pkgs.alsa-utils
-      pkgs.nitrogen
-      pkgs.dmenu
+    systemPackages = with pkgs; [
+      xterm
+      rofi
+      xmobar
+      scrot
+      alsa-utils
+      nitrogen
+      dmenu
     ];
+    sessionVariables = {
+      CM_HISTLENGTH = 20;
+      CM_LAUNCHER = "rofi";
+    };
   };
 }

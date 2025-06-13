@@ -77,8 +77,10 @@ xmobarConf =
                 , ppSort = getSortByIndex >>= \f -> return (filter (\ws -> W.tag ws /= "NSP") . f)
                 }
 
-layout = avoidStruts $ toggleLayouts (noBorders Full) $ 
-        smartBorders (Tall 1 (3 / 100) (1 / 2) ||| Full ||| Mirror (Tall 1 (3 / 100) (1 / 2)) ||| ThreeColMid 1 (3/100) (1/2))
+layout =
+        avoidStruts $
+                toggleLayouts (noBorders Full) $
+                        smartBorders (Tall 1 (3 / 100) (1 / 2) ||| Full ||| Mirror (Tall 1 (3 / 100) (1 / 2)) ||| ThreeColMid 1 (3 / 100) (1 / 2))
 
 binds :: [(String, X ())]
 binds =
@@ -113,6 +115,7 @@ binds =
         , ("M-s", namedScratchpadAction scratchpads "terminal")
         , ("M-<Space>", sendMessage NextLayout)
         , ("M-S-<Space>", sendMessage FirstLayout)
+        , ("M-b", spawn "clipmenu")
         ]
 
 startup = spawnOnce "nitrogen --restore &" >> spawnOnce "picom &" >> spawnOnce "clipmenud &" >> spawnOnce "udiskie"
