@@ -117,7 +117,7 @@ binds =
         , ("M-b", spawn "clipmenu")
         ]
 
-startup = spawnOnce "nitrogen --restore &" >> spawnOnce "picom &" >> spawnOnce "clipmenud &" >> spawnOnce "udiskie"
+startup = spawnOnce "nitrogen --restore &" >> spawnOnce "picom &" >> spawnOnce "clipmenud &" >> spawnOnce "udiskie" >> spawnOnce "ibus-daemon -drx"
 
 main :: IO ()
 main =
@@ -132,6 +132,7 @@ main =
                         , focusedBorderColor = getColour "mauve"
                         , startupHook = startup
                         , layoutHook = layout
+                        , manageHook = manageDocks <+> manageHook def
                         , workspaces = map show [1 .. 9]
                         , focusFollowsMouse = True
                         , clickJustFocuses = False

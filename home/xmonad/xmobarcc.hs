@@ -1,6 +1,5 @@
 Config { 
-    font = "Ubuntu Mono 10"
-  , additionalFonts = ["Font Awesome 6 Free Solid 10"]
+    font = "Ubuntu Mono Nerd Font 10"
   , bgColor = "#24273a"
   , fgColor = "#cad3f5"
   , position = Top

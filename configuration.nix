@@ -27,16 +27,18 @@
     efi.canTouchEfiVariables = true;
   };
 
-  systemd.services = {
-    NetworkManager-wait-online.enable = false;
-    greetd.serviceConfig = {
-      Type = "idle";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal";
-      TTYReset = true;
-      TTYVHangup = true;
-      TTYVTDisallocate = true;
+  systemd = {
+    services = {
+      NetworkManager-wait-online.enable = false;
+      greetd.serviceConfig = {
+        Type = "idle";
+        StandardInput = "tty";
+        StandardOutput = "tty";
+        StandardError = "journal";
+        TTYReset = true;
+        TTYVHangup = true;
+        TTYVTDisallocate = true;
+      };
     };
   };
 
@@ -53,7 +55,6 @@
   };
 
   time.timeZone = "America/Vancouver";
-  i18n.defaultLocale = "en_CA.UTF-8";
 
   hardware.graphics.enable = true;
 
@@ -139,22 +140,32 @@
   };
 
   fonts = {
-    packages = with pkgs; [pkgs.nerd-fonts._0xproto pkgs.nerd-fonts.droid-sans-mono nerd-fonts.hack nerd-fonts.dejavu-sans-mono];
+    packages = with pkgs; [ nerd-fonts.hack nerd-fonts.arimo nerd-fonts.ubuntu-sans ];
     fontconfig = {
       defaultFonts = {
-        serif = ["DejaVu Nerd Font"];
-        sansSerif = ["DejaVuSans Nerd Font"];
-        monospace = ["DejaVuSansMono Nerd Font"];
+        serif = ["Arimo Nerd Font"];
+        sansSerif = ["Arimo Nerd Font"];
+        monospace = ["Hack Nerd Font"];
       };
     };
   };
 
+  i18n = {
+    defaultLocale = "en_CA.UTF-8";
+    inputMethod = {
+      enable = true;
+      type = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [ anthy ];
+    };
+  };
+  
   users.users.aranea = {
     isNormalUser = true;
     description = "aranea";
     extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
+    linger = true;
   };
 
   environment = {
@@ -279,6 +290,9 @@
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
       XCOMPOSEFILE = "${config.users.users.aranea.home}/.Xcompose";
+      GTK_IM_MODULE= "ibus";
+      QT_IM_MODULE= "ibus";
+      XMODIFIERS= "@im=ibus";
     };
   };
 
