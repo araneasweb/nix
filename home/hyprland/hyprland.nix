@@ -24,6 +24,7 @@
       wl-clipboard
       hyprcursor
       hyprshot
+      networkmanagerapplet
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";

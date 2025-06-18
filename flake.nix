@@ -47,6 +47,7 @@
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
+        #./impermanence.nix
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         lix-module.nixosModules.default

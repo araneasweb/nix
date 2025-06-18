@@ -26,8 +26,47 @@
         font_family = "Hack Nerd Font";
       };
     };
-    nushell = {
+    fish = {
       enable = true;
+      shellAliases = {
+        "nfu" = "sudo nix flake update --flake /etc/nixos/";
+        "nrs" = "sudo nixos-rebuild switch";
+        ":q" = "exit";
+        "cls" = "clear && hyfetch";
+        "kimg" = "kitty +kitten icat";
+        "kdiff" = "kitty +kitten diff";
+        "kssh" = "kitty +kitten ssh";
+        "nixconf" = "nvim /etc/nixos";
+      };
+      shellInit = ''
+        set -g fish_greeting ""
+      '';
+      interactiveShellInit = ''
+        hyfetch
+      '';
+      functions = {
+        rungcc = ''
+          if test (count $argv) -eq 0
+              echo "Usage: rungcc filename"
+              return 1
+          end
+          set file $argv[1]
+          set exe_name ".tmp_gcc"
+          gcc $file -o $exe_name && ./$exe_name && rm $exe_name
+        '';
+        heval = ''
+          echo $argv | awk -v var="$argv" 'BEGIN {print "print $ " var}' | xargs -I {} ghc -e {}
+        '';
+      };
+    };
+    starship = {
+      enable = true;
+      settings = {
+        character = {
+          success_symbol = "[λ](bold green)";
+          error_symbol = "[λ](bold red)";
+        };
+      };
     };
   };
 

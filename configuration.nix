@@ -10,6 +10,9 @@
     [
       ./hardware-configuration.nix
       ./modules/nvf-config.nix
+      ./modules/haskell.nix
+      ./modules/rust.nix
+      ./modules/reverse-engineering.nix
     ]
     ++ (
       if useHyprland
@@ -73,42 +76,8 @@
     thunar.enable = true;
     xfconf.enable = true;
     steam.enable = true;
-    fish = {
-      enable = true;
-      shellInit = ''
-        set -g fish_greeting ""
-        function rungcc
-            if test (count $argv) -eq 0
-                echo "Usage: rungcc filename"
-                return 1
-            end
-            set file $argv[1]
-            set exe_name ".tmp_gcc"
-            gcc $file -o $exe_name && ./$exe_name && rm $exe_name
-        end
-        function heval
-          echo $argv | awk -v var="$argv" 'BEGIN {print "print $ " var}' | xargs -I {} ghc -e {}
-        end
-        alias "nfu"="sudo nix flake update --flake /etc/nixos/"
-        alias "nrs"="sudo nixos-rebuild switch"
-        alias ":q"=exit
-        alias "cls"="clear && hyfetch"
-        hyfetch
-        alias "kimg"="kitty +kitten icat"
-        alias "kdiff"="kitty +kitten diff"
-        alias "kssh"="kitty +kitten ssh"
-        alias "nixconf"="nvim /etc/nixos"
-      '';
-    };
-    starship = {
-      enable = true;
-      settings = {
-        character = {
-          success_symbol = "[λ](bold green)";
-          error_symbol = "[λ](bold red)";
-        };
-      };
-    };
+    fish.enable = true;
+    starship.enable = true;
     ssh.askPassword = "";
   };
 
@@ -162,7 +131,7 @@
   users.users.aranea = {
     isNormalUser = true;
     description = "aranea";
-    extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
+    extraGroups = ["networkmanager" "wheel" "podman" "vboxusers"];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
     linger = true;
@@ -171,116 +140,71 @@
   environment = {
     systemPackages = with pkgs; [
       inputs.zen-browser.packages.x86_64-linux.default
-      tmux
-      ghidra
-      scanmem
-      texlive.combined.scheme-full
-      graphviz
-      hyfetch
-      dconf
-      lean4
-      ranger
-      wget
-      vim
-      vscode
-      fastfetch
-      curl
-      git
-      htop
-      gimp
-      gparted
-      mgba
-      blender
-      kitty
-      kitty-themes
-      catppuccin-gtk
-      networkmanagerapplet
-      gnupg
-      pinentry-all
       brightnessctl
       catppuccin-cursors.mochaMauve
+      catppuccin-gtk
       catppuccin-kvantum
       catppuccin-papirus-folders
-      killall
-      nix-index
-      go
-      racket
-      zoom-us
-      unzip
-      libreoffice-qt
+      cheese
+      clang
+      coq
+      curl
+      dconf
+      (discord.override {withVencord = true;})
+      (dyalog.override {acceptLicense = true;})
+      fastfetch
+      fd
+      feh
+      fzf
+      gcc
+      gdb
+      gh
+      git
+      github-desktop
+      glibc
+      gnumake
+      gnupg
+      gparted
+      htop
       hunspell
       hunspellDicts.en_CA
-      swi-prolog-gui
-      gprolog
-      github-desktop
-      p11-kit
-      nodejs_24
-      (yarn.override {nodejs = null;})
-      typescript
-      (discord.override {withVencord = true;})
-      xarchiver
-      zip
-      nnn
-      ghc
-      hlint
-      cabal-install
-      haskellPackages.haskell-language-server
-      haskellPackages.tasty
-      haskellPackages.hoogle
-      haskellPackages.hakyll
-      haskellPackages.QuickCheck
-      haskellPackages.hoauth2
-      haskellPackages.gloss
-      haskellPackages.OpenGLRaw
-      hpack
-      electron
-      feh
-      gcc
-      gnumake
-      clang
-      glibc
-      gdu
-      baobab
-      udiskie
-      stack
-      onefetch
-      R
-      rPackages.languageserver
-      python313
-      ripgrep
-      fd
-      scala
-      sbt
-      gradle
-      openjdk
-      mitscheme
-      miranda
-      gh
-      cargo
-      rustc
-      clippy
-      rustfmt
-      pkg-config
-      util-linux
-      libselinux
-      fzf
-      cheese
-      coq
-      upower
-      ocaml
-      stylish-haskell
-      (dyalog.override {acceptLicense = true;})
-      nasm
+      hyfetch
       inetutils
-      gdb
-      nushell
-      wireshark
-      valgrind
+      killall
+      kitty
       krita
-      prismlauncher
-      xorg.libX11
+      lean4
+      libreoffice-qt
+      libselinux
+      nasm
       nil
+      nix-index
+      nnn
+      ocaml
+      onefetch
+      openjdk
+      p11-kit
+      pinentry-all
+      pkg-config
+      prismlauncher
+      racket
+      ranger
+      ripgrep
+      swi-prolog-gui
+      texlive.combined.scheme-full
+      udiskie
+      unzip
+      upower
+      util-linux
+      valgrind
+      vim
+      vscode
+      wget
+      xarchiver
       xdg-user-dirs
+      xorg.libX11
+      zip
+      zoom-us
     ];
     sessionVariables = {
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
@@ -330,7 +254,10 @@
   };
 
   virtualisation = {
-    docker.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    }; 
   };
 
   system.stateVersion = "24.05";
