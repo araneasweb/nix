@@ -1,8 +1,4 @@
-{
-  useHyprland,
-  ...
-}: {
-
+{useHyprland, ...}: {
   home = {
     username = "aranea";
     homeDirectory = "/home/aranea";
@@ -15,7 +11,7 @@
       TERMINAL = "kitty";
     };
   };
-  
+
   programs = {
     home-manager.enable = true;
     kitty = {
@@ -29,7 +25,7 @@
     fish = {
       enable = true;
       shellAliases = {
-        "nfu" = "sudo nix flake update --flake /etc/nixos/";
+        "nfu" = "sudo nix flake update --flake /etc/nixos/ && nix flake check";
         "nrs" = "sudo nixos-rebuild switch";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
@@ -55,7 +51,12 @@
           gcc $file -o $exe_name && ./$exe_name && rm $exe_name
         '';
         heval = ''
-          echo $argv | awk -v var="$argv" 'BEGIN {print "print $ " var}' | xargs -I {} ghc -e {}
+          if test (count $argv) -eq 0
+            echo "Usage: heval ..expr"
+            return 1
+          end
+          set expr (string join " " $argv)
+          ghc -e "print ($expr)"
         '';
       };
     };

@@ -109,7 +109,11 @@
   };
 
   fonts = {
-    packages = with pkgs; [ nerd-fonts.hack nerd-fonts.arimo nerd-fonts.ubuntu-sans ];
+    packages = with pkgs.nerd-fonts; [
+      hack
+      arimo
+      ubuntu-sans
+    ];
     fontconfig = {
       defaultFonts = {
         serif = ["Arimo Nerd Font"];
@@ -124,10 +128,10 @@
     inputMethod = {
       enable = true;
       type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ anthy ];
+      ibus.engines = with pkgs.ibus-engines; [anthy];
     };
   };
-  
+
   users.users.aranea = {
     isNormalUser = true;
     description = "aranea";
@@ -214,9 +218,9 @@
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
       XCOMPOSEFILE = "${config.users.users.aranea.home}/.Xcompose";
-      GTK_IM_MODULE= "ibus";
-      QT_IM_MODULE= "ibus";
-      XMODIFIERS= "@im=ibus";
+      GTK_IM_MODULE = "ibus";
+      QT_IM_MODULE = "ibus";
+      XMODIFIERS = "@im=ibus";
     };
   };
 
@@ -257,7 +261,7 @@
     podman = {
       enable = true;
       dockerCompat = true;
-    }; 
+    };
   };
 
   system.stateVersion = "24.05";
