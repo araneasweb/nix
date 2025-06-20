@@ -58,6 +58,14 @@
           set expr (string join " " $argv)
           ghc -e "print ($expr)"
         '';
+        nsh = ''
+          if test (count $argv) -eq 0
+            echo "Usage: nsh ..pkgs"
+            return 1
+          end
+          set pkgs (for arg in $argv; echo nixpkgs#$arg; end)
+          nix shell $pkgs
+        '';
       };
     };
     starship = {
