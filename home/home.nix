@@ -25,8 +25,8 @@
     fish = {
       enable = true;
       shellAliases = {
-        "nfu" = "sudo nix flake update --flake /etc/nixos/ && nix flake check";
-        "nrs" = "sudo nixos-rebuild switch";
+        "nfu" = "sudo nix flake update --flake /etc/nixos/ && nix flake check /etc/nixos/";
+        "nrs" = "sudo nixos-rebuild switch --flake /etc/nixos/";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
         "kimg" = "kitty +kitten icat";
