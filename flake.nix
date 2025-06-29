@@ -36,8 +36,8 @@
     #impermanence,
     ...
   } @ inputs: let
-    useHyprland = false;
-    useXmonad = true;
+    useHyprland = true;
+    useXmonad = false;
     treeDir = "/etc/nixos";
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {

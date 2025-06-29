@@ -87,6 +87,7 @@
       settings = {
         default_session = {
           user = "aranea";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --remember";
         };
       };
     };
