@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  treeDir,
   ...
 }: {
   programs = {
@@ -20,10 +21,10 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "/etc/nixos/assets/wallpaper.jpg";
+        preload = "${treeDir}/assets/wallpaper.jpg";
         splash = false;
         wallpaper = [
-          "eDP-1,/etc/nixos/assets/wallpaper.jpg"
+          "eDP-1,${treeDir}/assets/wallpaper.jpg"
         ];
       };
     };

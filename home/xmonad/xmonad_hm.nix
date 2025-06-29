@@ -2,13 +2,14 @@
   config,
   pkgs,
   catppuccin,
+  treeDir,
   ...
 }: {
   home = {
     file.".xmonad/./xmonad.hs".source = ./xmonad.hs;
     file.".config/nitrogen/bg-saved.cfg".text = ''
     [xin_-1]
-    file=/etc/nixos/assets/wallpaper.jpg
+    file=${treeDir}/assets/wallpaper.jpg
     mode=5
     bgcolor=#000000
     '';

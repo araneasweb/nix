@@ -38,11 +38,12 @@
   } @ inputs: let
     useHyprland = false;
     useXmonad = true;
+    treeDir = "/etc/nixos";
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs useHyprland useXmonad;
+        inherit inputs useHyprland useXmonad treeDir;
       };
       modules = [
         ./configuration.nix
@@ -58,6 +59,9 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = {
+              inherit treeDir;
+            };
             users.aranea = {
               imports =
                 [
