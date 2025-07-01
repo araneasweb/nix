@@ -2,8 +2,7 @@
   config,
   pkgs,
   inputs,
-  useHyprland,
-  useXmonad,
+  prefs,
   ...
 }: {
   imports =
@@ -15,12 +14,12 @@
       ./modules/reverse-engineering.nix
     ]
     ++ (
-      if useHyprland
+      if prefs.settings.useHyprland
       then [./home/hyprland/hyprland.nix]
       else []
     )
     ++ (
-      if useXmonad
+      if prefs.settings.useXmonad
       then [./home/xmonad/xmonad.nix]
       else []
     );

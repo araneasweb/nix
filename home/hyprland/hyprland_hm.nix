@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  treeDir,
+  prefs,
   ...
 }: {
   programs = {
@@ -145,10 +145,10 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "${treeDir}/assets/wallpaper.jpg";
+        preload = "${prefs.data.treeDir}/assets/wallpaper.jpg";
         splash = false;
         wallpaper = [
-          "eDP-1,${treeDir}/assets/wallpaper.jpg"
+          "eDP-1,${prefs.data.treeDir}/assets/wallpaper.jpg"
         ];
       };
     };

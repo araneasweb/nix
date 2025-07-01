@@ -36,14 +36,21 @@
     #impermanence,
     ...
   } @ inputs: let
-    useHyprland = true;
-    useXmonad = false;
-    treeDir = "/etc/nixos";
+    prefs = {
+      data = {
+        username = "aranea";
+        treeDir = "/etc/nixos";
+      };
+      settings = {
+        useHyprland = true;
+        useXmonad = false;
+      };
+    };
   in {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs useHyprland useXmonad treeDir;
+        inherit inputs prefs;
       };
       modules = [
         ./configuration.nix
@@ -60,7 +67,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit treeDir;
+              inherit prefs;
             };
             users.aranea = {
               imports =
@@ -70,12 +77,12 @@
                   #impermanence.homeModules.impermanence
                 ]
                 ++ (
-                  if useHyprland
+                  if prefs.settings.useHyprland
                   then [./home/hyprland/hyprland_hm.nix]
                   else []
                 )
                 ++ (
-                  if useXmonad
+                  if prefs.settings.useXmonad
                   then [./home/xmonad/xmonad_hm.nix]
                   else []
                 );

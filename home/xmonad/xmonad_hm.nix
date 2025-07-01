@@ -2,14 +2,14 @@
   config,
   pkgs,
   catppuccin,
-  treeDir,
+  prefs,
   ...
 }: {
   home = {
     file.".xmonad/./xmonad.hs".source = ./xmonad.hs;
     file.".config/nitrogen/bg-saved.cfg".text = ''
     [xin_-1]
-    file=${treeDir}/assets/wallpaper.jpg
+    file=${prefs.user.treeDir}/assets/wallpaper.jpg
     mode=5
     bgcolor=#000000
     '';

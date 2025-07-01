@@ -1,4 +1,4 @@
-{treeDir, ...}: {
+{prefs, ...}: {
   home = {
     username = "aranea";
     homeDirectory = "/home/aranea";
@@ -25,15 +25,15 @@
     fish = {
       enable = true;
       shellAliases = {
-        "nfu" = "sudo nix flake update --flake ${treeDir} && nix flake check ${treeDir}";
-        "nrs" = "sudo nixos-rebuild switch --flake ${treeDir}";
+        "nfu" = "sudo nix flake update --flake ${prefs.data.treeDir} && nix flake check ${prefs.data.treeDir}";
+        "nrs" = "sudo nixos-rebuild switch --flake ${prefs.data.treeDir}";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
         "kimg" = "kitty +kitten icat";
         "kdiff" = "kitty +kitten diff";
         "kssh" = "kitty +kitten ssh";
-        "nixconf" = "nvim ${treeDir}";
-        "flake-locate" = "echo ${treeDir}";
+        "nixconf" = "nvim ${prefs.data.treeDir}";
+        "flake-locate" = "echo ${prefs.data.treeDir}";
       };
       shellInit = ''
         set -g fish_greeting ""
