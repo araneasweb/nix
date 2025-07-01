@@ -127,7 +127,7 @@
     }
 
     #tray {
-      background: #CBA6F7;
+      color: #CBA6F7;
     }
 
     #clock.date {
@@ -207,6 +207,7 @@
       ];
 
       modules-right = [
+        "tray"
         "custom/arrow9"
         "pulseaudio"
         "custom/arrow8"
@@ -224,6 +225,11 @@
         "custom/arrow1"
         "clock#time"
       ];
+
+      tray = {
+        icon-size = 18;
+        spacing = 5;
+      };
 
       battery = {
         interval = 10;
@@ -353,10 +359,6 @@
           deactivated = "";
         };
         tooltip = false;
-      };
-
-      tray = {
-        icon-size = 18;
       };
 
       "custom/arrow1" = {

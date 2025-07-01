@@ -196,6 +196,7 @@
       racket
       ranger
       ripgrep
+      rustdesk
       swi-prolog-gui
       texlive.combined.scheme-full
       udiskie
@@ -213,6 +214,7 @@
       zoom-us
     ];
     sessionVariables = {
+      NIXPKGS_ALLOW_UNFREE = 1;
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";

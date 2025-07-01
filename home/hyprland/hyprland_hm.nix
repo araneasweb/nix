@@ -17,8 +17,7 @@
           source = "/etc/nixos/home/hyprland/macchiato.conf";
           workspace = "special:scratchpad, on-created-empty:[float] kitty --class scratchpad-terminal";
           windowrulev2 = [
-            "suppressevent maximize, class:.*" 
-            "noborder, fullscreen:1"
+            "suppressevent maximize, class:.*"
             "float,class:^(scratchpad-terminal)$"
             "size 60% 60%,class:^(scratchpad-terminal)$"
             "center,class:^(scratchpad-terminal)$"
@@ -39,7 +38,9 @@
             "SUPER, L, movefocus, r"
             "SUPER, K, movefocus, u"
             "SUPER, J, movefocus, d"
-            "SUPER, H, exec, cliphist list | wofi --dmenu --allow-images | cliphist decode | wl-copy"
+            "SUPER, Q, exec, hyprctl reload"
+            "SUPER, P, exec, hyprpicker -a -l -q"
+            "SUPER, I, exec, cliphist list | wofi --dmenu --allow-images | cliphist decode | wl-copy"
             "SUPER SHIFT, V, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 60% 60% && hyprctl dispatch center"
             "SUPER, 1, workspace, 1"
             "SUPER, 2, workspace, 2"
@@ -102,10 +103,10 @@
             kb_options = "caps:swapescape,compose:ralt";
             follow_mouse = 1;
             touchpad = {
-                disable_while_typing = false;
-                clickfinger_behavior = true;
-                tap-to-click = true;
-                natural_scroll = true;
+              disable_while_typing = false;
+              clickfinger_behavior = true;
+              tap-to-click = true;
+              natural_scroll = true;
             };
             sensitivity = 0;
           };
