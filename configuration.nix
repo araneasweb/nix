@@ -217,6 +217,7 @@
       GTK_IM_MODULE = "ibus";
       QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
+      INPUT_METHOD = "ibus";
     };
   };
 
@@ -251,6 +252,7 @@
       "/etc/ssl/certs/ubc_cert.crt"
     ];
     rtkit.enable = true;
+    polkit.enable = true;
   };
 
   virtualisation = {

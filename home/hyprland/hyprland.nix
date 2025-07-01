@@ -5,7 +5,10 @@
   ...
 }: {
   programs = {
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
   };
   environment = {
     systemPackages = with pkgs; [
@@ -18,6 +21,7 @@
       hyprshot
       networkmanagerapplet
       hyprpicker
+      hyprpolkitagent
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -26,5 +30,9 @@
       HYPRCURSOR_SIZE = "24";
       QT_QPA_PLATFORMTHEME = "qt6ct";
     };
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 }
