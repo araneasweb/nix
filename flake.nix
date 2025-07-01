@@ -36,6 +36,7 @@
     #impermanence,
     ...
   } @ inputs: let
+    lib = nixpkgs.lib;
     prefs = {
       data = {
         username = "aranea";
@@ -47,7 +48,7 @@
       };
     };
   in {
-    nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.t480 = lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs prefs;
@@ -76,16 +77,8 @@
                   catppuccin.homeModules.catppuccin
                   #impermanence.homeModules.impermanence
                 ]
-                ++ (
-                  if prefs.settings.useHyprland
-                  then [./home/hyprland/hyprland_hm.nix]
-                  else []
-                )
-                ++ (
-                  if prefs.settings.useXmonad
-                  then [./home/xmonad/xmonad_hm.nix]
-                  else []
-                );
+                ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
+                ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
             };
           };
         }

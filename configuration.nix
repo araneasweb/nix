@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   prefs,
+  lib,
   ...
 }: {
   imports =
@@ -13,16 +14,8 @@
       ./modules/rust.nix
       ./modules/reverse-engineering.nix
     ]
-    ++ (
-      if prefs.settings.useHyprland
-      then [./home/hyprland/hyprland.nix]
-      else []
-    )
-    ++ (
-      if prefs.settings.useXmonad
-      then [./home/xmonad/xmonad.nix]
-      else []
-    );
+    ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland.nix)
+    ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad.nix);
 
   boot.loader = {
     systemd-boot.enable = true;
