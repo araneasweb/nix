@@ -2,6 +2,7 @@
   config,
   pkgs,
   prefs,
+  inputs,
   ...
 }: {
   programs = {
@@ -12,6 +13,9 @@
     windowManager = {
       hyprland = {
         enable = true;
+        plugins = [
+          # inputs.hyprland-easymotion.packages.${pkgs.system}.hyprland-easymotion
+        ];
         settings = {
           monitor = ",highres,auto,1";
           source = "/etc/nixos/home/hyprland/macchiato.conf";
