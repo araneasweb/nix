@@ -1,7 +1,7 @@
 {prefs, ...}: {
   home = {
-    username = "aranea";
-    homeDirectory = "/home/aranea";
+    username = prefs.data.username;
+    homeDirectory = "/home/${prefs.data.username}";
     stateVersion = "25.05";
     file.".Xcompose" = {
       source = ./dotfiles/Xcompose;

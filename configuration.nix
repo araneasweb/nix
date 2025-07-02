@@ -58,7 +58,7 @@
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/home/aranea/.config/sops/age/keys.txt";
+    age.keyFile = "/home/${prefs.data.username}/.config/sops/age/keys.txt";
     secrets = {
       aranea_password = {
         neededForUsers = true;
@@ -80,7 +80,7 @@
       enable = true;
       settings = {
         default_session = {
-          user = "aranea";
+          user = prefs.data.username;
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --remember";
         };
       };
@@ -127,9 +127,9 @@
     };
   };
 
-  users.users.aranea = {
+  users.users.${prefs.data.username} = {
     isNormalUser = true;
-    description = "aranea";
+    description = prefs.data.username;
     extraGroups = ["networkmanager" "wheel" "podman" "vboxusers"];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
@@ -215,7 +215,7 @@
       XDG_TERMINAL = "kitty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
-      XCOMPOSEFILE = "${config.users.users.aranea.home}/.Xcompose";
+      XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.Xcompose";
       GTK_IM_MODULE = "ibus";
       QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";

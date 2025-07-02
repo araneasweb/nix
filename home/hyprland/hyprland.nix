@@ -21,7 +21,6 @@
       wl-clipboard
       hyprcursor
       hyprshot
-      networkmanagerapplet
       hyprpicker
       hyprpolkitagent
     ];

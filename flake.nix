@@ -75,7 +75,7 @@
             extraSpecialArgs = {
               inherit inputs prefs;
             };
-            users.aranea = {
+            users.${prefs.data.username} = {
               imports =
                 [
                   ./home/home.nix
