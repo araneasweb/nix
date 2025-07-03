@@ -15,7 +15,7 @@
       ./modules/reverse-engineering.nix
     ]
     ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland.nix)
-    ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad.nix);
+    ++ (lib.optional prefs.settings.useXmonad   ./home/xmonad/xmonad.nix);
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -100,6 +100,7 @@
         support32Bit = true;
       };
       pulse.enable = true;
+      jack.enable = true;
     };
   };
 
@@ -172,14 +173,12 @@
       inetutils
       killall
       kitty
-      krita
       lean4
       libreoffice-qt
       libselinux
       nasm
       nil
       nix-index
-      nnn
       ocaml
       onefetch
       openjdk
@@ -198,7 +197,6 @@
       upower
       util-linux
       valgrind
-      vim
       vscode
       wget
       xarchiver

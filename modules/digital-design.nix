@@ -8,6 +8,8 @@
     gimp
     inkscape
     graphviz
+    krita
+    audacity
   ];
 }
 
