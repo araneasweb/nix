@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+_: {
   programs.nvf = {
     enable = true;
     settings = {

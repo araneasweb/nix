@@ -2,7 +2,6 @@
   config,
   pkgs,
   prefs,
-  inputs,
   ...
 }: {
   programs = {
