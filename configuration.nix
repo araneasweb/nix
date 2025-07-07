@@ -15,7 +15,7 @@
       ./modules/reverse-engineering.nix
     ]
     ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland.nix)
-    ++ (lib.optional prefs.settings.useXmonad   ./home/xmonad/xmonad.nix);
+    ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad.nix);
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -33,6 +33,9 @@
         TTYReset = true;
         TTYVHangup = true;
         TTYVTDisallocate = true;
+      };
+      geoclue2 = {
+        enable = true;
       };
     };
   };
@@ -187,7 +190,6 @@
       pkg-config
       prismlauncher
       racket
-      ranger
       ripgrep
       rustdesk
       swi-prolog-gui
@@ -202,6 +204,7 @@
       xarchiver
       xdg-user-dirs
       xorg.libX11
+      yazi
       zip
       zoom-us
     ];

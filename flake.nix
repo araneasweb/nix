@@ -79,7 +79,9 @@
               imports =
                 [
                   ./home/home.nix
+                  ./home/modules/zen-browser-hm.nix
                   catppuccin.homeModules.catppuccin
+                  inputs.zen-browser.homeModules.beta
                   #impermanence.homeModules.impermanence
                 ]
                 ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
