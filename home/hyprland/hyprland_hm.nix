@@ -2,6 +2,7 @@
   config,
   pkgs,
   prefs,
+  inputs,
   ...
 }: {
   programs = {
@@ -91,6 +92,7 @@
             "wl-paste --type image --watch cliphist store"
             "udiskie"
             "ibus-daemon -drx"
+            "systemctl --user start hyprpolkitagent"
           ];
           general = {
             gaps_in = 0;

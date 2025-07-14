@@ -26,7 +26,7 @@
       enable = true;
       shellAliases = {
         "nfu" = "sudo nix flake update --flake ${prefs.data.treeDir} && nix flake check ${prefs.data.treeDir}";
-        "nrs" = "sudo nixos-rebuild switch --flake ${prefs.data.treeDir}";
+        "nrs" = "nixos-rebuild switch --sudo --flake ${prefs.data.treeDir} --log-format multiline";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
         "kimg" = "kitty +kitten icat";

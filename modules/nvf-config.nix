@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -7,64 +7,67 @@ _: {
         lsp = {
           enable = true;
           formatOnSave = true;
-          lspkind.enable = false;
-          lightbulb.enable = true;
-          lspsaga.enable = false;
+          lspkind.enable = true;
+          lspsaga.enable = true;
           trouble.enable = true;
           lspSignature.enable = true;
           otter-nvim.enable = true;
           nvim-docs-view.enable = true;
+          inlayHints.enable = true;
+          mappings = {
+            codeAction = "<leader>lta";
+          };
         };
         diagnostics = {
+          nvim-lint.enable = true;
           config = {
             virtual_lines = true;
           };
         };
-        languages = {
-          enableFormat = true;
-          enableTreesitter = true;
-          enableExtraDiagnostics = true;
-          nix.enable = true;
-          markdown = {
-            enable = true;
-            extensions.render-markdown-nvim.enable = true;
-          };
-          bash.enable = true;
-          clang.enable = true;
-          css.enable = true;
-          html.enable = true;
-          sql.enable = true;
-          java.enable = true;
-          kotlin.enable = true;
-          ts.enable = true;
-          go.enable = true;
-          lua.enable = true;
-          zig.enable = true;
-          python.enable = true;
-          typst.enable = true;
-          rust = {
-            enable = true;
-            crates.enable = true;
-          };
-          assembly.enable = true;
-          astro.enable = true;
-          nu.enable = true;
-          csharp.enable = true;
-          julia.enable = true;
-          vala.enable = true;
-          scala.enable = true;
-          r.enable = true;
-          gleam.enable = true;
-          ocaml.enable = true;
-          elixir.enable = true;
-          haskell = {
+        languages = let
+          standardLangs = [
+            "bash"
+            "clang"
+            "css"
+            "html"
+            "sql"
+            "java"
+            "ts"
+            "go"
+            "lua"
+            "python"
+            "assembly"
+            "scala"
+            "r"
+            "ocaml"
+            "haskell"
+            "nix"
+          ];
+        in
+          {
+            enableFormat = true;
+            enableTreesitter = true;
+            enableExtraDiagnostics = true;
+          }
+          // lib.genAttrs standardLangs (_: {
             enable = true;
             treesitter.enable = true;
+          })
+          // {
+            markdown = {
+              enable = true;
+              treesitter.enable = true;
+              extensions."render-markdown-nvim".enable = true;
+            };
+            rust = {
+              enable = true;
+              treesitter.enable = true;
+              crates.enable = true;
+            };
           };
-          ruby.enable = true;
-          tailwind.enable = true;
-          svelte.enable = true;
-          nim.enable = true;
+        treesitter = {
+          enable = true;
+          fold = true;
         };
         visuals = {
           nvim-scrollbar.enable = true;
@@ -91,9 +94,33 @@ _: {
         autopairs.nvim-autopairs.enable = true;
         autocomplete.nvim-cmp.enable = true;
         snippets.luasnip.enable = true;
-        filetree = {
-          neo-tree = {
-            enable = true;
+        filetree.neo-tree = {
+          enable = true;
+          setupOpts = {
+            enable_git_status = true;
+            enable_diagnostics = true;
+            enable_modified_markers = true;
+            open_files_in_last_window = true;
+            window = {
+              position = "left";
+              width = 30;
+              mappings = {
+                " " = "noop";
+              };
+            };
+            filesystem = {
+              filtered_items = {
+                visible = true;
+                hide_dotfiles = false;
+                hide_gitignored = false;
+                hide_hidden = false;
+              };
+              follow_current_file = {
+                enabled = true;
+                leave_dirs_open = false;
+              };
+              hijack_netrw_behavior = "open_default";
+            };
           };
         };
         tabline = {
@@ -118,30 +145,20 @@ _: {
           project-nvim.enable = true;
         };
         utility = {
-          ccc.enable = false;
-          vim-wakatime.enable = false;
           icon-picker.enable = true;
           surround.enable = true;
           diffview-nvim.enable = true;
-          yanky-nvim.enable = false;
           motion = {
-            hop.enable = true;
             leap.enable = true;
-            precognition.enable = true;
           };
           images = {
             image-nvim.enable = false;
           };
         };
         terminal = {
-          toggleterm = {
-            enable = true;
-            lazygit.enable = true;
-          };
+          toggleterm.enable = true;
         };
         ui = {
-          borders.enable = true;
-          noice.enable = true;
           colorizer.enable = true;
           modes-nvim.enable = false;
           illuminate.enable = true;
@@ -149,16 +166,58 @@ _: {
             enable = true;
             navbuddy.enable = true;
           };
-          fastaction.enable = true;
-        };
-        presence = {
-          neocord = {
-            enable = true;
-            setupOpts.logo_tooltip = "fangirling";
-          };
         };
         comments = {
           comment-nvim.enable = true;
+        };
+        maps = {
+          normal = {
+            "<leader>la" = {
+              action = "<cmd>Lspsaga code_action<CR>";
+              desc = "Code action";
+              noremap = true;
+            };
+            "<leader>e" = {
+              action = ":Neotree toggle<CR>";
+              desc = "Toggle Neotree";
+            };
+            "<leader>bd" = {
+              action = ":bdelete<CR>";
+              desc = "Close buffer";
+            };
+          };
+          insert = {
+            "<C-BS>" = {
+              action = "<C-w>";
+              desc = "Delete word backward";
+            };
+          };
+        };
+        options = {
+          ignorecase = true;
+          smartcase = true;
+          scrolloff = 8;
+          wrap = false;
+          list = true;
+          number = true;
+          relativenumber = true;
+          hlsearch = false;
+          termguicolors = true;
+          cursorline = true;
+          showmode = false;
+          undofile = true;
+          shiftwidth = 2;
+          smarttab = true;
+          shiftround = true;
+          expandtab = true;
+          foldlevelstart = 99;
+          updatetime = 1000;
+          inccommand = "split";
+        };
+        globals = {
+          have_nerd_font = true;
+          mapleader = " ";
+          maplocalleader = " ";
         };
       };
     };
