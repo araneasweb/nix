@@ -1,4 +1,9 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -19,8 +24,10 @@
           };
         };
         diagnostics = {
+          enable = true;
           nvim-lint.enable = true;
           config = {
+            virtual_text = false;
             virtual_lines = true;
           };
         };
@@ -197,6 +204,7 @@
           ignorecase = true;
           smartcase = true;
           scrolloff = 8;
+          # virtualedit = "all";
           wrap = false;
           list = true;
           number = true;
@@ -218,6 +226,18 @@
           have_nerd_font = true;
           mapleader = " ";
           maplocalleader = " ";
+        };
+        extraPlugins = {
+          scrolleof = {
+            package = pkgs.vimUtils.buildVimPlugin {
+              pname = "scrollEOF-nvim";
+              version = "unstable";
+              src = inputs.scrolleof-nvim;
+            };
+            setup = ''
+              require('scrollEOF').setup()
+            '';
+          };
         };
       };
     };

@@ -171,11 +171,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752449767,
-        "narHash": "sha256-P8mQIrgIImASTlNkHPfKwGTmyZgku8EUt6cF52s3N/Y=",
+        "lastModified": 1752467539,
+        "narHash": "sha256-4kaR+xmng9YPASckfvIgl5flF/1nAZOplM+Wp9I5SMI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1a4d8ffd320c2393b72e7ebc5b647122d5703056",
+        "rev": "1e54837569e0b80797c47be4720fab19e0db1616",
         "type": "github"
       },
       "original": {
@@ -633,9 +633,26 @@
         "lix-module": "lix-module",
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
+        "scrolleof-nvim": "scrolleof-nvim",
         "sops-nix": "sops-nix",
         "xmonad-contexts": "xmonad-contexts",
         "zen-browser": "zen-browser"
+      }
+    },
+    "scrolleof-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748678840,
+        "narHash": "sha256-hHoS5WgIsbuVEOUbUBpDRxIwdNoR/cAfD+hlBWzaxug=",
+        "owner": "Aasim-A",
+        "repo": "scrollEOF.nvim",
+        "rev": "2575109749b4bf3a0bf979a17947b3c1e8c5137e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Aasim-A",
+        "repo": "scrollEOF.nvim",
+        "type": "github"
       }
     },
     "sops-nix": {
@@ -766,11 +783,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1752441511,
-        "narHash": "sha256-1CaGtMQ/UhlBfXzdDF2uK0yXPgzTy43qDYTQaV6GrjE=",
+        "lastModified": 1752468108,
+        "narHash": "sha256-fOCyGg3nv2C9dC3W1WjU38iS8JmQ9+T/WPi29ssHZK4=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "d9c8ac0065e977a6776bed89909d82d58b297c65",
+        "rev": "ea79cbda8e685dd0f9c6e88adcfa7762a83e9067",
         "type": "github"
       },
       "original": {

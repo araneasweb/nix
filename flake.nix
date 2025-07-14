@@ -27,6 +27,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    scrolleof-nvim = {
+      url = "github:Aasim-A/scrollEOF.nvim";
+      flake = false;
+    };
     #impermanence.url = "github:nix-community/impermanence";
   };
 
@@ -37,11 +41,11 @@
     home-manager,
     nvf,
     sops-nix,
-    xmonad-contexts,
+    scrolleof-nvim,
     #impermanence,
     ...
   } @ inputs: let
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
     prefs = {
       data = {
         username = "aranea";
