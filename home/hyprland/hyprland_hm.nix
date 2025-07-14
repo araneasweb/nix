@@ -2,7 +2,6 @@
   config,
   pkgs,
   prefs,
-  inputs,
   ...
 }: {
   programs = {
@@ -30,7 +29,7 @@
           bind = [
             "SUPER, T, exec, kitty"
             "SUPER, F, exec, zen-beta"
-            "SUPER, C, exec, code"
+            "SUPER, C, exec, kitty nvim"
             "SUPER, D, exec, discord"
             "SUPER, W, killactive,"
             "SUPER, M, exit,"
@@ -68,6 +67,7 @@
             "SUPER SHIFT, 8, movetoworkspace, 8"
             "SUPER SHIFT, 9, movetoworkspace, 9"
             "SUPER SHIFT, 0, movetoworkspace, 1"
+            "SUPER SHIFT, Q, exec, kitty nvim ${prefs.data.treeDir}"
             "SUPER, Tab, workspace, m+1"
             "SUPER SHIFT, Tab, workspace, m-1"
             "SUPER, PRINT, exec, hyprshot -m window"
