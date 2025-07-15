@@ -154,7 +154,7 @@
       coq
       curl
       dconf
-      (discord.override {withVencord = true;})
+      discord
       (dyalog.override {acceptLicense = true;})
       fastfetch
       fd

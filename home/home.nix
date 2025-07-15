@@ -1,6 +1,6 @@
 {prefs, ...}: {
   home = {
-    username = prefs.data.username;
+    inherit (prefs.data) username;
     homeDirectory = "/home/${prefs.data.username}";
     stateVersion = "25.05";
     file.".Xcompose" = {
@@ -34,6 +34,7 @@
         "kssh" = "kitty +kitten ssh";
         "nixconf" = "nvim ${prefs.data.treeDir}";
         "flake-locate" = "echo ${prefs.data.treeDir}";
+        "fzg" = "rg . | fzf --print0 -e";
       };
       shellInit = ''
         set -g fish_greeting ""
