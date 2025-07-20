@@ -192,6 +192,10 @@
               action = ":bdelete<CR>";
               desc = "Close buffer";
             };
+            "<leader>gb" = {
+              action = ":Gitsigns blame<CR>";
+              desc = "Git Blame File";
+            };
           };
           insert = {
             "<C-BS>" = {

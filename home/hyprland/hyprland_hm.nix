@@ -108,6 +108,10 @@
             ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
             ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
             ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+            "SUPER ALT, L, resizeactive, 10 0"
+            "SUPER ALT, H, resizeactive, -10 0"
+            "SUPER ALT, K, resizeactive, 0 -10"
+            "SUPER ALT, J, resizeactive, 0 10"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"
@@ -164,6 +168,9 @@
           };
           cursor = {
             inactive_timeout = 3;
+          };
+          ecosystem = {
+            no_donation_nag = true;
           };
           misc = {
             force_default_wallpaper = -1;
