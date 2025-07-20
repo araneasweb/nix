@@ -46,6 +46,7 @@
             "size 60% 60%,class:^(scratchpad-terminal)$"
             "center,class:^(scratchpad-terminal)$"
             "workspace special:scratchpad,class:^(scratchpad-terminal)$"
+            "noborder, onworkspace:w[t1]"
           ];
           bind = [
             "SUPER, T, exec, kitty"
@@ -124,7 +125,7 @@
           general = {
             gaps_in = 0;
             gaps_out = 0;
-            border_size = 0;
+            border_size = 1;
             "col.active_border" = "$pink $lavender $mauve 135deg";
             "col.inactive_border" = "$overlay0 $surface2 $surface0 45deg";
             layout = "dwindle";
@@ -160,6 +161,9 @@
           };
           xwayland = {
             force_zero_scaling = true;
+          };
+          cursor = {
+            inactive_timeout = 3;
           };
           misc = {
             force_default_wallpaper = -1;
