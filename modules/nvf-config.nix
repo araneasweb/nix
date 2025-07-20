@@ -242,6 +242,9 @@
             package = pkgs.vimPlugins.switch-vim;
           };
         };
+        luaConfigPost = ''
+          require'lspconfig'.racket_langserver.setup{}
+        '';
       };
     };
   };
