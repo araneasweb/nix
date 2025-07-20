@@ -179,7 +179,6 @@
       lean4
       libreoffice-qt
       libselinux
-      nasm
       nil
       nix-index
       ocaml
@@ -187,7 +186,6 @@
       openjdk
       p11-kit
       pinentry-all
-      pkg-config
       prismlauncher
       racket
       ripgrep
@@ -199,7 +197,6 @@
       upower
       util-linux
       valgrind
-      vscode
       wget
       xarchiver
       xdg-user-dirs

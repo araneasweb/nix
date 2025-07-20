@@ -92,9 +92,7 @@
   '';
 
   catppuccin = {
-    kvantum.enable = true;
-    nvim.enable = true;
-    kitty.enable = true;
-    rofi.enable = true;
+    enable = true;
+    hyprland.enable = false;
   };
 }

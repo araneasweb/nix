@@ -4,6 +4,27 @@
   prefs,
   ...
 }: {
+  home = {
+    packages = with pkgs; [
+      waybar
+      wofi
+      hyprpaper
+      cliphist
+      wl-clipboard
+      hyprcursor
+      hyprshot
+      hyprpicker
+      hyprpolkitagent
+    ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      HYPRCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
+      HYPRCURSOR_SIZE = "24";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+    };
+  };
+
   programs = {
     waybar = import ./waybar.nix {inherit config pkgs;};
   };
@@ -80,6 +101,8 @@
           binde = [
             ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
             ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
+            ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+            ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"

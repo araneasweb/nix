@@ -27,8 +27,8 @@
           enable = true;
           nvim-lint.enable = true;
           config = {
-            virtual_text = false;
-            virtual_lines = true;
+            virtual_text = true;
+            virtual_lines = false;
           };
         };
         languages = let
@@ -237,6 +237,9 @@
             setup = ''
               require('scrollEOF').setup()
             '';
+          };
+          switch-vim = {
+            package = pkgs.vimPlugins.switch-vim;
           };
         };
       };

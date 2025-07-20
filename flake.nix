@@ -16,8 +16,12 @@
       flake = false;
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix = {
+        url = "git+https://git.lix.systems/lix-project/lix";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
     nvf = {
       url = "github:notashelf/nvf";
@@ -41,7 +45,6 @@
     home-manager,
     nvf,
     sops-nix,
-    scrolleof-nvim,
     #impermanence,
     ...
   } @ inputs: let
