@@ -179,6 +179,8 @@
       lean4
       libreoffice-qt
       libselinux
+      man-pages
+      man-pages-posix
       nil
       nix-index
       ocaml
@@ -220,6 +222,13 @@
       XMODIFIERS = "@im=ibus";
       INPUT_METHOD = "ibus";
     };
+  };
+
+  documentation = {
+    man = {
+      generateCaches = false;
+    };
+    dev.enable = true;
   };
 
   swapDevices = [
