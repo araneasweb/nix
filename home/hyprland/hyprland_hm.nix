@@ -51,7 +51,7 @@
             "SUPER, T, exec, kitty"
             "SUPER, F, exec, zen-beta"
             "SUPER, C, exec, kitty nvim"
-            "SUPER, D, exec, discord"
+            "SUPER, D, exec, vesktop"
             "SUPER, W, killactive,"
             "SUPER, M, exit,"
             "SUPER, E, exec, thunar"
@@ -152,11 +152,8 @@
           };
           decoration = {
             rounding = 0;
-            blur = {
-              enabled = true;
-              size = 3;
-              passes = 1;
-            };
+            blur.enabled = false;
+            shadow.enabled = false;
           };
           master = {
             new_status = "master";
@@ -167,6 +164,7 @@
           misc = {
             force_default_wallpaper = -1;
             disable_hyprland_logo = true;
+            vfr = true;
           };
         };
       };

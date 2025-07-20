@@ -70,12 +70,12 @@
   };
 
   programs = {
+    fish.enable = true;
+    ssh.askPassword = "";
+    starship.enable = true;
+    steam.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
-    steam.enable = true;
-    fish.enable = true;
-    starship.enable = true;
-    ssh.askPassword = "";
   };
 
   services = {
@@ -154,7 +154,7 @@
       coq
       curl
       dconf
-      discord
+      vesktop
       (dyalog.override {acceptLicense = true;})
       fastfetch
       fd
@@ -190,6 +190,7 @@
       racket
       ripgrep
       rustdesk
+      sioyek
       swi-prolog-gui
       texlive.combined.scheme-full
       udiskie
