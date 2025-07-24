@@ -33,18 +33,19 @@
         "kdiff" = "kitty +kitten diff";
         "kssh" = "kitty +kitten ssh";
         "nixconf" = "nvim ${prefs.data.treeDir}";
-        "flake-locate" = "echo ${prefs.data.treeDir}";
+        "tlocale" = prefs.data.treeDir;
         "fzg" = "rg . | fzf --print0 -e";
+        "reload" = "source ~/.config/fish/config.fish";
       };
       shellInit = ''
         set -g fish_greeting ""
       '';
       interactiveShellInit = ''
-        hyfetch
+        nix-your-shell fish | source
       '';
       functions = {
         rungcc = ''
-          if test (count $argv) -eq 0
+          if test (count $argv) -ne 1
               echo "Usage: rungcc filename"
               return 1
           end
@@ -67,6 +68,14 @@
           end
           set pkgs (for arg in $argv; echo nixpkgs#$arg; end)
           nix shell $pkgs
+        '';
+        ndv = ''
+          if test (count $argv) -ne 1
+            echo "Usage: ndv envname"
+            return 1
+          end
+          set envname $argv[1]
+          nix flake init -t ${prefs.data.treeDir}/devflakes#$envname
         '';
       };
     };

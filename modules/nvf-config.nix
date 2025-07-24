@@ -196,6 +196,14 @@
               action = ":Gitsigns blame<CR>";
               desc = "Git Blame File";
             };
+            "<leader>fn" = {
+              action = ":Telescope file_browser<CR>";
+              desc = "File Browser";
+            };
+            "<leader>fi" = {
+              action = ":Telescope file_browser path=%:p:h select_buffer=true<CR>";
+              desc = "File Browser Buffer";
+            };
           };
           insert = {
             "<C-BS>" = {
@@ -244,6 +252,9 @@
           };
           switch-vim = {
             package = pkgs.vimPlugins.switch-vim;
+          };
+          telescope-file-browser-nvim = {
+            package = pkgs.vimPlugins.telescope-file-browser-nvim;
           };
         };
         luaConfigPost = ''

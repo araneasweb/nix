@@ -183,6 +183,7 @@
       man-pages-posix
       nil
       nix-index
+      nix-your-shell
       ocaml
       onefetch
       openjdk

@@ -11,6 +11,7 @@
     haskellPackages.hoogle
     haskellPackages.ghcid
     haskellPackages.implicit-hie
+    haskellPackages.cabal-gild
   ];
 
   environment.variables = {
