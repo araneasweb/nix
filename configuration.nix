@@ -155,7 +155,6 @@
       curl
       dconf
       vesktop
-      (dyalog.override {acceptLicense = true;})
       fastfetch
       fd
       feh
@@ -192,7 +191,6 @@
       prismlauncher
       racket
       ripgrep
-      rustdesk
       sioyek
       swi-prolog-gui
       texlive.combined.scheme-full

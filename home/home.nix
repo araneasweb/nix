@@ -33,7 +33,7 @@
         "kdiff" = "kitty +kitten diff";
         "kssh" = "kitty +kitten ssh";
         "nixconf" = "nvim ${prefs.data.treeDir}";
-        "tlocale" = prefs.data.treeDir;
+        "tlocale" = "echo ${prefs.data.treeDir}";
         "fzg" = "rg . | fzf --print0 -e";
         "reload" = "source ~/.config/fish/config.fish";
       };
