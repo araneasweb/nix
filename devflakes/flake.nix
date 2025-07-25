@@ -10,6 +10,9 @@
       apl = {
         path = ./apl;
       };
+      ocaml = {
+        path = ./ocaml;
+      };
     };
   };
 }

@@ -183,7 +183,6 @@
       nil
       nix-index
       nix-your-shell
-      ocaml
       onefetch
       openjdk
       p11-kit
@@ -220,6 +219,7 @@
       QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
       INPUT_METHOD = "ibus";
+      EDITOR = "nvim";
     };
   };
 
