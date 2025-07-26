@@ -8,6 +8,10 @@
             "Value" = false;
             "Status" = "locked";
           };
+          "layout.css.devPixelsPerPx" = {
+            "Value" = "0.9";
+            "Status" = "locked";
+          };
         };
       };
       profiles.${prefs.data.username} = {
@@ -19,7 +23,7 @@
           "zen.urlbar.behavior" = "float";
           "zen.view.compact.hide-toolbar" = true;
           "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
-          "zen.view.compact.toolbar-flash-popup" = true;
+          "zen.view.compact.toolbar-flash-popup" = false;
           "zen.view.experimental-no-window-controls" = true;
           "zen.view.hide-window-controls" = true;
           "zen.view.show-newtab-button-top" = false;

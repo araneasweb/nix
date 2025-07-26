@@ -132,7 +132,7 @@
           };
         };
         tabline = {
-          nvimBufferline.enable = true;
+          nvimBufferline.enable = false;
         };
         treesitter.context.enable = true;
         binds = {

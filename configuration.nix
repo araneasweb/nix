@@ -200,6 +200,7 @@
       upower
       util-linux
       valgrind
+      vim
       wget
       xarchiver
       xdg-user-dirs
