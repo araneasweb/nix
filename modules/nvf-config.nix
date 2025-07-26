@@ -9,6 +9,7 @@
     settings = {
       vim = {
         viAlias = true;
+        vimAlias = false;
         lsp = {
           enable = true;
           formatOnSave = true;
@@ -102,7 +103,7 @@
         autocomplete.nvim-cmp.enable = true;
         snippets.luasnip.enable = true;
         filetree.neo-tree = {
-          enable = true;
+          enable = false;
           setupOpts = {
             enable_git_status = true;
             enable_diagnostics = true;
@@ -138,7 +139,28 @@
           whichKey.enable = true;
           cheatsheet.enable = true;
         };
-        telescope.enable = true;
+        telescope = {
+          enable = true;
+          setupOpts = {
+            pickers = {
+              find_files = {
+                find_command = [
+                  "${pkgs.fd}/bin/fd"
+                  "--type=file"
+                  "--hidden"
+                  "--no-ignore"
+                  "--exclude=.git"
+                ];
+              };
+            };
+          };
+          extensions = [
+            {
+              name = "file_browser";
+              packages = [pkgs.vimPlugins.telescope-file-browser-nvim];
+            }
+          ];
+        };
         git = {
           enable = true;
           gitsigns.enable = true;
@@ -197,7 +219,7 @@
               desc = "Git Blame File";
             };
             "<leader>fn" = {
-              action = ":Telescope file_browser<CR>";
+              action = ":lua require('telescope').extensions.file_browser.file_browser({hidden={file_browser=true, folder_browser=true}, respect_gitignore=false, no_ignore=true})<CR>";
               desc = "File Browser";
             };
             "<leader>fi" = {
@@ -216,7 +238,6 @@
           ignorecase = true;
           smartcase = true;
           scrolloff = 8;
-          # virtualedit = "all";
           wrap = false;
           list = true;
           number = true;
@@ -253,12 +274,18 @@
           switch-vim = {
             package = pkgs.vimPlugins.switch-vim;
           };
-          telescope-file-browser-nvim = {
-            package = pkgs.vimPlugins.telescope-file-browser-nvim;
-          };
         };
         luaConfigPost = ''
           require'lspconfig'.racket_langserver.setup{}
+
+          local arg = vim.fn.argv(0)
+          if arg and arg ~= "" then
+            local stat = vim.loop.fs_stat(arg)
+            if stat then
+              local dir = stat.type == "directory" and arg or vim.fn.fnamemodify(arg, ":h")
+              vim.cmd("cd " .. vim.fn.fnameescape(dir))
+            end
+          end
         '';
       };
     };

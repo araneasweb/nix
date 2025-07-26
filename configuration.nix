@@ -151,6 +151,7 @@
       catppuccin-papirus-folders
       cheese
       clang
+      universal-ctags
       coq
       curl
       dconf
@@ -181,6 +182,7 @@
       man-pages
       man-pages-posix
       nil
+      nixfmt-rfc-style
       nix-index
       nix-your-shell
       onefetch
