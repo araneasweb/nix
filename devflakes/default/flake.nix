@@ -5,12 +5,21 @@
 
   outputs = {nixpkgs, ...}: let
     eachSystem = f:
-      nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (system: f nixpkgs.legacyPackages.${system});
+      nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (system:
+        f {
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        });
   in {
-    devShells = eachSystem (pkgs: {
+    devShells = eachSystem ({pkgs}: {
       default = pkgs.mkShell {
-        packages = [
+        packages = with pkgs; [
         ];
+        env = {
+        };
+        shellHook = ''
+        '';
       };
     });
   };
