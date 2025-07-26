@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     ghidra
-    # scanmem
+    scanmem
     wireshark
+    radare2
   ];
 }
