@@ -179,6 +179,7 @@
       lean4
       libreoffice-qt
       libselinux
+      libqalculate
       man-pages
       man-pages-posix
       nil

@@ -160,7 +160,11 @@
           }
 
           .zen-current-workspace-indicator {
-            visibility: collapse;
+            visibility: collapse !important;
+          }
+
+          #zen-appcontent-navbar-wrapper {
+            min-height: 0px !important;
           }
         '';
         userContent = ''
