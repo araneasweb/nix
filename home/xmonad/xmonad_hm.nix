@@ -7,7 +7,7 @@
     file.".xmonad/./xmonad.hs".source = ./xmonad.hs;
     file.".config/nitrogen/bg-saved.cfg".text = ''
       [xin_-1]
-      file=${prefs.user.treeDir}/assets/wallpaper.jpg
+      file=${prefs.data.treeDir}/assets/wallpaper.jpg
       mode=5
       bgcolor=#000000
     '';

@@ -15,6 +15,7 @@
       hyprshot
       hyprpicker
       hyprpolkitagent
+      dunst
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -67,6 +68,8 @@
             "SUPER, P, exec, hyprpicker -a -l -q"
             "SUPER, I, exec, cliphist list | wofi --dmenu --allow-images | cliphist decode | wl-copy"
             "SUPER SHIFT, V, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 60% 60% && hyprctl dispatch center"
+            "SUPER, O, exec, dunstctl action && dunstctl close"
+            "SUPER SHIFT, O, exec, dunstctl close"
             "SUPER, 1, workspace, 1"
             "SUPER, 2, workspace, 2"
             "SUPER, 3, workspace, 3"
@@ -123,8 +126,9 @@
             "wl-paste --type text --watch cliphist store"
             "wl-paste --type image --watch cliphist store"
             "udiskie"
-            "ibus-daemon -drx"
+            "ibus-daemon -drx --panel disable"
             "systemctl --user start hyprpolkitagent"
+            "dunst"
           ];
           general = {
             gaps_in = 0;
@@ -192,6 +196,9 @@
           "eDP-1,${prefs.data.treeDir}/assets/wallpaper.jpg"
         ];
       };
+    };
+    dunst = {
+      enable = true;
     };
   };
 }
