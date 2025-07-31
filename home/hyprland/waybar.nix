@@ -185,7 +185,8 @@
 
       "clock#date" = {
         interval = 20;
-        format = "{:%e %b %Y}";
+        # format = "{:%e %b %Y}";
+        format = "{:%F}";
         tooltip = false;
       };
 
