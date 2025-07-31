@@ -199,6 +199,12 @@
     };
     dunst = {
       enable = true;
+      settings = {
+        global = {
+          notification_limit = 4;
+          indicate_hidden = true;
+        };
+      };
     };
   };
 }

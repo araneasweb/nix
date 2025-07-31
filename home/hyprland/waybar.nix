@@ -14,8 +14,8 @@
     #waybar {
       background: rgb(17, 17, 27);
       color: #cad3f5;
-      font-family: JetBrains Mono, "Font Awesome 6 Free";
-      font-size: 11pt;
+      font-family: Hack Nerd Font;
+      font-size: 10pt;
     }
 
     #battery,
@@ -54,72 +54,51 @@
       padding-left: 2pt;
       padding-right: 2pt;
       color: #cad3f5;
-      background: #313244;
     }
 
     #workspaces button.visible {
-      color: #cad3f5;
-      background: #24273a;
-    }
-
-    #workspaces button.focused {
-      color: #1e1e2e;
-      background: #24273a;
+      color: #cba6f7;
     }
 
     #workspaces button.urgent {
-      color: #1e1e2e;
-      background: #c6a0f6;
-    }
-
-    #workspaces button:hover {
-      background: #1e1e2e;
-      color: #cad3f5;
+      color: #f38ba8;
     }
 
     #window {
-      margin-right: 35pt;
-      margin-left: 35pt;
+      margin-right: 5pt;
+      margin-left: 10pt;
     }
 
     #idle_inhibitor {
-      background: #458588;
       color: #cad3f5;
     }
 
     #pulseaudio {
-      background: #9043EF;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #network {
-      background: #9C56F1;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #memory {
-      background: #A769F2;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #cpu {
-      background: #AD73F3;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #temperature {
-      background: #B27CF4;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #language {
-      background: #fabd2f;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #battery {
-      background: #BD8EF5;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #tray {
@@ -127,67 +106,15 @@
     }
 
     #clock.date {
-      background: #CBA6F7;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #clock.time {
-      background: #D5B6F9;
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
-    #custom-arrow1 {
-      font-size: 11pt;
-      color: #D5B6F9;
-      background: #CBA6F7;
-    }
-
-    #custom-arrow2 {
-      font-size: 11pt;
-      color: #CBA6F7;
-      background: #BD8EF5;
-    }
-
-    #custom-arrow4 {
-      font-size: 11pt;
-      color: #BD8EF5;
-      background: #B27CF4;
-    }
-
-    #custom-arrow5 {
-      font-size: 11pt;
-      color: #B27CF4;
-      background: #AD73F3;
-    }
-
-    #custom-arrow6 {
-      font-size: 11pt;
-      color: #AD73F3;
-      background: #A769F2;
-    }
-
-    #custom-arrow7 {
-      font-size: 11pt;
-      color: #A769F2;
-      background: #9C56F1;
-    }
-
-    #custom-arrow8 {
-      font-size: 11pt;
-      color: #9C56F1;
-      background: #9043EF;
-    }
-
-    #custom-arrow9 {
-      font-size: 11pt;
-      color: #9043EF;
-      background: #11111B;
-    }
-
-    #custom-arrow11 {
-      font-size: 11pt;
-      color: #313244;
-      background: #11111B;
+    #custom-arrow {
+      color: #6c7086;
     }
   '';
   settings = {
@@ -198,27 +125,28 @@
       modules-left = [
         "hyprland/mode"
         "hyprland/workspaces"
-        "custom/arrow11"
+        "custom/space"
+        "custom/arrow"
         "hyprland/window"
       ];
 
       modules-right = [
         "tray"
-        "custom/arrow9"
+        "custom/arrow"
         "pulseaudio"
-        "custom/arrow8"
+        "custom/arrow"
         "network"
-        "custom/arrow7"
+        "custom/arrow"
         "memory"
-        "custom/arrow6"
+        "custom/arrow"
         "cpu"
-        "custom/arrow5"
+        "custom/arrow"
         "temperature"
-        "custom/arrow4"
+        "custom/arrow"
         "battery"
-        "custom/arrow2"
+        "custom/arrow"
         "clock#date"
-        "custom/arrow1"
+        "custom/arrow"
         "clock#time"
       ];
 
@@ -235,8 +163,8 @@
         };
         format-time = "{H}:{M:02}";
         format = "{icon} {capacity}% ({time})";
-        format-charging = "  {capacity}% ({time})";
-        format-charging-full = "  {capacity}%";
+        format-charging = " {capacity}% ({time})";
+        format-charging-full = " {capacity}%";
         format-full = "{icon} {capacity}%";
         format-alt = "{icon} {power}W";
         format-icons = [
@@ -281,7 +209,7 @@
 
       memory = {
         interval = 5;
-        format = "   {used:0.1f}G/{total:0.1f}G";
+        format = "  {used:0.1f}G/{total:0.1f}G";
         states = {
           warning = 70;
           critical = 90;
@@ -291,10 +219,10 @@
 
       network = {
         interval = 5;
-        format-wifi = "   {essid} ({signalStrength}%)";
-        format-ethernet = "󰛳  {ifname}";
+        format-wifi = "  {essid} ({signalStrength}%)";
+        format-ethernet = "󰛳 {ifname}";
         format-disconnected = "No connection";
-        format-alt = "󰛳  {ipaddr}/{cidr}";
+        format-alt = "󰛳 {ipaddr}/{cidr}";
         tooltip = false;
       };
 
@@ -348,67 +276,13 @@
         tooltip = false;
       };
 
-      idle_inhibitor = {
-        format = "{icon}";
-        format-icons = {
-          activated = "";
-          deactivated = "";
-        };
+      "custom/arrow" = {
+        format = "//";
         tooltip = false;
       };
 
-      "custom/arrow1" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow2" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow3" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow4" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow5" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow6" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow7" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow8" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow9" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow10" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow11" = {
-        format = "";
+      "custom/space" = {
+        format = " ";
         tooltip = false;
       };
     };
