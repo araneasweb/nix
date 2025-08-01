@@ -194,6 +194,7 @@
       racket
       ripgrep
       sioyek
+      spotify
       swi-prolog-gui
       texlive.combined.scheme-full
       udiskie

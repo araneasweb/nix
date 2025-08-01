@@ -42,7 +42,7 @@
     #cpu.warning,
     #temperature.warning,
     #battery.warning.discharging {
-      color: #1e1e2e;
+      color: #cdd6f4;
     }
 
     #mode {
@@ -151,8 +151,11 @@
       ];
 
       tray = {
-        icon-size = 18;
+        icon-size = 14;
         spacing = 5;
+        icons = {
+          Spotify = "";
+        };
       };
 
       battery = {
@@ -210,7 +213,7 @@
 
       memory = {
         interval = 5;
-        format = "  {used:0.1f}G/{total:0.1f}G";
+        format = "  {used:0.1f}G";
         states = {
           warning = 70;
           critical = 90;
