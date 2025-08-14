@@ -67,11 +67,11 @@
               treesitter.enable = true;
               extensions."render-markdown-nvim".enable = true;
             };
-            rust = {
-              enable = true;
-              treesitter.enable = true;
-              crates.enable = true;
-            };
+            # rust = {
+            #   enable = true;
+            #   treesitter.enable = true;
+            #   crates.enable = true;
+            # };
           };
         treesitter = {
           enable = true;

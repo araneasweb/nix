@@ -84,7 +84,7 @@
       settings = {
         default_session = {
           user = prefs.data.username;
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --remember";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember-session --remember";
         };
       };
     };

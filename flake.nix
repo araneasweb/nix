@@ -31,11 +31,11 @@
       url = "github:Aasim-A/scrollEOF.nvim";
       flake = false;
     };
-    #impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence";
   };
   outputs = {
     nixpkgs,
-    lix-module,
+    # lix-module,
     catppuccin,
     home-manager,
     nvf,
@@ -66,7 +66,7 @@
         #./impermanence.nix
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
-        lix-module.nixosModules.default
+        # lix-module.nixosModules.default
         nvf.nixosModules.default
         sops-nix.nixosModules.sops
         #impermanence.nixosModules.impermanence
