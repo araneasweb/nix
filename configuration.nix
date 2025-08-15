@@ -9,10 +9,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/nvf-config.nix
-      ./modules/haskell.nix
-      ./modules/rust.nix
-      ./modules/reverse-engineering.nix
+      ./modules/modules.nix
     ]
     ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland.nix)
     ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad.nix);
@@ -138,6 +135,14 @@
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
     linger = true;
+  };
+
+  nosModules = {
+    haskell.enable = true;
+    rust.enable = true;
+    digitalDesign.enable = false;
+    reverseEngineering.enable = true;
+    nvf.enable = true;
   };
 
   environment = {
