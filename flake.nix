@@ -35,7 +35,7 @@
   };
   outputs = {
     nixpkgs,
-    # lix-module,
+    lix-module,
     catppuccin,
     home-manager,
     nvf,

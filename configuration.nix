@@ -70,7 +70,6 @@
     fish.enable = true;
     ssh.askPassword = "";
     starship.enable = true;
-    steam.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
   };
@@ -139,10 +138,11 @@
 
   nosModules = {
     haskell.enable = true;
-    rust.enable = true;
+    rust.enable = false;
     digitalDesign.enable = false;
-    reverseEngineering.enable = true;
+    reverseEngineering.enable = false;
     nvf.enable = true;
+    gaming.enable = true;
   };
 
   environment = {
@@ -169,7 +169,6 @@
       gdb
       gh
       git
-      github-desktop
       glibc
       gnumake
       gnupg
@@ -181,6 +180,7 @@
       inetutils
       killall
       kitty
+      lazygit
       lean4
       libreoffice-qt
       libselinux
@@ -195,7 +195,6 @@
       openjdk
       p11-kit
       pinentry-all
-      prismlauncher
       racket
       ripgrep
       sioyek
