@@ -2,10 +2,12 @@
   config,
   pkgs,
   prefs,
+  vicinae,
   ...
 }: {
   home = {
     packages = with pkgs; [
+      vicinae.packages.x86_64-linux.default
       waybar
       wofi
       hyprpaper
@@ -23,6 +25,26 @@
       HYPRCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       HYPRCURSOR_SIZE = "24";
       QT_QPA_PLATFORMTHEME = "qt6ct";
+    };
+    file.".config/vicinae/vicinae.json".text = builtins.toJSON {
+      faviconService = "none";
+      font = {
+        normal = "Hack Nerd Font Mono";
+        size = 10;
+      };
+      popToRootOnClose = true;
+      rootSearch = {
+        searchFiles = false;
+      };
+      theme = {
+        iconTheme = "Papirus-Dark";
+        name = "catppuccin-dark.json";
+      };
+      window = {
+        csd = true;
+        opacity = 1;
+        rounding = 0;
+      };
     };
   };
 
@@ -61,7 +83,7 @@
             "SUPER, M, exit,"
             "SUPER, E, exec, thunar"
             "SUPER, V, togglefloating,"
-            "SUPER, R, exec, wofi --show drun"
+            "SUPER, R, exec, vicinae"
             "SUPER, B, exec, pkill -SIGUSR1 waybar"
             "SUPER, H, movefocus, l"
             "SUPER, L, movefocus, r"
@@ -132,6 +154,7 @@
             "ibus-daemon -drx --panel disable"
             "systemctl --user start hyprpolkitagent"
             "dunst"
+            "vicinae server"
           ];
           general = {
             gaps_in = 0;
