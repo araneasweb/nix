@@ -32,7 +32,7 @@
       flake = false;
     };
     vicinae = {
-      url = "github:araneasweb/vicinae-flake";
+      url = "github:vicinaehq/vicinae";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
