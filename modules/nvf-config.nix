@@ -282,8 +282,6 @@
             };
           };
           luaConfigPost = ''
-            require'lspconfig'.racket_langserver.setup{}
-
             local arg = vim.fn.argv(0)
             if arg and arg ~= "" then
               local stat = vim.loop.fs_stat(arg)
