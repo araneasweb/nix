@@ -111,6 +111,8 @@
         ui_selected_text_color = "#cdd6f4";
         ui_selected_background_color = "#585b70";
         startup_commands = "toggle_custom_color";
+        should_launch_new_instance = "1";
+        should_launch_new_window = "1";
       };
       enable = true;
     };

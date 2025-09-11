@@ -26,26 +26,26 @@
       HYPRCURSOR_SIZE = "24";
       QT_QPA_PLATFORMTHEME = "qt6ct";
     };
-    file.".config/vicinae/vicinae.json".text = builtins.toJSON {
-      faviconService = "none";
-      font = {
-        normal = "Hack Nerd Font Mono";
-        size = 10;
-      };
-      popToRootOnClose = true;
-      rootSearch = {
-        searchFiles = false;
-      };
-      theme = {
-        iconTheme = "Papirus-Dark";
-        name = "catppuccin-dark.json";
-      };
-      window = {
-        csd = true;
-        opacity = 1;
-        rounding = 0;
-      };
-    };
+    # file.".config/vicinae/vicinae.json".text = builtins.toJSON {
+    #   faviconService = "none";
+    #   font = {
+    #     normal = "Hack Nerd Font Mono";
+    #     size = 10;
+    #   };
+    #   popToRootOnClose = true;
+    #   rootSearch = {
+    #     searchFiles = false;
+    #   };
+    #   theme = {
+    #     iconTheme = "Papirus-Dark";
+    #     name = "catppuccin-dark.json";
+    #   };
+    #   window = {
+    #     csd = true;
+    #     opacity = 1;
+    #     rounding = 0;
+    #   };
+    # };
   };
 
   programs = {
