@@ -29,6 +29,22 @@
             mappings = {
               codeAction = "<leader>lta";
             };
+            lspconfig.sources = {
+              latex = ''
+                lspconfig.texlab.setup{
+                  capabilities = capabilities,
+                  on_attach = default_on_attach,
+                  cmd = {"${pkgs.texlab}/bin/texlab"},
+                }
+              '';
+              racket = ''
+                lspconfig.racket_langserver.setup{
+                  capabilities = capabilities,
+                  on_attach = default_on_attach,
+                  cmd = {"${pkgs.racket}/bin/racket", "-l", "racket-langserver"},
+                }
+              '';
+            };
           };
           diagnostics = {
             enable = true;
@@ -82,6 +98,10 @@
           treesitter = {
             enable = true;
             fold = true;
+            grammars = [
+              pkgs.vimPlugins.nvim-treesitter.builtGrammars.latex
+              pkgs.vimPlugins.nvim-treesitter.builtGrammars.racket
+            ];
           };
           visuals = {
             nvim-scrollbar.enable = true;
