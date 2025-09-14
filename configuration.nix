@@ -156,6 +156,7 @@
       catppuccin-papirus-folders
       cheese
       clang
+      erlang
       universal-ctags
       coq
       curl

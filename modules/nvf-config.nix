@@ -44,6 +44,13 @@
                   cmd = {"${pkgs.racket}/bin/racket", "-l", "racket-langserver"},
                 }
               '';
+              erlang = ''
+                lspconfig.elp.setup{
+                  capabilities = capabilities,
+                  on_attach = default_on_attach,
+                  cmd = {"${pkgs.erlang-language-platform}/bin/elp", "server"},
+                }
+              '';
             };
           };
           diagnostics = {
