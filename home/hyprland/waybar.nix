@@ -15,7 +15,7 @@
       background: rgb(17, 17, 27);
       color: #cad3f5;
       font-family: Hack Nerd Font;
-      font-size: 10pt;
+      font-size: 9pt;
     }
 
     #battery,

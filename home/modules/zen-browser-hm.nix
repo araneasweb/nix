@@ -9,7 +9,7 @@
             "Status" = "locked";
           };
           "layout.css.devPixelsPerPx" = {
-            "Value" = "0.9";
+            "Value" = "0.8";
             "Status" = "locked";
           };
         };

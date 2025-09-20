@@ -20,7 +20,7 @@
         confirm_os_window_close = 0;
         font = "Hack Nerd Font";
         font_family = "Hack Nerd Font";
-        font_size = 10;
+        font_size = 9;
       };
     };
     fish = {
