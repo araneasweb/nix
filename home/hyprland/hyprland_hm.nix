@@ -79,7 +79,7 @@
             "SUPER SHIFT, D, exec, pkill -9 -f vesktop"
             "SUPER, A, exec, spotify"
             "SUPER SHIFT, A, exec, pkill -9 spotify"
-            "SUPER, W, killactive,"
+            "SUPER, X, killactive,"
             "SUPER, M, exit,"
             "SUPER, E, exec, thunar"
             "SUPER, V, togglefloating,"
