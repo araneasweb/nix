@@ -175,6 +175,7 @@
       gcc
       gdb
       gh
+      ghostty
       git
       glibc
       gnumake
@@ -208,6 +209,7 @@
       spotify
       swi-prolog-gui
       texlive.combined.scheme-full
+      tmux
       udiskie
       unzip
       upower
@@ -227,7 +229,7 @@
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
-      XDG_TERMINAL = "kitty";
+      XDG_TERMINAL = "ghostty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
       XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.Xcompose";

@@ -8,7 +8,7 @@
       force = true;
     };
     sessionVariables = {
-      TERMINAL = "kitty";
+      TERMINAL = "ghostty";
     };
   };
 
@@ -86,6 +86,7 @@
         character = {
           success_symbol = "[λ](bold green)";
           error_symbol = "[λ](bold red)";
+          vicmd_symbol = "[Γ](bold green)";
         };
       };
     };
@@ -116,6 +117,36 @@
       };
       enable = true;
     };
+    tmux = {
+      enable = true;
+      shortcut = "Space";
+      terminal = "screen-256color";
+      extraConfig = ''
+        bind h select-pane -L
+        bind j select-pane -D
+        bind k select-pane -U
+        bind l select-pane -R
+
+        bind H resize-pane -L 5
+        bind J resize-pane -D 5
+        bind K resize-pane -U 5
+        bind L resize-pane -R 5
+
+        bind v split-window -h
+        bind s split-window -v
+        bind S choose-session
+
+        setw -g mode-keys vi
+        bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
+        bind -T copy-mode-vi Y send-keys -X copy-line
+
+        set -g status-left ""
+        set -g status-right ""
+
+        set -g allow-passthrough on
+        set -g set-clipboard on
+      '';
+    };
   };
 
   dconf.settings = {
@@ -125,7 +156,7 @@
   };
 
   xdg.configFile."xfce4/helpers.rc".text = ''
-    TerminalEmulator = kitty
+    TerminalEmulator = ghostty
   '';
 
   catppuccin = {
