@@ -8,7 +8,7 @@
       force = true;
     };
     sessionVariables = {
-      TERMINAL = "ghostty";
+      TERMINAL = "kitty";
     };
   };
 
@@ -21,25 +21,17 @@
         font = "Hack Nerd Font";
         font_family = "Hack Nerd Font";
         font_size = 9;
+        window_padding_width = 0;
+        hide_window_decorations = "yes";
+        tab_bar_style = "hidden";
+        hide_tab_bar_when_single_tab = "yes";
+        shell = "tmux new-session";
       };
-    };
-    ghostty = {
-      enable = true;
-      settings = {
-        font-family = "Hack Nerd Font Mono";
-        window-padding-x = 0;
-        window-padding-y = 0;
-        font-size = 9;
-        window-decoration = false;
-        gtk-titlebar = false;
-        gtk-tabs-location = "hidden";
-        keybind = [
-          "clear"
-          "ctrl+shift+,=reload_config"
-        ];
-        command = "tmux new-session";
-        confirm-close-surface = false;
-      };
+      extraConfig = ''
+        clear_all_shortcuts yes
+        map ctrl+shift+equal change_font_size current +1.0
+        map ctrl+shift+minus change_font_size current -1.0
+      '';
     };
     fish = {
       enable = true;
@@ -174,7 +166,7 @@
   };
 
   xdg.configFile."xfce4/helpers.rc".text = ''
-    TerminalEmulator = ghostty
+    TerminalEmulator = kitty
   '';
 
   catppuccin = {

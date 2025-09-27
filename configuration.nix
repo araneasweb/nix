@@ -175,7 +175,6 @@
       gcc
       gdb
       gh
-      ghostty
       git
       glibc
       gnumake
@@ -229,7 +228,7 @@
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
-      XDG_TERMINAL = "ghostty";
+      XDG_TERMINAL = "kitty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
       XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.Xcompose";
