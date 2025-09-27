@@ -23,6 +23,24 @@
         font_size = 9;
       };
     };
+    ghostty = {
+      enable = true;
+      settings = {
+        font-family = "Hack Nerd Font Mono";
+        window-padding-x = 0;
+        window-padding-y = 0;
+        font-size = 9;
+        window-decoration = false;
+        gtk-titlebar = false;
+        gtk-tabs-location = "hidden";
+        keybind = [
+          "clear"
+          "ctrl+shift+,=reload_config"
+        ];
+        command = "tmux new-session";
+        confirm-close-surface = false;
+      };
+    };
     fish = {
       enable = true;
       shellAliases = {
