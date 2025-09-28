@@ -26,6 +26,7 @@
         tab_bar_style = "hidden";
         hide_tab_bar_when_single_tab = "yes";
         shell = "tmux new-session";
+        allow_osc42_clipboard = "yes";
       };
       extraConfig = ''
         clear_all_shortcuts yes
@@ -155,6 +156,9 @@
 
         set -g allow-passthrough on
         set -g set-clipboard on
+
+        unbind ]
+        bind ] run-shell 'tmux set-buffer -- "$(wl-paste -n)" \; paste-buffer -d'
       '';
     };
   };
