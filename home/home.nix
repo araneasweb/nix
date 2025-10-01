@@ -165,6 +165,8 @@
 
         set -g base-index 1
         setw -g pane-base-index 1
+
+        set-option -s escape-time 10
       '';
     };
   };
