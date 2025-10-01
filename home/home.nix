@@ -98,6 +98,9 @@
           success_symbol = "[λ](bold green)";
           error_symbol = "[λ](bold red)";
           vicmd_symbol = "[Γ](bold green)";
+          vimcmd_visual_symbol = "[Γ](bold yellow)";
+          vimcmd_replace_symbol = "[Γ](bold purple)";
+          vimcmd_replace_one_symbol = "[Γ](bold purple)";
         };
       };
     };
@@ -159,6 +162,9 @@
 
         unbind ]
         bind ] run-shell 'tmux set-buffer -- "$(wl-paste -n)" \; paste-buffer -d'
+
+        set -g base-index 1
+        setw -g pane-base-index 1
       '';
     };
   };
