@@ -1,4 +1,8 @@
-{prefs, ...}: {
+{
+  prefs,
+  pkgs,
+  ...
+}: {
   home = {
     inherit (prefs.data) username;
     homeDirectory = "/home/${prefs.data.username}";
@@ -135,6 +139,10 @@
       enable = true;
       shortcut = "Space";
       terminal = "screen-256color";
+      plugins = with pkgs.tmuxPlugins; [
+        prefix-highlight
+        jump
+      ];
       extraConfig = ''
         bind h select-pane -L
         bind j select-pane -D
@@ -154,7 +162,6 @@
         bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
         bind -T copy-mode-vi Y send-keys -X copy-line
 
-        set -g status-left ""
         set -g status-right ""
 
         set -g allow-passthrough on
@@ -166,7 +173,8 @@
         set -g base-index 1
         setw -g pane-base-index 1
 
-        set-option -s escape-time 10
+        set-option -s escape-time 0
+        set -g history-limit 50000
       '';
     };
   };
@@ -177,9 +185,11 @@
     };
   };
 
-  xdg.configFile."xfce4/helpers.rc".text = ''
-    TerminalEmulator = kitty
-  '';
+  xdg.configFile = {
+    "xfce4/helpers.rc".text = ''
+      TerminalEmulator = kitty
+    '';
+  };
 
   catppuccin = {
     enable = true;
