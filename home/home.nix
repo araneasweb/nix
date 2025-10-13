@@ -93,6 +93,13 @@
           set envname $argv[1]
           nix flake init -t ${prefs.data.treeDir}/devflakes#$envname
         '';
+        racketi = ''
+          if test (count $argv) -eq 0
+              echo "Usage: racketi filename"
+              return 1
+          end
+          racket -i -e "(enter! \"$argv[1]\")"
+        '';
       };
     };
     starship = {
