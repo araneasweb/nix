@@ -83,7 +83,7 @@
             "SUPER, M, exit,"
             "SUPER, E, exec, thunar"
             "SUPER, V, togglefloating,"
-            "SUPER, R, exec, vicinae"
+            "SUPER, R, exec, vicinae toggle"
             "SUPER, B, exec, pkill -SIGUSR1 waybar"
             "SUPER, H, movefocus, l"
             "SUPER, L, movefocus, r"
