@@ -22,7 +22,7 @@
             lspkind.enable = true;
             lspsaga.enable = true;
             trouble.enable = true;
-            lspSignature.enable = true;
+            # lspSignature.enable = true;
             otter-nvim.enable = true;
             nvim-docs-view.enable = true;
             inlayHints.enable = true;
@@ -51,6 +51,16 @@
                   cmd = {"${pkgs.erlang-language-platform}/bin/elp", "server"},
                 }
               '';
+            };
+          };
+          spellcheck = {
+            enable = true;
+            # programmingWordlist.enable = true;
+          };
+          debugger = {
+            nvim-dap = {
+              enable = true;
+              ui.enable = true;
             };
           };
           diagnostics = {
@@ -132,8 +142,14 @@
             style = "mocha";
             transparent = false;
           };
-          # autopairs.nvim-autopairs.enable = true;
-          autocomplete.nvim-cmp.enable = true;
+          autocomplete = {
+            blink-cmp = {
+              enable = true;
+              setupOpts = {
+                signature.enabled = true;
+              };
+            };
+          };
           snippets.luasnip.enable = true;
           filetree.neo-tree = {
             enable = false;
@@ -216,9 +232,13 @@
             images = {
               image-nvim.enable = false;
             };
+            undotree.enable = true;
           };
           terminal = {
-            toggleterm.enable = true;
+            toggleterm = {
+              enable = true;
+              lazygit.enable = true;
+            };
           };
           ui = {
             colorizer.enable = true;
