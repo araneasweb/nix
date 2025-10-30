@@ -202,6 +202,7 @@
       onefetch
       openjdk
       p11-kit
+      p7zip
       pinentry-all
       racket
       ripgrep
@@ -212,6 +213,7 @@
       tmux
       udiskie
       unzip
+      unrar
       upower
       util-linux
       valgrind
