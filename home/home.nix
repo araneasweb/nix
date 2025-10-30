@@ -31,6 +31,7 @@
         hide_tab_bar_when_single_tab = "yes";
         shell = "tmux new-session";
         allow_osc42_clipboard = "yes";
+        scrollback_lines = 10000;
       };
       extraConfig = ''
         clear_all_shortcuts yes
@@ -52,12 +53,19 @@
         "tlocale" = "echo ${prefs.data.treeDir}";
         "fzg" = "rg . | fzf --print0 -e";
         "reload" = "source ~/.config/fish/config.fish";
+        "cd" = "z";
+        "ls" = "eza";
+        "l" = "ls -lah";
+        "lt" = "ls --long --tree";
+        "ltg" = "ls --long --tree --git-ignore";
+        "ll" = "ls -l";
       };
       shellInit = ''
         set -g fish_greeting ""
       '';
       interactiveShellInit = ''
         nix-your-shell fish | source
+        zoxide init fish | source
       '';
       functions = {
         rungcc = ''
@@ -182,6 +190,8 @@
 
         set-option -s escape-time 0
         set -g history-limit 50000
+
+        bind-key -T copy-mode-vi 'v' send -X begin-selection
       '';
     };
   };

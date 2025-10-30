@@ -163,6 +163,7 @@
       cheese
       clang
       erlang
+      eza
       universal-ctags
       coq
       curl
@@ -222,6 +223,7 @@
       yazi
       zip
       zoom-us
+      zoxide
     ];
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = 1;
