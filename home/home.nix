@@ -54,6 +54,7 @@
         "fzg" = "rg . | fzf --print0 -e";
         "reload" = "source ~/.config/fish/config.fish";
         "cd" = "z";
+        "cdi" = "zi";
         "ls" = "eza";
         "l" = "ls -lah";
         "lt" = "ls --long --tree";
