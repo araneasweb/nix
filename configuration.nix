@@ -208,6 +208,7 @@
       ripgrep
       sioyek
       spotify
+      sqls
       swi-prolog-gui
       texlive.combined.scheme-full
       tmux

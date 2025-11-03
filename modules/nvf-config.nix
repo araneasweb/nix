@@ -77,7 +77,6 @@
               "clang"
               "css"
               "html"
-              "sql"
               "java"
               "ts"
               "go"
@@ -105,6 +104,13 @@
                 enable = true;
                 treesitter.enable = true;
                 extensions."render-markdown-nvim".enable = true;
+              };
+              sql = {
+                enable = true;
+                treesitter.enable = true;
+                dialect = "postgres";
+                format.enable = true;
+                lsp.enable = true;
               };
               # rust = {
               #   enable = true;
