@@ -170,13 +170,12 @@
         bind K resize-pane -U 5
         bind L resize-pane -R 5
 
-        bind v split-window -h
-        bind s split-window -v
         bind S choose-session
 
         setw -g mode-keys vi
         bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
         bind -T copy-mode-vi Y send-keys -X copy-line
+        bind-key -T copy-mode-vi 'v' send -X begin-selection
 
         set -g status-right ""
 
@@ -192,7 +191,6 @@
         set-option -s escape-time 0
         set -g history-limit 50000
 
-        bind-key -T copy-mode-vi 'v' send -X begin-selection
       '';
     };
   };
