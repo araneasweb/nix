@@ -60,6 +60,7 @@
       };
     };
     overlays = [
+      (import ./overlays/fonts.nix)
     ];
   in {
     nixosConfigurations.t480 = lib.nixosSystem {

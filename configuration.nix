@@ -110,16 +110,17 @@
   };
 
   fonts = {
-    packages = with pkgs.nerd-fonts; [
-      hack
-      arimo
-      ubuntu-sans
+    packages = with pkgs; [
+      hack-font-ligature-nerd
+      # nerd-fonts.hack
+      nerd-fonts.arimo
+      nerd-fonts.ubuntu-sans
     ];
     fontconfig = {
       defaultFonts = {
         serif = ["Arimo Nerd Font"];
         sansSerif = ["Arimo Nerd Font"];
-        monospace = ["Hack Nerd Font"];
+        monospace = ["Hack Nerd Font Mono"];
       };
     };
   };
