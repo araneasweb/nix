@@ -115,12 +115,22 @@
       # nerd-fonts.hack
       nerd-fonts.arimo
       nerd-fonts.ubuntu-sans
+      noto-fonts
     ];
     fontconfig = {
       defaultFonts = {
-        serif = ["Arimo Nerd Font"];
-        sansSerif = ["Arimo Nerd Font"];
-        monospace = ["Hack Nerd Font Mono"];
+        serif = [
+          "Arimo Nerd Font"
+          "Noto Serif"
+        ];
+        sansSerif = [
+          "Arimo Nerd Font"
+          "Noto Sans"
+        ];
+        monospace = [
+          "Hack Nerd Font Mono"
+          "Noto Sans Mono"
+        ];
       };
     };
   };
