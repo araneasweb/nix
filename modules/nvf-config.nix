@@ -53,9 +53,8 @@
               '';
             };
           };
-          spellcheck = {
-            enable = true;
-            # programmingWordlist.enable = true;
+          notes = {
+            todo-comments.enable = true;
           };
           debugger = {
             nvim-dap = {
