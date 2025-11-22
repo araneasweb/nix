@@ -176,6 +176,7 @@
         bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
         bind -T copy-mode-vi Y send-keys -X copy-line
         bind-key -T copy-mode-vi 'v' send -X begin-selection
+        bind-key -t vi-copy 'C-v' rectangle-toggle
 
         set -g status-right ""
 
