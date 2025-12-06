@@ -12,12 +12,38 @@
       force = true;
     };
     sessionVariables = {
-      TERMINAL = "kitty";
+      TERMINAL = "ghostty";
     };
   };
 
   programs = {
     home-manager.enable = true;
+    ghostty = {
+      enable = true;
+      settings = {
+        font-family = "Hack Nerd Font Mono";
+        font-size = 9;
+
+        window-padding-x = 0;
+        window-padding-y = 0;
+        window-padding-balance = true;
+
+        window-decoration = "none";
+        window-show-tab-bar = "never";
+
+        clipboard-read = "allow";
+        clipboard-write = "allow";
+
+        initial-command = "tmux new-session";
+
+        keybind = [
+          "ctrl+equal=increase_font_size:1"
+          "ctrl+minus=decrease_font_size:1"
+          "ctrl+shift+r=reload_config"
+        ];
+      };
+      clearDefaultKeybinds = true;
+    };
     kitty = {
       enable = true;
       settings = {
@@ -29,7 +55,7 @@
         hide_window_decorations = "yes";
         tab_bar_style = "hidden";
         hide_tab_bar_when_single_tab = "yes";
-        shell = "tmux new-session";
+        # shell = "tmux new-session";
         allow_osc42_clipboard = "yes";
         scrollback_lines = 10000;
       };
@@ -46,9 +72,6 @@
         "nrs" = "nixos-rebuild switch --sudo --flake ${prefs.data.treeDir}";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
-        "kimg" = "kitty +kitten icat";
-        "kdiff" = "kitty +kitten diff";
-        "kssh" = "kitty +kitten ssh";
         "nixconf" = "nvim ${prefs.data.treeDir}";
         "tlocale" = "echo ${prefs.data.treeDir}";
         "fzg" = "rg . | fzf --print0 -e";
@@ -203,7 +226,7 @@
 
   xdg.configFile = {
     "xfce4/helpers.rc".text = ''
-      TerminalEmulator = kitty
+      TerminalEmulator = ghostty
     '';
   };
 
