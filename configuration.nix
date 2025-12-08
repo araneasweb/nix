@@ -22,15 +22,6 @@
   systemd = {
     services = {
       NetworkManager-wait-online.enable = false;
-      greetd.serviceConfig = {
-        Type = "idle";
-        StandardInput = "tty";
-        StandardOutput = "tty";
-        StandardError = "journal";
-        TTYReset = true;
-        TTYVHangup = true;
-        TTYVTDisallocate = true;
-      };
       geoclue2 = {
         enable = true;
       };
@@ -81,19 +72,10 @@
   };
 
   services = {
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          user = prefs.data.username;
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember-session --remember";
-        };
-      };
-    };
     tumbler.enable = true;
     printing.enable = true;
     libinput.enable = true;
-    kmscon.enable = true;
+    # kmscon.enable = true;
     pulseaudio.enable = false;
     tlp.enable = true;
     udisks2.enable = true;
@@ -140,7 +122,7 @@
     inputMethod = {
       enable = true;
       type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [anthy];
+      ibus.engines = with pkgs.ibus-engines; [anthy table];
     };
   };
 
@@ -248,9 +230,9 @@
       XDG_TERMINAL = "ghostty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
-      XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.Xcompose";
-      GTK_IM_MODULE = "ibus";
-      QT_IM_MODULE = "ibus";
+      XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.XVompose";
+      # GTK_IM_MODULE = "ibus";
+      # QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
       INPUT_METHOD = "ibus";
       EDITOR = "nvim";
@@ -273,7 +255,10 @@
 
   catppuccin.enable = true;
 
-  console.font = "";
+  console = {
+    font = "ter-112n";
+    packages = [pkgs.terminus_font];
+  };
 
   nixpkgs.config = {
     allowUnfree = true;

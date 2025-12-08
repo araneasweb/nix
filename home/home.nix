@@ -7,9 +7,12 @@
     inherit (prefs.data) username;
     homeDirectory = "/home/${prefs.data.username}";
     stateVersion = "25.05";
-    file.".Xcompose" = {
+    file.".XCompose" = {
       source = ./dotfiles/Xcompose;
       force = true;
+    };
+    file.".config/ibus/compose" = {
+      text = builtins.readFile ./dotfiles/Xcompose;
     };
     sessionVariables = {
       TERMINAL = "ghostty";
