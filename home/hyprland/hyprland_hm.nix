@@ -2,12 +2,11 @@
   config,
   pkgs,
   prefs,
-  vicinae,
   ...
 }: {
   home = {
     packages = with pkgs; [
-      vicinae.packages.x86_64-linux.default
+      vicinae
       waybar
       wofi
       hyprpaper

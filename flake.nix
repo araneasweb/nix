@@ -31,10 +31,6 @@
       url = "github:Aasim-A/scrollEOF.nvim";
       flake = false;
     };
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     impermanence.url = "github:nix-community/impermanence";
   };
   outputs = {
@@ -44,7 +40,6 @@
     home-manager,
     nvf,
     sops-nix,
-    vicinae,
     #impermanence,
     ...
   } @ inputs: let
@@ -84,7 +79,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit inputs prefs vicinae;
+              inherit inputs prefs;
             };
             users.${prefs.data.username} = {
               imports =
