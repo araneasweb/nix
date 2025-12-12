@@ -73,7 +73,6 @@
           bind = [
             "SUPER, T, exec, ghostty"
             "SUPER, F, exec, zen-beta"
-            "SUPER, C, exec, ghostty -e nvim"
             "SUPER, D, exec, vesktop"
             "SUPER SHIFT, D, exec, pkill -9 -f vesktop"
             "SUPER, A, exec, spotify"
@@ -120,7 +119,6 @@
             "SUPER SHIFT, J, movewindow, d"
             "SUPER SHIFT, K, movewindow, u"
             "SUPER SHIFT, L, movewindow, r"
-            "SUPER SHIFT, Q, exec, ghostty -e nvim ${prefs.data.treeDir}"
             "SUPER, Tab, workspace, m+1"
             "SUPER SHIFT, Tab, workspace, m-1"
             "SUPER, PRINT, exec, hyprshot -m window"
