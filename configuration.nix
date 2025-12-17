@@ -228,7 +228,7 @@
       XDG_TERMINAL = "ghostty";
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
-      XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.XVompose";
+      XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.XCompose";
       # GTK_IM_MODULE = "ibus";
       # QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
