@@ -1,6 +1,7 @@
 {
   prefs,
   pkgs,
+  inputs,
   ...
 }: {
   home = {
@@ -218,6 +219,10 @@
         set -g history-limit 50000
 
       '';
+    };
+    doom-emacs = {
+      enable = true;
+      doomDir = inputs.doom-config;
     };
   };
 

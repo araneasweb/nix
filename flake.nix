@@ -32,6 +32,11 @@
       flake = false;
     };
     impermanence.url = "github:nix-community/impermanence";
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    doom-config = {
+      url = "github:araneasweb/doom-config";
+      flake = false;
+    };
   };
   outputs = {
     nixpkgs,
@@ -89,6 +94,7 @@
                   catppuccin.homeModules.catppuccin
                   inputs.zen-browser.homeModules.beta
                   #impermanence.homeModules.impermanence
+                  inputs.nix-doom-emacs-unstraightened.homeModule
                 ]
                 ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
                 ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
