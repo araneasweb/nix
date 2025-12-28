@@ -203,6 +203,7 @@
       sqls
       swi-prolog-gui
       texlive.combined.scheme-full
+      tldr
       tmux
       udiskie
       unzip

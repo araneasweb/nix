@@ -15,10 +15,10 @@
       url = "github:Procrat/xmonad-contexts";
       flake = false;
     };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lix-module = {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +40,7 @@
   };
   outputs = {
     nixpkgs,
-    lix-module,
+    # lix-module,
     catppuccin,
     home-manager,
     nvf,
