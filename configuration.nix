@@ -178,6 +178,7 @@
       hunspellDicts.en_CA
       hyfetch
       inetutils
+      jq
       killall
       kitty
       lazygit
