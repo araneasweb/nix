@@ -62,13 +62,25 @@
           monitor = ",highres,auto,1";
           source = "/etc/nixos/home/hyprland/macchiato.conf";
           workspace = "special:scratchpad, on-created-empty:[float] ghostty --class=scratchpad.terminal";
-          windowrulev2 = [
-            "suppressevent maximize, class:.*"
-            "float,class:^(scratchpad\.terminal)$"
-            "size 60% 60%,class:^(scratchpad\.terminal)$"
-            "center,class:^(scratchpad\.terminal)$"
-            "workspace special:scratchpad,class:^(scratchpad\.terminal)$"
-            "noborder, onworkspace:w[t1]"
+          windowrule = [
+            {
+              name = "windowrule-1";
+              suppress_event = "maximize";
+              "match:class" = ".*";
+            }
+            {
+              name = "windowrule-2";
+              float = "on";
+              size = "(monitor_w*0.6) (monitor_h*0.6)";
+              center = "on";
+              workspace = "special:scratchpad";
+              "match:class" = "^(scratchpad.terminal)$";
+            }
+            {
+              name = ":windowrule-3";
+              border_size = 0;
+              "match:workspace" = "w[t1]";
+            }
           ];
           bind = [
             "SUPER, T, exec, ghostty"

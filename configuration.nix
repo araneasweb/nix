@@ -159,7 +159,7 @@
       coq
       curl
       dconf
-      vesktop
+      # vesktop
       fastfetch
       fd
       feh
