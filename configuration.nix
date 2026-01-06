@@ -199,6 +199,7 @@
       pinentry-all
       racket
       ripgrep
+      rlwrap
       sioyek
       spotify
       sqls
