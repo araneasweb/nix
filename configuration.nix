@@ -67,6 +67,7 @@
     starship.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
+    nix-ld.enable = true;
   };
 
   services = {
@@ -145,6 +146,7 @@
   environment = {
     systemPackages = with pkgs; [
       inputs.zen-browser.packages.x86_64-linux.default
+      nix-alien
       brightnessctl
       busybox
       catppuccin-cursors.mochaMauve
@@ -159,7 +161,7 @@
       coq
       curl
       dconf
-      # vesktop
+      vesktop
       fastfetch
       fd
       feh
@@ -189,7 +191,7 @@
       man-pages
       man-pages-posix
       nil
-      nixfmt-rfc-style
+      nixfmt
       nix-index
       nix-your-shell
       onefetch

@@ -37,6 +37,7 @@
       url = "github:araneasweb/doom-config";
       flake = false;
     };
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
   outputs = {
     nixpkgs,
@@ -61,6 +62,7 @@
     };
     overlays = [
       (import ./overlays/fonts.nix)
+      inputs.nix-alien.overlays.default
     ];
   in {
     nixosConfigurations.t480 = lib.nixosSystem {
