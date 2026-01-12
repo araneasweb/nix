@@ -38,6 +38,7 @@
       flake = false;
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nixcats-dots.url = "github:araneasweb/nixcats-dots";
   };
   outputs = {
     nixpkgs,
@@ -47,6 +48,7 @@
     nvf,
     sops-nix,
     #impermanence,
+    nixcats-dots,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;

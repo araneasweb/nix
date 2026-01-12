@@ -139,13 +139,14 @@
     rust.enable = false;
     digitalDesign.enable = false;
     reverseEngineering.enable = false;
-    nvf.enable = true;
+    nvf.enable = false;
     gaming.enable = true;
   };
 
   environment = {
     systemPackages = with pkgs; [
       inputs.zen-browser.packages.x86_64-linux.default
+      inputs.nixcats-dots.packages.x86_64-linux.nvim
       nix-alien
       brightnessctl
       busybox
