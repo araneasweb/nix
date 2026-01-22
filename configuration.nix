@@ -1,10 +1,9 @@
-{
-  config,
-  pkgs,
-  inputs,
-  prefs,
-  lib,
-  ...
+{ config
+, pkgs
+, inputs
+, prefs
+, lib
+, ...
 }: {
   imports =
     [
@@ -30,7 +29,7 @@
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       substituters = [
         "https://hyprland.cachix.org"
@@ -67,7 +66,120 @@
     starship.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        zlib
+        zstd
+        stdenv.cc.cc
+        curl
+        openssl
+        attr
+        libssh
+        bzip2
+        libxml2
+        acl
+        libsodium
+        util-linux
+        xz
+        systemd
+        xorg.libXcomposite
+        xorg.libXtst
+        xorg.libXrandr
+        xorg.libXext
+        xorg.libX11
+        xorg.libXfixes
+        libGL
+        libva
+        pipewire
+        xorg.libxcb
+        xorg.libXdamage
+        xorg.libxshmfence
+        xorg.libXxf86vm
+        libelf
+        glib
+        gtk2
+        networkmanager
+        vulkan-loader
+        libgbm
+        libdrm
+        libxcrypt
+        coreutils
+        pciutils
+        zenity
+        glibc_multi.bin # Seems to cause issue in ARM
+        xorg.libXinerama
+        xorg.libXcursor
+        xorg.libXrender
+        xorg.libXScrnSaver
+        xorg.libXi
+        xorg.libSM
+        xorg.libICE
+        gnome2.GConf
+        nspr
+        nss
+        cups
+        libcap
+        SDL2
+        libusb1
+        dbus-glib
+        ffmpeg
+        libudev0-shim
+        gtk3
+        icu
+        libnotify
+        gsettings-desktop-schemas
+        xorg.libXt
+        xorg.libXmu
+        libogg
+        libvorbis
+        SDL
+        SDL2_image
+        glew110
+        libidn
+        tbb
+        flac
+        freeglut
+        libjpeg
+        libpng
+        libpng12
+        libsamplerate
+        libmikmod
+        libtheora
+        libtiff
+        pixman
+        speex
+        SDL_image
+        SDL_ttf
+        SDL_mixer
+        SDL2_ttf
+        SDL2_mixer
+        libappindicator-gtk2
+        libdbusmenu-gtk2
+        libindicator-gtk2
+        libcaca
+        libcanberra
+        libgcrypt
+        libvpx
+        librsvg
+        xorg.libXft
+        libvdpau
+        pango
+        cairo
+        atk
+        gdk-pixbuf
+        fontconfig
+        freetype
+        dbus
+        alsa-lib
+        expat
+        libxkbcommon
+        libxcrypt-legacy
+        libGLU
+        fuse
+        e2fsprogs
+      ];
+    };
   };
 
   services = {
@@ -121,14 +233,14 @@
     inputMethod = {
       enable = true;
       type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [anthy table];
+      ibus.engines = with pkgs.ibus-engines; [ anthy table ];
     };
   };
 
   users.users.${prefs.data.username} = {
     isNormalUser = true;
     description = prefs.data.username;
-    extraGroups = ["networkmanager" "wheel" "podman" "vboxusers"];
+    extraGroups = [ "networkmanager" "wheel" "podman" "vboxusers" ];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
     linger = true;
@@ -261,14 +373,14 @@
 
   console = {
     font = "ter-112n";
-    packages = [pkgs.terminus_font];
+    packages = [ pkgs.terminus_font ];
   };
 
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
       catppuccin-gtk = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
+        accents = [ "mauve" ];
         size = "standard";
         variant = "mocha";
       };
