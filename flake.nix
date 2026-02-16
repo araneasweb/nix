@@ -40,72 +40,114 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nixcats-dots.url = "github:araneasweb/nixcats-dots";
   };
-  outputs = {
-    nixpkgs,
-    # lix-module,
-    catppuccin,
-    home-manager,
-    nvf,
-    sops-nix,
-    #impermanence,
-    nixcats-dots,
-    ...
-  } @ inputs: let
-    inherit (nixpkgs) lib;
-    prefs = {
-      data = {
-        username = "aranea";
-        treeDir = "/etc/nixos";
+  outputs =
+    { nixpkgs
+    , # lix-module,
+      catppuccin
+    , home-manager
+    , nvf
+    , sops-nix
+    , #impermanence,
+      nixcats-dots
+    , ...
+    } @ inputs:
+    let
+      inherit (nixpkgs) lib;
+      prefs = {
+        data = {
+          username = "aranea";
+          treeDir = "/etc/nixos";
+        };
+        settings = {
+          useHyprland = true;
+          useXmonad = false;
+        };
       };
-      settings = {
-        useHyprland = true;
-        useXmonad = false;
-      };
-    };
-    overlays = [
-      (import ./overlays/fonts.nix)
-      inputs.nix-alien.overlays.default
-    ];
-  in {
-    nixosConfigurations.t480 = lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs prefs;
-      };
-      modules = [
-        {nixpkgs.overlays = overlays;}
-        ./configuration.nix
-        ./hardware-configuration.nix
-        #./impermanence.nix
-        catppuccin.nixosModules.catppuccin
-        home-manager.nixosModules.home-manager
-        # lix-module.nixosModules.default
-        nvf.nixosModules.default
-        sops-nix.nixosModules.sops
-        #impermanence.nixosModules.impermanence
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {
-              inherit inputs prefs;
-            };
-            users.${prefs.data.username} = {
-              imports =
-                [
-                  ./home/home.nix
-                  ./home/modules/zen-browser-hm.nix
-                  catppuccin.homeModules.catppuccin
-                  inputs.zen-browser.homeModules.beta
-                  #impermanence.homeModules.impermanence
-                  inputs.nix-doom-emacs-unstraightened.homeModule
-                ]
-                ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
-                ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
-            };
-          };
-        }
+      overlays = [
+        (import ./overlays/fonts.nix)
+        inputs.nix-alien.overlays.default
       ];
+    in
+    {
+      nixosConfigurations.t480 = lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs prefs;
+        };
+        modules = [
+          { nixpkgs.overlays = overlays; }
+          ./systems/t480/t480.nix
+          ./systems/t480/hardware-configuration.nix
+          #./impermanence.nix
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          # lix-module.nixosModules.default
+          nvf.nixosModules.default
+          sops-nix.nixosModules.sops
+          #impermanence.nixosModules.impermanence
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs prefs;
+              };
+              users.${prefs.data.username} = {
+                imports =
+                  [
+                    ./home/home.nix
+                    ./home/modules/zen-browser-hm.nix
+                    catppuccin.homeModules.catppuccin
+                    inputs.zen-browser.homeModules.beta
+                    #impermanence.homeModules.impermanence
+                    inputs.nix-doom-emacs-unstraightened.homeModule
+                  ]
+                  ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
+                  ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
+              };
+            };
+          }
+        ];
+      };
+      nixosConfigurations.azalea = lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs prefs;
+        };
+        modules = [
+          { nixpkgs.overlays = overlays; }
+          ./systems/azalea/azalea.nix
+          ./systems/azalea/hardware-configuration.nix
+          #./impermanence.nix
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          # lix-module.nixosModules.default
+          nvf.nixosModules.default
+          sops-nix.nixosModules.sops
+          #impermanence.nixosModules.impermanence
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs prefs;
+              };
+              users.${prefs.data.username} = {
+                imports =
+                  [
+                    ./home/home.nix
+                    ./home/modules/zen-browser-hm.nix
+                    catppuccin.homeModules.catppuccin
+                    inputs.zen-browser.homeModules.beta
+                    #impermanence.homeModules.impermanence
+                    inputs.nix-doom-emacs-unstraightened.homeModule
+                  ]
+                  ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
+                  ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
+              };
+            };
+          }
+        ];
+      };
     };
-  };
 }

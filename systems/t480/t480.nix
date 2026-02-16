@@ -8,10 +8,10 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/modules.nix
+      ../../modules/modules.nix
     ]
-    ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland.nix)
-    ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad.nix);
+    ++ (lib.optional prefs.settings.useHyprland ../../home/hyprland/hyprland.nix)
+    ++ (lib.optional prefs.settings.useXmonad ../../home/xmonad/xmonad.nix);
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -50,7 +50,7 @@
   hardware.graphics.enable = true;
 
   sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFile = ../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/${prefs.data.username}/.config/sops/age/keys.txt";
     secrets = {

@@ -1,5 +1,5 @@
 keys:
-  - &user_aranea age1nkefdwe7v5wj0syyvvndtldx9z0jcqmxurykjjw9mmzccu852e9qvacs5w
+  - &user_aranea age1vv6rg42t5qwmh92xresgyce7u3qar3uwg0krp7w9hwfw5h3g8y7sppuhwj
 creation_rules:
   - path_regex: secrets/.*\.yaml$
     key_groups:

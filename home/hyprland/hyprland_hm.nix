@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  prefs,
-  ...
+{ config
+, pkgs
+, prefs
+, ...
 }: {
   home = {
     packages = with pkgs; [
@@ -48,7 +47,7 @@
   };
 
   programs = {
-    waybar = import ./waybar.nix {inherit config pkgs;};
+    waybar = import ./waybar.nix { inherit config pkgs; };
   };
 
   wayland = {
@@ -59,7 +58,7 @@
           # inputs.hyprland-easymotion.packages.${pkgs.system}.hyprland-easymotion
         ];
         settings = {
-          monitor = ",highres,auto,1";
+          monitor = "0,2560x1440@75,0x0,1";
           source = "/etc/nixos/home/hyprland/macchiato.conf";
           workspace = "special:scratchpad, on-created-empty:[float] ghostty --class=scratchpad.terminal";
           windowrule = [
