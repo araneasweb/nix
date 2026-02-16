@@ -58,7 +58,7 @@
           # inputs.hyprland-easymotion.packages.${pkgs.system}.hyprland-easymotion
         ];
         settings = {
-          monitor = "0,2560x1440@75,0x0,1";
+          monitor = ",highres,auto,1";
           source = "/etc/nixos/home/hyprland/macchiato.conf";
           workspace = "special:scratchpad, on-created-empty:[float] ghostty --class=scratchpad.terminal";
           windowrule = [
