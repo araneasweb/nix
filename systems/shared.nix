@@ -41,7 +41,7 @@
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/home/${prefs.data.username}/.config/sops/age/keys.txt";
+    age.keyFile = "/var/lib/sops-nix/key.txt";
     secrets = {
       aranea_password = {
         neededForUsers = true;

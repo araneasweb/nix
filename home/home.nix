@@ -97,7 +97,7 @@
       wget
       xarchiver
       xdg-user-dirs
-      xorg.libX11
+      libX11
       yazi
       zip
       zoom-us
