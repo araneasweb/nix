@@ -1,4 +1,4 @@
-{prefs, ...}: {
+{ prefs, ... }: {
   programs = {
     zen-browser = {
       enable = true;
@@ -18,7 +18,7 @@
         id = 0;
         isDefault = true;
         name = prefs.data.username;
-        path = "26qummn8.default";
+        path = prefs.data.username;
         settings = {
           "zen.urlbar.behavior" = "float";
           "zen.view.compact.hide-toolbar" = true;

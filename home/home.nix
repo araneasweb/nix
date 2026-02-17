@@ -24,6 +24,7 @@
     };
 
     packages = with pkgs; [
+      inputs.nixcats-dots.packages.x86_64-linux.nvim
       nix-alien
       brightnessctl
       busybox
@@ -93,7 +94,7 @@
       upower
       util-linux
       valgrind
-      vim
+      # vim
       wget
       xarchiver
       xdg-user-dirs

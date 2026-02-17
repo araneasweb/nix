@@ -194,7 +194,6 @@
   fonts = {
     packages = with pkgs; [
       hack-font-ligature-nerd
-      # nerd-fonts.hack
       nerd-fonts.arimo
       nerd-fonts.ubuntu-sans
       noto-fonts
@@ -245,10 +244,6 @@
   };
 
   environment = {
-    systemPackages = with inputs; [
-      zen-browser.packages.x86_64-linux.default
-      nixcats-dots.packages.x86_64-linux.nvim
-    ];
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = 1;
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
@@ -258,8 +253,8 @@
       XDG_PICTURES_DIR = "Pictures";
       MANPAGER = "nvim +Man!";
       XCOMPOSEFILE = "${config.users.users.${prefs.data.username}.home}/.XCompose";
-      # GTK_IM_MODULE = "ibus";
-      # QT_IM_MODULE = "ibus";
+      GTK_IM_MODULE = "ibus";
+      QT_IM_MODULE = "ibus";
       XMODIFIERS = "@im=ibus";
       INPUT_METHOD = "ibus";
       EDITOR = "nvim";
