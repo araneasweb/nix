@@ -177,7 +177,6 @@
     libinput.enable = true;
     # kmscon.enable = true;
     pulseaudio.enable = false;
-    tlp.enable = true;
     udisks2.enable = true;
     gvfs.enable = true;
     pipewire = {

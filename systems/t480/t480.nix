@@ -25,4 +25,8 @@
     }
   ];
 
+  services = {
+    tlp.enable = true;
+  };
+
 }

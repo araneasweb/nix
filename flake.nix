@@ -10,7 +10,13 @@
     #   inputs.hyprland.follows = "hyprland";
     # };
     catppuccin.url = "github:catppuccin/nix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     xmonad-contexts = {
       url = "github:Procrat/xmonad-contexts";
       flake = false;
