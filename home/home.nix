@@ -1,24 +1,111 @@
-{
-  prefs,
-  pkgs,
-  inputs,
-  ...
+{ prefs
+, pkgs
+, inputs
+, ...
 }: {
   home = {
     inherit (prefs.data) username;
+
     homeDirectory = "/home/${prefs.data.username}";
+
     stateVersion = "25.05";
+
     file.".XCompose" = {
       source = ./dotfiles/Xcompose;
       force = true;
     };
+
     file.".config/ibus/compose" = {
       text = builtins.readFile ./dotfiles/Xcompose;
     };
+
     sessionVariables = {
       TERMINAL = "ghostty";
     };
+
+    packages = with pkgs; [
+      nix-alien
+      brightnessctl
+      busybox
+      catppuccin-cursors.mochaMauve
+      catppuccin-gtk
+      catppuccin-kvantum
+      catppuccin-papirus-folders
+      cheese
+      clang-tools
+      erlang
+      eza
+      universal-ctags
+      coq
+      curl
+      dconf
+      vesktop
+      fastfetch
+      fd
+      feh
+      fzf
+      gcc
+      gdb
+      gh
+      ghostty
+      git
+      glibc
+      gnumake
+      gnupg
+      gparted
+      htop
+      hunspell
+      hunspellDicts.en_CA
+      hyfetch
+      inetutils
+      jq
+      killall
+      kitty
+      lazygit
+      lean4
+      libreoffice-qt
+      libselinux
+      libqalculate
+      man-pages
+      man-pages-posix
+      nil
+      nixfmt
+      nix-index
+      nix-your-shell
+      onefetch
+      openjdk
+      p11-kit
+      p7zip
+      pinentry-all
+      racket
+      ripgrep
+      rlwrap
+      sioyek
+      spotify
+      sqls
+      swi-prolog-gui
+      texlive.combined.scheme-full
+      tldr
+      tmux
+      udiskie
+      unzip
+      unrar
+      upower
+      util-linux
+      valgrind
+      vim
+      wget
+      xarchiver
+      xdg-user-dirs
+      xorg.libX11
+      yazi
+      zip
+      zoom-us
+      zoxide
+    ];
+
   };
+
 
   programs = {
     home-manager.enable = true;
