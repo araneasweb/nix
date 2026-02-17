@@ -1,7 +1,4 @@
-{ config
-, pkgs
-, inputs
-, prefs
+{ prefs
 , lib
 , ...
 }: {
@@ -12,7 +9,6 @@
     ]
     ++ (lib.optional prefs.settings.useHyprland ../../home/hyprland/hyprland.nix)
     ++ (lib.optional prefs.settings.useXmonad ../../home/xmonad/xmonad.nix);
-
 
   networking = {
     hostName = "t480";
