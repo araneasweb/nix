@@ -18,7 +18,7 @@
         id = 0;
         isDefault = true;
         name = prefs.data.username;
-        path = prefs.data.username;
+        path = prefs.data.username + ".Default Profile";
         settings = {
           "zen.urlbar.behavior" = "float";
           "zen.view.compact.hide-toolbar" = true;
