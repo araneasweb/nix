@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   enable = true;
-  style = ''
+  style = /* css */ ''
     * {
       border: none;
       border-radius: 0;
@@ -259,7 +259,7 @@
           phone = " ";
           portable = " ";
           car = " ";
-          default = [" " " "];
+          default = [ " " " " ];
         };
         scroll-step = 1;
         on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
