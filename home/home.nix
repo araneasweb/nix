@@ -1,8 +1,7 @@
-{
-  prefs,
-  pkgs,
-  inputs,
-  ...
+{ prefs
+, pkgs
+, inputs
+, ...
 }:
 {
   home = {
@@ -27,7 +26,7 @@
 
     packages = with pkgs; [
       inputs.nixcats-dots.packages.x86_64-linux.nvim
-      nix-alien
+      bat
       brightnessctl
       busybox
       catppuccin-cursors.mochaMauve
@@ -36,13 +35,11 @@
       catppuccin-papirus-folders
       cheese
       clang-tools
-      erlang
-      eza
-      universal-ctags
       coq
       curl
       dconf
-      vesktop
+      erlang
+      eza
       fastfetch
       fd
       feh
@@ -66,15 +63,17 @@
       kitty
       lazygit
       lean4
+      libX11
+      libqalculate
       libreoffice-qt
       libselinux
-      libqalculate
       man-pages
       man-pages-posix
       nil
-      nixfmt
+      nix-alien
       nix-index
       nix-your-shell
+      nixfmt
       onefetch
       openjdk
       p11-kit
@@ -91,16 +90,16 @@
       tldr
       tmux
       udiskie
-      unzip
+      universal-ctags
       unrar
+      unzip
       upower
       util-linux
       valgrind
-      # vim
+      vesktop
       wget
       xarchiver
       xdg-user-dirs
-      libX11
       yazi
       zip
       zoom-us
