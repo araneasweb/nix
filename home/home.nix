@@ -1,8 +1,10 @@
-{ prefs
-, pkgs
-, inputs
-, ...
-}: {
+{
+  prefs,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   home = {
     inherit (prefs.data) username;
 
@@ -107,7 +109,6 @@
 
   };
 
-
   programs = {
     home-manager.enable = true;
     ghostty = {
@@ -160,7 +161,8 @@
     fish = {
       enable = true;
       shellAliases = {
-        "nfu" = "sudo nix flake update --flake ${prefs.data.treeDir} && nix flake check ${prefs.data.treeDir}";
+        "nfu" =
+          "sudo nix flake update --flake ${prefs.data.treeDir} && nix flake check ${prefs.data.treeDir}";
         "nrs" = "nixos-rebuild switch --sudo --flake ${prefs.data.treeDir}";
         ":q" = "exit";
         "cls" = "clear && hyfetch";

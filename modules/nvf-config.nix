@@ -4,7 +4,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.nvf.enable = lib.mkEnableOption "enables nvf";
   };
@@ -70,25 +71,26 @@
               virtual_lines = false;
             };
           };
-          languages = let
-            standardLangs = [
-              "bash"
-              "clang"
-              "css"
-              "html"
-              "java"
-              "ts"
-              "go"
-              "lua"
-              "python"
-              "assembly"
-              "scala"
-              "r"
-              "ocaml"
-              "haskell"
-              "nix"
-            ];
-          in
+          languages =
+            let
+              standardLangs = [
+                "bash"
+                "clang"
+                "css"
+                "html"
+                "java"
+                "ts"
+                "go"
+                "lua"
+                "python"
+                "assembly"
+                "scala"
+                "r"
+                "ocaml"
+                "haskell"
+                "nix"
+              ];
+            in
             {
               enableFormat = true;
               enableTreesitter = true;
@@ -211,7 +213,7 @@
             extensions = [
               {
                 name = "file_browser";
-                packages = [pkgs.vimPlugins.telescope-file-browser-nvim];
+                packages = [ pkgs.vimPlugins.telescope-file-browser-nvim ];
               }
             ];
           };

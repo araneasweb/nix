@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.rust.enable = lib.mkEnableOption "enables rust";
   };

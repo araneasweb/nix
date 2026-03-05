@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.reverseEngineering.enable = lib.mkEnableOption "enables reverse engineering tools";
   };

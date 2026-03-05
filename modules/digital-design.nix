@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.digitalDesign.enable = lib.mkEnableOption "enables digital design tools";
   };

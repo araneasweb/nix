@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.haskell.enable = lib.mkEnableOption "enables haskell";
   };

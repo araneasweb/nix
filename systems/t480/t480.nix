@@ -1,15 +1,16 @@
-{ prefs
-, lib
-, ...
-}: {
+{
+  prefs,
+  lib,
+  ...
+}:
+{
 
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../shared.nix
-    ]
-    ++ (lib.optional prefs.settings.useHyprland ../../home/hyprland/hyprland.nix)
-    ++ (lib.optional prefs.settings.useXmonad ../../home/xmonad/xmonad.nix);
+  imports = [
+    ./hardware-configuration.nix
+    ../shared.nix
+  ]
+  ++ (lib.optional prefs.settings.useHyprland ../../home/hyprland/hyprland.nix)
+  ++ (lib.optional prefs.settings.useXmonad ../../home/xmonad/xmonad.nix);
 
   networking = {
     hostName = "t480";

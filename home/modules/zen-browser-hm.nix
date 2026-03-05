@@ -1,4 +1,5 @@
-{ prefs, ... }: {
+{ prefs, ... }:
+{
   programs = {
     zen-browser = {
       enable = true;

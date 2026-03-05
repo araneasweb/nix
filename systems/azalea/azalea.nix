@@ -1,10 +1,10 @@
-{ ... }: {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../shared.nix
-      ../../home/cosmic/cosmic.nix
-    ];
+{ ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../shared.nix
+    ../../home/cosmic/cosmic.nix
+  ];
 
   networking = {
     hostName = "azalea";

@@ -1,13 +1,14 @@
-{ config
-, pkgs
-, inputs
-, prefs
-, ...
-}: {
-  imports =
-    [
-      ../modules/modules.nix
-    ];
+{
+  config,
+  pkgs,
+  inputs,
+  prefs,
+  ...
+}:
+{
+  imports = [
+    ../modules/modules.nix
+  ];
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -25,7 +26,10 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
       substituters = [
         "https://hyprland.cachix.org"
@@ -220,14 +224,22 @@
     inputMethod = {
       enable = true;
       type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ anthy table ];
+      ibus.engines = with pkgs.ibus-engines; [
+        anthy
+        table
+      ];
     };
   };
 
   users.users.${prefs.data.username} = {
     isNormalUser = true;
     description = prefs.data.username;
-    extraGroups = [ "networkmanager" "wheel" "podman" "vboxusers" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "vboxusers"
+    ];
     shell = pkgs.fish;
     hashedPasswordFile = config.sops.secrets.aranea_password.path;
     linger = true;

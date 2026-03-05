@@ -1,8 +1,10 @@
-{ config
-, pkgs
-, prefs
-, ...
-}: {
+{
+  config,
+  pkgs,
+  prefs,
+  ...
+}:
+{
   home = {
     packages = with pkgs; [
       vicinae

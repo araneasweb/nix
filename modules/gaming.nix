@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     nosModules.gaming.enable = lib.mkEnableOption "enables games and game launchers";
   };

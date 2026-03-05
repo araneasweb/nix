@@ -56,7 +56,7 @@
     , #impermanence,
       nixcats-dots
     , ...
-    } @ inputs:
+    }@inputs:
     let
       inherit (nixpkgs) lib;
       prefs = {
@@ -75,6 +75,9 @@
       ];
     in
     {
+      formatter = lib.genAttrs [ "x86_64-linux" ] (
+        system: (import nixpkgs { inherit system; }).nixfmt-rfc-style
+      );
       nixosConfigurations.t480 = lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -99,17 +102,16 @@
                 inherit inputs prefs;
               };
               users.${prefs.data.username} = {
-                imports =
-                  [
-                    ./home/home.nix
-                    ./home/modules/zen-browser-hm.nix
-                    catppuccin.homeModules.catppuccin
-                    inputs.zen-browser.homeModules.beta
-                    #impermanence.homeModules.impermanence
-                    inputs.nix-doom-emacs-unstraightened.homeModule
-                  ]
-                  ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
-                  ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
+                imports = [
+                  ./home/home.nix
+                  ./home/modules/zen-browser-hm.nix
+                  catppuccin.homeModules.catppuccin
+                  inputs.zen-browser.homeModules.beta
+                  #impermanence.homeModules.impermanence
+                  inputs.nix-doom-emacs-unstraightened.homeModule
+                ]
+                ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
+                ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
               };
             };
           }
@@ -139,17 +141,16 @@
                 inherit inputs prefs;
               };
               users.${prefs.data.username} = {
-                imports =
-                  [
-                    ./home/home.nix
-                    ./home/modules/zen-browser-hm.nix
-                    catppuccin.homeModules.catppuccin
-                    inputs.zen-browser.homeModules.beta
-                    #impermanence.homeModules.impermanence
-                    inputs.nix-doom-emacs-unstraightened.homeModule
-                  ]
-                  ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
-                  ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
+                imports = [
+                  ./home/home.nix
+                  ./home/modules/zen-browser-hm.nix
+                  catppuccin.homeModules.catppuccin
+                  inputs.zen-browser.homeModules.beta
+                  #impermanence.homeModules.impermanence
+                  inputs.nix-doom-emacs-unstraightened.homeModule
+                ]
+                ++ (lib.optional prefs.settings.useHyprland ./home/hyprland/hyprland_hm.nix)
+                ++ (lib.optional prefs.settings.useXmonad ./home/xmonad/xmonad_hm.nix);
               };
             };
           }

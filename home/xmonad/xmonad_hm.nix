@@ -2,7 +2,8 @@
   pkgs,
   prefs,
   ...
-}: {
+}:
+{
   home = {
     file.".xmonad/./xmonad.hs".source = ./xmonad.hs;
     file.".config/nitrogen/bg-saved.cfg".text = ''
