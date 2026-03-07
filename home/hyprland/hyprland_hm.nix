@@ -84,9 +84,11 @@
           ];
           bind = [
             "SUPER, T, exec, ghostty"
-            "SUPER, F, exec, zen-beta"
+            "SUPER, F, exec, qutebrowser"
+            "SUPER SHIFT, F, exec, zen-beta"
             "SUPER, D, exec, vesktop"
             "SUPER SHIFT, D, exec, pkill -9 -f vesktop"
+            "SUPER SHIFT, slash, exec, proton-pass"
             "SUPER, A, exec, spotify"
             "SUPER SHIFT, A, exec, pkill -9 spotify"
             "SUPER, X, killactive,"

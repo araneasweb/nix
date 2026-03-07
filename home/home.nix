@@ -79,6 +79,8 @@
       p11-kit
       p7zip
       pinentry-all
+      proton-pass
+      qutebrowser
       racket
       ripgrep
       rlwrap
