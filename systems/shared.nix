@@ -1,9 +1,8 @@
-{
-  config,
-  pkgs,
-  inputs,
-  prefs,
-  ...
+{ config
+, pkgs
+, inputs
+, prefs
+, ...
 }:
 {
   imports = [
@@ -128,7 +127,7 @@
         libvorbis
         SDL
         SDL2_image
-        glew110
+        glew_1_10
         libidn
         tbb
         flac
@@ -191,6 +190,7 @@
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber.enable = true;
     };
   };
 
