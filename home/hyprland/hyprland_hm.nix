@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  prefs,
-  ...
+{ config
+, pkgs
+, prefs
+, ...
 }:
 {
   home = {
@@ -236,10 +235,12 @@
     hyprpaper = {
       enable = true;
       settings = {
-        preload = "${prefs.data.treeDir}/assets/wallpaper.jpg";
         splash = false;
         wallpaper = [
-          "eDP-1,${prefs.data.treeDir}/assets/wallpaper.jpg"
+          {
+            monitor = "eDP-1";
+            path = "${prefs.data.treeDir}/assets/wallpaper.jpg";
+          }
         ];
       };
     };
