@@ -274,7 +274,7 @@
 
   documentation = {
     man = {
-      generateCaches = false;
+      cache.enable = false;
     };
     dev.enable = true;
   };

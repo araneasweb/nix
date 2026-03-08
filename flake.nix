@@ -76,7 +76,7 @@
     in
     {
       formatter = lib.genAttrs [ "x86_64-linux" ] (
-        system: (import nixpkgs { inherit system; }).nixfmt-rfc-style
+        system: (import nixpkgs { inherit system; }).nixfmt
       );
       nixosConfigurations.t480 = lib.nixosSystem {
         system = "x86_64-linux";
