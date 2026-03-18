@@ -44,7 +44,7 @@
       flake = false;
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
-    nixcats-dots.url = "github:araneasweb/nixcats-dots";
+    nvim-dots.url = "github:araneasweb/nvim-dots";
   };
   outputs =
     { nixpkgs
@@ -54,7 +54,7 @@
     , nvf
     , sops-nix
     , #impermanence,
-      nixcats-dots
+      nvim-dots
     , ...
     }@inputs:
     let

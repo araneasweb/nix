@@ -178,6 +178,7 @@
     tumbler.enable = true;
     printing.enable = true;
     libinput.enable = true;
+    weechat.enable = true;
     # kmscon.enable = true;
     pulseaudio.enable = false;
     udisks2.enable = true;

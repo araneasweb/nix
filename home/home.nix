@@ -25,7 +25,7 @@
     };
 
     packages = with pkgs; [
-      inputs.nixcats-dots.packages.x86_64-linux.nvim
+      inputs.nvim-dots.packages.x86_64-linux.nvim
       bat
       brightnessctl
       busybox
