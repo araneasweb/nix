@@ -26,11 +26,6 @@
       flake = false;
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +58,6 @@
       treefmt-nix,
       catppuccin,
       home-manager,
-      nvf,
       sops-nix,
       ...
     }:
@@ -182,7 +176,6 @@
 
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
-            nvf.nixosModules.default
             sops-nix.nixosModules.sops
 
             (mkHomeManagerModule {

@@ -252,7 +252,6 @@
     rust.enable = false;
     digitalDesign.enable = false;
     reverseEngineering.enable = false;
-    nvf.enable = false;
     gaming.enable = true;
   };
 
