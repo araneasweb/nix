@@ -13,6 +13,9 @@
       ocaml = {
         path = ./ocaml;
       };
+      racket = {
+        path = ./racket;
+      };
     };
   };
 }
