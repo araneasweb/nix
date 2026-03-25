@@ -1,16 +1,8 @@
+{ ... }:
 {
-  prefs,
-  lib,
-  ...
-}:
-{
-
   imports = [
     ./hardware-configuration.nix
-    ../shared.nix
-  ]
-  ++ (lib.optional prefs.settings.useHyprland ../../home/hyprland/hyprland.nix)
-  ++ (lib.optional prefs.settings.useXmonad ../../home/xmonad/xmonad.nix);
+  ];
 
   networking = {
     hostName = "t480";
@@ -26,8 +18,5 @@
     }
   ];
 
-  services = {
-    tlp.enable = true;
-  };
-
+  services.tlp.enable = true;
 }

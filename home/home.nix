@@ -1,7 +1,8 @@
-{ prefs
-, pkgs
-, inputs
-, ...
+{
+  prefs,
+  pkgs,
+  inputs,
+  ...
 }:
 {
   home = {
@@ -25,7 +26,7 @@
     };
 
     packages = with pkgs; [
-      inputs.nvim-dots.packages.x86_64-linux.nvim
+      inputs.nvim-dots.packages.${pkgs.stdenv.hostPlatform.system}.nvim
       bat
       brightnessctl
       busybox
@@ -162,8 +163,6 @@
     fish = {
       enable = true;
       shellAliases = {
-        "nfu" =
-          "sudo nix flake update --flake ${prefs.data.treeDir} && nix flake check ${prefs.data.treeDir}";
         "nrs" = "nixos-rebuild switch --sudo --flake ${prefs.data.treeDir}";
         ":q" = "exit";
         "cls" = "clear && hyfetch";
@@ -187,6 +186,14 @@
         zoxide init fish | source
       '';
       functions = {
+        nfu = ''
+          set -l old $PWD
+          cd ${prefs.data.treeDir}; or return
+          sudo nix flake update --flake . && nix fmt . && nix flake check .
+          set -l st $status
+          cd $old
+          return $st
+        '';
         rungcc = ''
           if test (count $argv) -ne 1
               echo "Usage: rungcc filename"

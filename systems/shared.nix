@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, inputs
-, prefs
-, ...
+{
+  config,
+  pkgs,
+  inputs,
+  prefs,
+  ...
 }:
 {
   imports = [
@@ -257,7 +258,6 @@
 
   environment = {
     sessionVariables = {
-      NIXPKGS_ALLOW_UNFREE = 1;
       XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
       XCURSOR_SIZE = "24";
       GTK_THEME = "catppuccin-mocha-mauve-standard";
@@ -285,21 +285,6 @@
   console = {
     font = "ter-112n";
     packages = [ pkgs.terminus_font ];
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      catppuccin-gtk = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
-        size = "standard";
-        variant = "mocha";
-      };
-      catppuccin-papirus-folders = pkgs.catppuccin-papirus-folders.override {
-        accent = "mauve";
-        flavor = "mocha";
-      };
-    };
   };
 
   security = {

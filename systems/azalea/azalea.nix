@@ -2,8 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared.nix
-    ../../home/cosmic/cosmic.nix
   ];
 
   networking = {
@@ -19,5 +17,4 @@
       size = 32 * 1024;
     }
   ];
-
 }

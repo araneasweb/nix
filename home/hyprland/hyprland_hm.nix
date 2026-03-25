@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, prefs
-, ...
+{
+  config,
+  pkgs,
+  prefs,
+  ...
 }:
 {
   home = {
