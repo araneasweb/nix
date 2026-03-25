@@ -2,5 +2,8 @@
 {
   projectRootFile = "flake.nix";
 
-  programs.nixfmt.enable = true;
+  programs.nixfmt = {
+    enable = true;
+    width = 80;
+  };
 }

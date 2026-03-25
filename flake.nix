@@ -77,7 +77,8 @@
       forAllSystems = lib.genAttrs systems;
 
       treefmtEval = forAllSystems (
-        system: treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix
+        system:
+        treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix
       );
 
       prefs = {

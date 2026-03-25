@@ -8,7 +8,9 @@
     let
       eachSystem =
         f:
-        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (system: f nixpkgs.legacyPackages.${system});
+        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+          system: f nixpkgs.legacyPackages.${system}
+        );
     in
     {
       devShells = eachSystem (pkgs: {
