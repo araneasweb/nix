@@ -1,8 +1,7 @@
-{
-  prefs,
-  pkgs,
-  inputs,
-  ...
+{ prefs
+, pkgs
+, inputs
+, ...
 }:
 {
   home = {
@@ -225,7 +224,7 @@
             return 1
           end
           set envname $argv[1]
-          nix flake init -t ${prefs.data.treeDir}/devflakes#$envname
+          nix flake init -t github:araneasweb/devflakes#$envname
         '';
         racketi = ''
           if test (count $argv) -eq 0
