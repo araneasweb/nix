@@ -16,6 +16,9 @@
       racket = {
         path = ./racket;
       };
+      agda = {
+        path = ./agda;
+      };
     };
   };
 }
