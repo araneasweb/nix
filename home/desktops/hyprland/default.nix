@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  prefs,
-  ...
+{ config
+, pkgs
+, host
+, ...
 }:
 {
   home = {
@@ -61,7 +60,7 @@
         ];
         settings = {
           monitor = ",highres,auto,1";
-          source = "/etc/nixos/home/hyprland/macchiato.conf";
+          source = "/etc/nixos/home/desktops/hyprland/macchiato.conf";
           workspace = "special:scratchpad, on-created-empty:[float] ghostty --class=scratchpad.terminal";
           windowrule = [
             {
@@ -130,16 +129,16 @@
             "SUPER SHIFT, 8, movetoworkspace, 8"
             "SUPER SHIFT, 9, movetoworkspace, 9"
             "SUPER SHIFT, 0, movetoworkspace, 10"
-            "SUPER ALT SHIFT, 1, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 1"
-            "SUPER ALT SHIFT, 2, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 2"
-            "SUPER ALT SHIFT, 3, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 3"
-            "SUPER ALT SHIFT, 4, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 4"
-            "SUPER ALT SHIFT, 5, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 5"
-            "SUPER ALT SHIFT, 6, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 6"
-            "SUPER ALT SHIFT, 7, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 7"
-            "SUPER ALT SHIFT, 8, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 8"
-            "SUPER ALT SHIFT, 9, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 9"
-            "SUPER ALT SHIFT, 0, exec, ${prefs.data.treeDir}/home/hyprland/swap.sh 10"
+            "SUPER ALT SHIFT, 1, exec, ${host.treeDir}/home/hyprland/swap.sh 1"
+            "SUPER ALT SHIFT, 2, exec, ${host.treeDir}/home/hyprland/swap.sh 2"
+            "SUPER ALT SHIFT, 3, exec, ${host.treeDir}/home/hyprland/swap.sh 3"
+            "SUPER ALT SHIFT, 4, exec, ${host.treeDir}/home/hyprland/swap.sh 4"
+            "SUPER ALT SHIFT, 5, exec, ${host.treeDir}/home/hyprland/swap.sh 5"
+            "SUPER ALT SHIFT, 6, exec, ${host.treeDir}/home/hyprland/swap.sh 6"
+            "SUPER ALT SHIFT, 7, exec, ${host.treeDir}/home/hyprland/swap.sh 7"
+            "SUPER ALT SHIFT, 8, exec, ${host.treeDir}/home/hyprland/swap.sh 8"
+            "SUPER ALT SHIFT, 9, exec, ${host.treeDir}/home/hyprland/swap.sh 9"
+            "SUPER ALT SHIFT, 0, exec, ${host.treeDir}/home/hyprland/swap.sh 10"
             "SUPER SHIFT, H, movewindow, l"
             "SUPER SHIFT, J, movewindow, d"
             "SUPER SHIFT, K, movewindow, u"
@@ -242,7 +241,7 @@
         wallpaper = [
           {
             monitor = "eDP-1";
-            path = "${prefs.data.treeDir}/assets/wallpaper.jpg";
+            path = "${host.treeDir}/assets/wallpaper.jpg";
           }
         ];
       };

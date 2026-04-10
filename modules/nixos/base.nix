@@ -1,13 +1,12 @@
 {
   config,
   pkgs,
-  inputs,
   prefs,
   ...
 }:
 {
   imports = [
-    ../modules/modules.nix
+    ./default.nix
   ];
 
   boot.loader = {
@@ -18,19 +17,12 @@
   systemd = {
     services = {
       NetworkManager-wait-online.enable = false;
-      geoclue2 = {
-        enable = true;
-      };
+      geoclue2.enable = true;
     };
   };
 
   nix = {
     settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      auto-optimise-store = true;
       substituters = [
         "https://hyprland.cachix.org"
       ];
@@ -43,8 +35,6 @@
   time.timeZone = "America/Vancouver";
 
   sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
     age.keyFile = "/var/lib/sops-nix/key.txt";
     secrets = {
       aranea_password = {
@@ -59,6 +49,7 @@
     starship.enable = true;
     thunar.enable = true;
     xfconf.enable = true;
+
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
@@ -100,7 +91,7 @@
         coreutils
         pciutils
         zenity
-        glibc_multi.bin # Seems to cause issue in ARM
+        glibc_multi.bin
         libXinerama
         libXcursor
         libXrender
@@ -180,10 +171,10 @@
     printing.enable = true;
     libinput.enable = true;
     weechat.enable = true;
-    # kmscon.enable = true;
     pulseaudio.enable = false;
     udisks2.enable = true;
     gvfs.enable = true;
+
     pipewire = {
       enable = true;
       alsa = {
@@ -203,6 +194,7 @@
       nerd-fonts.ubuntu-sans
       noto-fonts
     ];
+
     fontconfig = {
       defaultFonts = {
         serif = [
@@ -273,9 +265,7 @@
   };
 
   documentation = {
-    man = {
-      cache.enable = false;
-    };
+    man.cache.enable = false;
     dev.enable = true;
   };
 
@@ -302,5 +292,4 @@
   };
 
   system.stateVersion = "26.05";
-
 }

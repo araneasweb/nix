@@ -1,117 +1,81 @@
-{ prefs
-, pkgs
-, inputs
-, ...
+{
+  lib,
+  prefs,
+  host,
+  pkgs,
+  inputs,
+  ...
 }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
   home = {
     inherit (prefs.data) username;
 
-    homeDirectory = "/home/${prefs.data.username}";
+    homeDirectory =
+      if isDarwin then
+        "/Users/${prefs.data.username}"
+      else
+        "/home/${prefs.data.username}";
 
     stateVersion = "25.05";
 
-    file.".XCompose" = {
-      source = ./dotfiles/Xcompose;
-      force = true;
-    };
-
-    file.".config/ibus/compose" = {
-      text = builtins.readFile ./dotfiles/Xcompose;
-    };
-
     sessionVariables = {
       TERMINAL = "ghostty";
+      EDITOR = "nvim";
     };
 
     packages = with pkgs; [
       inputs.nvim-dots.packages.${pkgs.stdenv.hostPlatform.system}.nvim
       bat
-      brightnessctl
-      busybox
-      catppuccin-cursors.mochaMauve
-      catppuccin-gtk
-      catppuccin-kvantum
-      catppuccin-papirus-folders
-      cheese
       clang-tools
       coq
       curl
-      dconf
       erlang
       eza
       fastfetch
       fd
-      feh
       fzf
-      gcc
-      gdb
       gh
       ghostty
       git
-      glibc
       gnumake
       gnupg
-      gparted
       htop
       hunspell
       hunspellDicts.en_CA
       hyfetch
-      inetutils
       jq
-      killall
       kitty
       lazygit
       lean4
-      libX11
-      libqalculate
-      libreoffice-qt
-      libselinux
-      man-pages
-      man-pages-posix
       nil
-      nix-alien
       nix-index
       nix-your-shell
       nixfmt
       onefetch
       openjdk
-      p11-kit
       p7zip
-      pinentry-all
-      proton-pass
-      qutebrowser
       racket
       ripgrep
       rlwrap
-      sioyek
-      spotify
       sqls
-      swi-prolog-gui
       texlive.combined.scheme-full
       tldr
       tmux
-      udiskie
       universal-ctags
-      unrar
       unzip
-      upower
-      util-linux
-      valgrind
-      vesktop
       wget
-      xarchiver
-      xdg-user-dirs
       yazi
       zip
-      zoom-us
       zoxide
     ];
-
   };
 
   programs = {
     home-manager.enable = true;
+
     ghostty = {
       enable = true;
       settings = {
@@ -138,6 +102,7 @@
       };
       clearDefaultKeybinds = true;
     };
+
     kitty = {
       enable = true;
       settings = {
@@ -149,7 +114,6 @@
         hide_window_decorations = "yes";
         tab_bar_style = "hidden";
         hide_tab_bar_when_single_tab = "yes";
-        # shell = "tmux new-session";
         allow_osc42_clipboard = "yes";
         scrollback_lines = 10000;
       };
@@ -159,40 +123,51 @@
         map ctrl+shift+minus change_font_size current -1.0
       '';
     };
+
     fish = {
       enable = true;
+
       shellAliases = {
-        "nrs" = "nixos-rebuild switch --sudo --flake ${prefs.data.treeDir}";
+        nrs =
+          if isDarwin then
+            "darwin-rebuild switch --flake ${host.treeDir}"
+          else
+            "nixos-rebuild switch --sudo --flake ${host.treeDir}";
+
         ":q" = "exit";
-        "cls" = "clear && hyfetch";
-        "nixconf" = "nvim ${prefs.data.treeDir}";
-        "tlocale" = "echo ${prefs.data.treeDir}";
-        "fzg" = "rg . | fzf --print0 -e";
-        "reload" = "source ~/.config/fish/config.fish";
-        "cd" = "z";
-        "cdi" = "zi";
-        "ls" = "eza";
-        "l" = "ls -lah";
-        "lt" = "ls --long --tree";
-        "ltg" = "ls --long --tree --git-ignore";
-        "ll" = "ls -l";
+        cls = "clear && hyfetch";
+        nixconf = "nvim ${host.treeDir}";
+        tlocale = "echo ${host.treeDir}";
+        fzg = "rg . | fzf --print0 -e";
+        reload = "source ~/.config/fish/config.fish";
+        cd = "z";
+        cdi = "zi";
+        ls = "eza";
+        l = "ls -lah";
+        lt = "ls --long --tree";
+        ltg = "ls --long --tree --git-ignore";
+        ll = "ls -l";
       };
+
       shellInit = ''
         set -g fish_greeting ""
       '';
+
       interactiveShellInit = ''
         nix-your-shell fish | source
         zoxide init fish | source
       '';
+
       functions = {
         nfu = ''
           set -l old $PWD
-          cd ${prefs.data.treeDir}; or return
-          sudo nix flake update --flake . && nix fmt . && nix flake check .
+          cd ${host.treeDir}; or return
+          nix flake update --flake . && nix fmt . && nix flake check .
           set -l st $status
           cd $old
           return $st
         '';
+
         rungcc = ''
           if test (count $argv) -ne 1
               echo "Usage: rungcc filename"
@@ -202,6 +177,7 @@
           set exe_name ".tmp_gcc"
           gcc $file -o $exe_name && ./$exe_name && rm $exe_name
         '';
+
         heval = ''
           if test (count $argv) -eq 0
             echo "Usage: heval ..expr"
@@ -210,6 +186,7 @@
           set expr (string join " " $argv)
           ghc -e "print ($expr)"
         '';
+
         nsh = ''
           if test (count $argv) -eq 0
             echo "Usage: nsh ..pkgs"
@@ -218,6 +195,7 @@
           set pkgs (for arg in $argv; echo nixpkgs#$arg; end)
           nix shell $pkgs
         '';
+
         ndv = ''
           if test (count $argv) -ne 1
             echo "Usage: ndv envname"
@@ -226,6 +204,7 @@
           set envname $argv[1]
           nix flake init -t github:araneasweb/devflakes#$envname
         '';
+
         racketi = ''
           if test (count $argv) -eq 0
               echo "Usage: racketi filename"
@@ -235,6 +214,7 @@
         '';
       };
     };
+
     starship = {
       enable = true;
       settings = {
@@ -248,33 +228,7 @@
         };
       };
     };
-    sioyek = {
-      config = {
-        background_color = "#1e1e2e";
-        text_highlight_color = "#f9e2af";
-        visual_mark_color = "#7f849c";
-        search_highlight_color = "#f9e2af";
-        link_highlight_color = "#89b4fa";
-        synctex_highlight_color = "#a6e3a1";
-        highlight_color_a = "#f9e2af";
-        highlight_color_b = "#a6e3a1";
-        highlight_color_c = "#89dceb";
-        highlight_color_d = "#eba0ac";
-        highlight_color_e = "#cba6f7";
-        highlight_color_f = "#f38ba8";
-        highlight_color_g = "#f9e2af";
-        custom_background_color = "#1e1e2e";
-        custom_text_color = "#cdd6f4";
-        ui_text_color = "#cdd6f4";
-        ui_background_color = "#313244";
-        ui_selected_text_color = "#cdd6f4";
-        ui_selected_background_color = "#585b70";
-        startup_commands = [ "toggle_custom_color" ];
-        should_launch_new_instance = "1";
-        should_launch_new_window = "1";
-      };
-      enable = true;
-    };
+
     tmux = {
       enable = true;
       shortcut = "Space";
@@ -297,7 +251,6 @@
         bind S choose-session
 
         setw -g mode-keys vi
-        bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
         bind -T copy-mode-vi Y send-keys -X copy-line
         bind-key -T copy-mode-vi 'v' send -X begin-selection
 
@@ -306,33 +259,18 @@
         set -g allow-passthrough on
         set -g set-clipboard on
 
-        unbind ]
-        bind ] run-shell 'tmux set-buffer -- "$(wl-paste -n)" \; paste-buffer -d'
-
         set -g base-index 1
         setw -g pane-base-index 1
 
         set-option -s escape-time 0
         set -g history-limit 50000
-
       '';
     };
+
     doom-emacs = {
       enable = true;
       doomDir = inputs.doom-config;
     };
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      icon-theme = "Papirus-Dark";
-    };
-  };
-
-  xdg.configFile = {
-    "xfce4/helpers.rc".text = ''
-      TerminalEmulator = ghostty
-    '';
   };
 
   catppuccin = {
