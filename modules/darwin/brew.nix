@@ -29,6 +29,7 @@
       "zoom"
       "spotify"
       "steam"
+      "raycast"
     ];
   };
 }
