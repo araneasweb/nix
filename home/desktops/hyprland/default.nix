@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, host
-, ...
+{
+  config,
+  pkgs,
+  host,
+  ...
 }:
 {
   home = {

@@ -68,17 +68,18 @@
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , darwin
-    , treefmt-nix
-    , catppuccin
-    , home-manager
-    , sops-nix
-    , nix-homebrew
-    , homebrew-core
-    , homebrew-cask
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      darwin,
+      treefmt-nix,
+      catppuccin,
+      home-manager,
+      sops-nix,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
+      ...
     }:
     let
       inherit (nixpkgs) lib;
@@ -156,9 +157,9 @@
       };
 
       mkHomeManagerModule =
-        { host
-        , extraHomeModules ? [ ]
-        ,
+        {
+          host,
+          extraHomeModules ? [ ],
         }:
         {
           home-manager = {

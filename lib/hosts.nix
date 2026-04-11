@@ -15,7 +15,7 @@
 
   a2681 = {
     system = "aarch64-darwin";
-    treeDir = "/etc/nix-darwin";
+    treeDir = "~/nix/";
     desktop = "none";
     module = ../hosts/darwin/a2681;
   };

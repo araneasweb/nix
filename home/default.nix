@@ -1,8 +1,9 @@
-{ prefs
-, host
-, pkgs
-, inputs
-, ...
+{
+  prefs,
+  host,
+  pkgs,
+  inputs,
+  ...
 }:
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
@@ -85,8 +86,8 @@ in
         window-padding-y = 0;
         window-padding-balance = true;
 
-        window-decoration = "none";
-        window-show-tab-bar = "never";
+        window-decoration = if isDarwin then "true" else "none";
+        window-show-tab-bar = if isDarwin then "auto" else "never";
 
         clipboard-read = "allow";
         clipboard-write = "allow";
@@ -129,9 +130,9 @@ in
       shellAliases = {
         nrs =
           if isDarwin then
-            "darwin-rebuild switch --flake ${host.treeDir}"
+            "sudo darwin-rebuild switch --flake ${host.treeDir}"
           else
-            "nixos-rebuild switch --sudo --flake ${host.treeDir}";
+            "sudo nixos-rebuild switch --sudo --flake ${host.treeDir}";
 
         ":q" = "exit";
         cls = "clear && hyfetch";

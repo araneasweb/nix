@@ -23,6 +23,7 @@
       "protonvpn"
       "ghostty"
       "qutebrowser"
+      "proton-pass"
     ];
   };
 }
