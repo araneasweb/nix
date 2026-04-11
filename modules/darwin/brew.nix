@@ -24,6 +24,8 @@
       "ghostty"
       "qutebrowser"
       "proton-pass"
+      "racket"
+      "vesktop"
     ];
   };
 }

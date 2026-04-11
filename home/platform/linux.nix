@@ -1,8 +1,7 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ lib
+, pkgs
+, inputs
+, ...
 }:
 {
   home = {
@@ -41,6 +40,7 @@
       pinentry-all
       proton-pass
       qutebrowser
+      racket
       sioyek
       spotify
       swi-prolog-gui
