@@ -18,6 +18,11 @@
     enable = true;
     user = "aranea";
     taps = builtins.attrNames config.nix-homebrew.taps;
-    casks = [ "firefox" "protonvpn" ];
+    casks = [
+      "firefox"
+      "protonvpn"
+      "ghostty"
+      "qutebrowser"
+    ];
   };
 }

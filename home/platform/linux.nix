@@ -1,8 +1,7 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ lib
+, pkgs
+, inputs
+, ...
 }:
 {
   home = {
@@ -16,6 +15,7 @@
     packages = with pkgs; [
       brightnessctl
       busybox
+      ghostty
       catppuccin-cursors.mochaMauve
       catppuccin-gtk
       catppuccin-kvantum

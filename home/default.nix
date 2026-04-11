@@ -36,8 +36,6 @@ in
       fd
       fzf
       gh
-      ghostty-bin
-      qutebrowser
       proton-pass
       git
       gnumake
@@ -78,7 +76,7 @@ in
 
     ghostty = {
       enable = true;
-      package = pkgs.ghostty-bin;
+      package = null;
       settings = {
         font-family = "Hack Nerd Font Mono";
         font-size = 9;
