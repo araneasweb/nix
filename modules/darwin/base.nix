@@ -31,6 +31,7 @@
         "10"
       ];
       on-focus-changed = [ "move-mouse window-lazy-center" ];
+      automatically-unhide-macos-hidden-apps = true;
       mode.main.binding = {
         alt-h = "focus left";
         alt-j = "focus down";
@@ -94,10 +95,10 @@
         alt-x = "close --quit-if-last-window";
         alt-tab = "workspace next";
         alt-shift-tab = "workspace prev";
-        alt-ctrl-h = "resize width -50";
+        alt-ctrl-h = "resize width +50";
         alt-ctrl-j = "resize height +50";
         alt-ctrl-k = "resize height -50";
-        alt-ctrl-l = "resize width +50";
+        alt-ctrl-l = "resize width -50";
       };
     };
   };
