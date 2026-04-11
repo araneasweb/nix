@@ -9,6 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,15 +68,17 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      darwin,
-      treefmt-nix,
-      catppuccin,
-      home-manager,
-      sops-nix,
-      ...
+    inputs@{ self
+    , nixpkgs
+    , darwin
+    , treefmt-nix
+    , catppuccin
+    , home-manager
+    , sops-nix
+    , nix-homebrew
+    , homebrew-core
+    , homebrew-cask
+    , ...
     }:
     let
       inherit (nixpkgs) lib;
@@ -109,7 +122,9 @@
       homePlatformModules =
         system:
         lib.optionals (isLinux system) [ ./home/platform/linux.nix ]
-        ++ lib.optionals (isDarwin system) [ ./home/platform/darwin.nix ];
+        ++ lib.optionals (isDarwin system) [
+          ./home/platform/darwin.nix
+        ];
 
       desktopProfiles = {
         hyprland = {
@@ -141,9 +156,9 @@
       };
 
       mkHomeManagerModule =
-        {
-          host,
-          extraHomeModules ? [ ],
+        { host
+        , extraHomeModules ? [ ]
+        ,
         }:
         {
           home-manager = {
@@ -207,6 +222,9 @@
 
             home-manager.darwinModules.home-manager
             sops-nix.darwinModules.sops
+
+            nix-homebrew.darwinModules.nix-homebrew
+            ./modules/darwin/brew.nix
 
             (mkHomeManagerModule {
               inherit host;

@@ -1,10 +1,8 @@
-{
-  lib,
-  prefs,
-  host,
-  pkgs,
-  inputs,
-  ...
+{ prefs
+, host
+, pkgs
+, inputs
+, ...
 }:
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
@@ -38,7 +36,9 @@ in
       fd
       fzf
       gh
-      ghostty
+      ghostty-bin
+      qutebrowser
+      proton-pass
       git
       gnumake
       gnupg
@@ -57,7 +57,7 @@ in
       onefetch
       openjdk
       p7zip
-      racket
+      # racket
       ripgrep
       rlwrap
       sqls
@@ -78,6 +78,7 @@ in
 
     ghostty = {
       enable = true;
+      package = pkgs.ghostty-bin;
       settings = {
         font-family = "Hack Nerd Font Mono";
         font-size = 9;
