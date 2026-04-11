@@ -26,6 +26,8 @@
       "proton-pass"
       "racket"
       "vesktop"
+      "zoom"
+      "spotify"
     ];
   };
 }

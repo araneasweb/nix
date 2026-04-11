@@ -37,7 +37,6 @@ in
       fd
       fzf
       gh
-      proton-pass
       git
       gnumake
       gnupg
@@ -56,7 +55,6 @@ in
       onefetch
       openjdk
       p7zip
-      # racket
       ripgrep
       rlwrap
       sqls
@@ -132,7 +130,7 @@ in
           if isDarwin then
             "sudo darwin-rebuild switch --flake ${host.treeDir}"
           else
-            "sudo nixos-rebuild switch --sudo --flake ${host.treeDir}";
+            "sudo nixos-rebuild switch --sudo --flake ~/nix";
 
         ":q" = "exit";
         cls = "clear && hyfetch";
