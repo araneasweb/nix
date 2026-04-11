@@ -100,7 +100,6 @@
         alt-ctrl-k = "resize height -50";
         alt-ctrl-l = "resize width -50";
         alt-f = "exec-and-forget qutebrowser";
-        alt-t = "exec-and-forget ghostty";
       };
     };
   };
