@@ -28,6 +28,7 @@
       "vesktop"
       "zoom"
       "spotify"
+      "steam"
     ];
   };
 }
