@@ -1,8 +1,7 @@
-{
-  pkgs,
-  prefs,
-  host,
-  ...
+{ pkgs
+, prefs
+, host
+, ...
 }:
 {
   nixpkgs.hostPlatform = host.system;
@@ -91,6 +90,14 @@
           "move-node-to-workspace 10"
           "workspace 10"
         ];
+        alt-v = "layout floating tiling";
+        alt-x = "close --quit-if-last-window";
+        alt-tab = "workspace next";
+        alt-shift-tab = "workspace prev";
+        alt-ctrl-h = "resize width -50";
+        alt-ctrl-j = "resize height +50";
+        alt-ctrl-k = "resize height -50";
+        alt-ctrl-l = "resize width +50";
       };
     };
   };
