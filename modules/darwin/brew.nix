@@ -31,6 +31,10 @@
       "steam"
       "raycast"
     ];
-    onActivation.cleanup = "zap";
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "zap";
+    };
   };
 }
