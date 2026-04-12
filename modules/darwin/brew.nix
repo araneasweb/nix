@@ -31,5 +31,6 @@
       "steam"
       "raycast"
     ];
+    onActivation.cleanup = "zap";
   };
 }
