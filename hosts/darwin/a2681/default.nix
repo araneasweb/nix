@@ -45,6 +45,7 @@
       CustomUserPreferences = {
         NSGlobalDomain = {
           WebKitDeveloperExtras = true;
+          AppleWindowRounding = 0;
         };
         "com.apple.screencapture" = {
           location = "~/Pictures";
