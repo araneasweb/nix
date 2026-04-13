@@ -91,6 +91,11 @@
           "move-node-to-workspace 10"
           "workspace 10"
         ];
+        alt-s = "workspace --auto-back-and-forth S";
+        alt-shift-s = [
+          "move-node-to-workspace S"
+          "workspace S"
+        ];
         alt-v = "layout floating tiling";
         alt-x = "close --quit-if-last-window";
         alt-tab = "workspace next";
