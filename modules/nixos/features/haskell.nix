@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 {
   options = {
@@ -27,13 +26,6 @@
 
     environment.variables = {
       STACK_SYSTEM_GHC = "1";
-    };
-
-    programs.direnv = {
-      enable = true;
-      nix-direnv = {
-        enable = true;
-      };
     };
   };
 }
