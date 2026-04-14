@@ -30,6 +30,7 @@
       "spotify"
       "steam"
       "raycast"
+      "calibre"
     ];
     onActivation = {
       autoUpdate = true;
