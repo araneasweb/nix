@@ -1,7 +1,8 @@
-{ pkgs
-, prefs
-, host
-, ...
+{
+  pkgs,
+  prefs,
+  host,
+  ...
 }:
 {
   nixpkgs.hostPlatform = host.system;
