@@ -189,7 +189,7 @@ in
         nfu = ''
           set -l old $PWD
           cd ${host.treeDir}; or return
-          nix flake update --flake . && nix fmt . && nix flake check .
+          nix flake update --flake . && nix fmt .
           set -l st $status
           cd $old
           return $st
