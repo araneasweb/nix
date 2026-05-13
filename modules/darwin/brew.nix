@@ -31,6 +31,7 @@
       "steam"
       "raycast"
       "calibre"
+      "prismlauncher"
     ];
     onActivation = {
       autoUpdate = true;
