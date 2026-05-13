@@ -1,9 +1,8 @@
-{
-  prefs,
-  host,
-  pkgs,
-  inputs,
-  ...
+{ prefs
+, host
+, pkgs
+, inputs
+, ...
 }:
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
@@ -104,7 +103,7 @@ in
 
     ghostty = {
       enable = true;
-      package = null;
+      package = if isDarwin then null else pkgs.ghostty;
       settings = {
         font-family = "Hack Nerd Font Mono";
         font-size = 9;
