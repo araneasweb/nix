@@ -18,6 +18,11 @@
     enable = true;
     user = "aranea";
     taps = builtins.attrNames config.nix-homebrew.taps;
+
+    brews = [
+      "coreutils"
+    ];
+
     casks = [
       "calibre"
       "firefox"
