@@ -1,8 +1,7 @@
-{
-  pkgs,
-  prefs,
-  host,
-  ...
+{ pkgs
+, prefs
+, host
+, ...
 }:
 {
   nixpkgs.hostPlatform = host.system;
@@ -11,6 +10,16 @@
     name = prefs.data.username;
     home = "/Users/${prefs.data.username}";
     shell = pkgs.fish;
+  };
+
+
+  fonts = {
+    packages = with pkgs; [
+      hack-font-ligature-nerd
+      nerd-fonts.arimo
+      nerd-fonts.ubuntu-sans
+      noto-fonts
+    ];
   };
 
   programs.fish.enable = true;
