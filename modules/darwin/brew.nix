@@ -19,19 +19,23 @@
     user = "aranea";
     taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
+      "calibre"
       "firefox"
-      "protonvpn"
       "ghostty"
-      "qutebrowser"
+      "helium-browser"
+      "krita"
+      "prismlauncher"
       "proton-pass"
+      "protonvpn"
+      "qutebrowser"
       "racket"
-      "vesktop"
-      "zoom"
+      "raycast"
+      "slack"
       "spotify"
       "steam"
-      "raycast"
-      "calibre"
-      "prismlauncher"
+      "vesktop"
+      "waterfox"
+      "zoom"
     ];
     onActivation = {
       autoUpdate = true;
