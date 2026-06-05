@@ -1,7 +1,8 @@
-{ pkgs
-, prefs
-, host
-, ...
+{
+  pkgs,
+  prefs,
+  host,
+  ...
 }:
 {
   nixpkgs.hostPlatform = host.system;
@@ -11,7 +12,6 @@
     home = "/Users/${prefs.data.username}";
     shell = pkgs.fish;
   };
-
 
   fonts = {
     packages = with pkgs; [

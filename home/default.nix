@@ -1,8 +1,9 @@
-{ prefs
-, host
-, pkgs
-, inputs
-, ...
+{
+  prefs,
+  host,
+  pkgs,
+  inputs,
+  ...
 }:
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
