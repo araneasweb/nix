@@ -37,6 +37,7 @@ in
       fd
       fzf
       gh
+      ghc
       git
       gnumake
       gnupg
